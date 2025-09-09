@@ -156,6 +156,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="RenderNode.cpp" />
+    <ClCompile Include="ResourcesManager.cpp" />
     <ClCompile Include="Sence.cpp" />
     <ClCompile Include="SenceManager.cpp" />
     <ClCompile Include="ShortcutItemButton.cpp" />
@@ -207,7 +208,6 @@
     <ClInclude Include="MovementObject.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Resources.h" />
     <ClInclude Include="ResourcesManager.h" />
     <ClInclude Include="Sence.h" />
     <ClInclude Include="SenceManager.h" />

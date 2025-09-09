@@ -34,9 +34,6 @@
     <Filter Include="头文件\Game">
       <UniqueIdentifier>{2dcedb48-32df-4610-9168-bb2e3bcfc051}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\Game\AnimationRelated">
-      <UniqueIdentifier>{48136ddd-9d18-475e-9715-d145f2ab1fb8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="头文件\Game\Basic">
       <UniqueIdentifier>{bc31c036-783b-445f-ac8a-d9524d4e6441}</UniqueIdentifier>
     </Filter>
@@ -75,6 +72,9 @@
     </Filter>
     <Filter Include="头文件\Game\Render">
       <UniqueIdentifier>{b776a00e-841b-454a-8da9-6bdf0c843688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Game\Render\AnimationRelated">
+      <UniqueIdentifier>{48136ddd-9d18-475e-9715-d145f2ab1fb8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +219,9 @@
     <ClCompile Include="RenderManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ResourcesManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sence.h">
@@ -228,10 +231,10 @@
       <Filter>头文件\Game\Sence</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>头文件\Game\AnimationRelated</Filter>
+      <Filter>头文件\Game\Render\AnimationRelated</Filter>
     </ClInclude>
     <ClInclude Include="Atlas.h">
-      <Filter>头文件\Game\AnimationRelated</Filter>
+      <Filter>头文件\Game\Render\AnimationRelated</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>头文件\Game\Basic</Filter>
@@ -239,14 +242,11 @@
     <ClInclude Include="Timer.h">
       <Filter>头文件\Game\Basic</Filter>
     </ClInclude>
-    <ClInclude Include="Resources.h">
-      <Filter>头文件\Game\Basic</Filter>
-    </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>头文件\Game\Basic</Filter>
     </ClInclude>
     <ClInclude Include="AnimationManager.h">
-      <Filter>头文件\Game\AnimationRelated</Filter>
+      <Filter>头文件\Game\Render\AnimationRelated</Filter>
     </ClInclude>
     <ClInclude Include="GameSence.h">
       <Filter>头文件\Game\Sence</Filter>

@@ -1,6 +1,6 @@
 #include "Animation.h"
 
-Animation::Animation(const Vector2& position):position(position),timer(),frames()
+Animation::Animation(const Vector2& position) : RenderNode(), m_i32CurFrameIndex(0), timer(), frames()
 {
 }
 
