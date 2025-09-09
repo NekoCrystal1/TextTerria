@@ -13,21 +13,21 @@ RenderNode::~RenderNode()
 	m_vecNextNodes.clear();
 }
 
-void RenderNode::renderNextNodes()
+void RenderNode::renderNextNodes(float fCurTime)
 {
 	for (RenderNode* node : m_vecNextNodes)
 	{
-		node->onRender();
+		node->onRender(fCurTime);
 	}
 }
 
-void RenderNode::onRender()
+void RenderNode::onRender(float fCurTIme)
 {
 	if (!m_bIsVisible)
 	{
 		return;
 	}
-	renderNextNodes();
+	renderNextNodes(fCurTIme);
 }
 
 void RenderNode::addNode(RenderNode* pNextNode)
@@ -73,9 +73,10 @@ void RenderNode::setOrder(int i32Order)
 	}
 
 	int i32PastIndex = -1;
-	for (int i = 0; i < m_vecNextNodes.size(); i++)
+	std::vector<RenderNode*>& vecParentNextNodes = m_pParentNode->m_vecNextNodes;
+	for (int i = 0; i < vecParentNextNodes.size(); i++)
 	{
-		if (m_vecNextNodes[i] == this)
+		if (vecParentNextNodes[i] == this)
 		{
 			i32PastIndex = i;
 			break;
@@ -86,31 +87,31 @@ void RenderNode::setOrder(int i32Order)
 	{
 		for (int i = i32PastIndex; i >= 0; i--)
 		{
-			if (i == 0 || m_vecNextNodes[i - 1]->m_Order < i32Order)
+			if (i == 0 || vecParentNextNodes[i - 1]->m_Order < i32Order)
 			{
-				m_vecNextNodes[i] = this;
+				vecParentNextNodes[i] = this;
 				break;
 			}
 			else
 			{
-				m_vecNextNodes[i] = m_vecNextNodes[i - 1];
+				vecParentNextNodes[i] = vecParentNextNodes[i - 1];
 			}
 		}
 	}
 	//层级增大、不变（相当于刷新也需要移动）：右移
 	else
 	{
-		int i32VecEndIndex = m_vecNextNodes.size() - 1;
+		int i32VecEndIndex = vecParentNextNodes.size() - 1;
 		for (int i = i32PastIndex; i <= i32VecEndIndex; i++)
 		{
-			if (i == i32VecEndIndex || m_vecNextNodes[i + 1]->m_Order > i32Order)
+			if (i == i32VecEndIndex || vecParentNextNodes[i + 1]->m_Order > i32Order)
 			{
-				m_vecNextNodes[i] = this;
+				vecParentNextNodes[i] = this;
 				break;
 			}
 			else
 			{
-				m_vecNextNodes[i] = m_vecNextNodes[i + 1];
+				vecParentNextNodes[i] = vecParentNextNodes[i + 1];
 			}
 		}
 	}

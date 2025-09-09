@@ -1,7 +1,8 @@
 #pragma once
 #include <functional>
 
-class Timer {
+class Timer 
+{
 public:
 	Timer(float end_frames = 1,bool is_one_shoot = true,std::function<void()> on_time_out = nullptr);
 	~Timer();

@@ -10,7 +10,7 @@ protected:
 	virtual ~CollisionObject();
 public:
 	//碰撞箱更新在碰撞管理器中处理
-	virtual void on_update() override;
+	virtual void on_update();
 	virtual void set_position(const Vector2& position) override;
 	virtual void set_position(float x, float y) override;
 	void set_collision_src_layer(unsigned int src_layer);

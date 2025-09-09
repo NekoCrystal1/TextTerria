@@ -37,9 +37,6 @@
     <Filter Include="头文件\Game\Basic">
       <UniqueIdentifier>{bc31c036-783b-445f-ac8a-d9524d4e6441}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\Game\Basic\Singleton">
-      <UniqueIdentifier>{ba1af457-fcb3-4431-bd3e-6fe939ec9701}</UniqueIdentifier>
-    </Filter>
     <Filter Include="头文件\Game\GameItem">
       <UniqueIdentifier>{7bdd01e8-dc89-4951-91a0-8c3b02ac0dbf}</UniqueIdentifier>
     </Filter>
@@ -51,9 +48,6 @@
     </Filter>
     <Filter Include="头文件\Game\GameItem\Collision">
       <UniqueIdentifier>{42c1ff4f-7b6d-4d31-8c1f-0af271c0bdd9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\Game\GameItem\Virtual_Obj">
-      <UniqueIdentifier>{e5fd9e58-b97f-4a74-9930-24fddc022754}</UniqueIdentifier>
     </Filter>
     <Filter Include="头文件\Game\GameItem\Actor">
       <UniqueIdentifier>{6c16d382-e3fb-4831-84d0-b4dde66b0971}</UniqueIdentifier>
@@ -75,6 +69,12 @@
     </Filter>
     <Filter Include="头文件\Game\Render\AnimationRelated">
       <UniqueIdentifier>{48136ddd-9d18-475e-9715-d145f2ab1fb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Game\Basic\BasicSingleton">
+      <UniqueIdentifier>{ba1af457-fcb3-4431-bd3e-6fe939ec9701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Game\Basic\Virtual_Obj">
+      <UniqueIdentifier>{e5fd9e58-b97f-4a74-9930-24fddc022754}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +222,9 @@
     <ClCompile Include="ResourcesManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="TComponentObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sence.h">
@@ -284,12 +287,6 @@
     <ClInclude Include="Storage.h">
       <Filter>头文件\Game\GameItem\Character</Filter>
     </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>头文件\Game\GameItem\Virtual_Obj</Filter>
-    </ClInclude>
-    <ClInclude Include="TObject.h">
-      <Filter>头文件\Game\GameItem\Virtual_Obj</Filter>
-    </ClInclude>
     <ClInclude Include="MovementObject.h">
       <Filter>头文件\Game\GameItem\Collision</Filter>
     </ClInclude>
@@ -345,16 +342,16 @@
       <Filter>头文件\Game\GameItem\Actor\Item</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.hpp">
-      <Filter>头文件\Game\Basic\Singleton</Filter>
+      <Filter>头文件\Game\Basic\BasicSingleton</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
-      <Filter>头文件\Game\Basic\Singleton</Filter>
+      <Filter>头文件\Game\Basic\BasicSingleton</Filter>
     </ClInclude>
     <ClInclude Include="ResourcesManager.h">
-      <Filter>头文件\Game\Basic\Singleton</Filter>
+      <Filter>头文件\Game\Basic\BasicSingleton</Filter>
     </ClInclude>
     <ClInclude Include="CollisionManager.h">
-      <Filter>头文件\Game\Basic\Singleton</Filter>
+      <Filter>头文件\Game\Basic\BasicSingleton</Filter>
     </ClInclude>
     <ClInclude Include="WidgetManager.h">
       <Filter>头文件\Widget\Singleton</Filter>
@@ -362,17 +359,29 @@
     <ClInclude Include="Game.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="RenderManager.h">
-      <Filter>头文件\Game\Basic\Singleton</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>头文件\Game\Basic\Singleton</Filter>
+      <Filter>头文件\Game\Basic\BasicSingleton</Filter>
     </ClInclude>
     <ClInclude Include="SenceManager.h">
-      <Filter>头文件\Game\Basic\Singleton</Filter>
+      <Filter>头文件\Game\Basic\BasicSingleton</Filter>
     </ClInclude>
     <ClInclude Include="RenderNode.h">
       <Filter>头文件\Game\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="MilisecondTimer.h">
+      <Filter>头文件\Game\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderManager.h">
+      <Filter>头文件\Game\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>头文件\Game\GameItem\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="TObject.h">
+      <Filter>头文件\Game\Basic\Virtual_Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="TComponentObject.h">
+      <Filter>头文件\Game\Basic\Virtual_Obj</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

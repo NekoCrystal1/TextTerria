@@ -2,24 +2,30 @@
 #include <easyx.h>
 #include <vector>
 #include "Atlas.h"
-#include "Timer.h"
+#include "MilisecondTimer.h"
 #include "RenderNode.h"
 class Animation : public RenderNode
 {
 public:
 	Animation();
+	Animation(IMAGE* pImg);
+	Animation(Atlas* atlas);
 	~Animation();
 public:
 	struct Frame
 	{
-	public:
-		Frame() = default;
+		Frame(IMAGE* pImg);
 		~Frame() = default;
+		IMAGE* getImg();
 	protected:
 		IMAGE* m_pImg;
+		Transform m_pTransform;
 	};
+public:
+	virtual void onRender(float fCurTime) override;
+	void addImg(IMAGE* img);
 private:
 	int m_i32CurFrameIndex;
-	Timer timer;
-	std::vector<Frame*> frames;
+	MilisecondTimer m_oTimer;
+	std::vector<Frame*> m_vecFrames;
 };

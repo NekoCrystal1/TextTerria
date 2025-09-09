@@ -1,10 +1,13 @@
 #pragma once
 #include <easyx.h>
-#include "Vector2.h"
+#include <vector>
 class Atlas {
 public:
-	Atlas();
+	Atlas(std::vector<IMAGE*> vecImgs);
 	~Atlas();
+	IMAGE* at(int index);
+	size_t getSize(); 
+	const std::vector<IMAGE*>& getImgs() const;
 private:
-	Vector2 position;
+	std::vector<IMAGE*> m_vecImgs;
 };

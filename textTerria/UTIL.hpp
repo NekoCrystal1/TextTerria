@@ -12,6 +12,16 @@ inline bool check_point_in_rectangle(const Vector2& point, const Transform& rang
 	return check_point_in_rectangle(point, range.get_position(), range.get_size() + range.get_position());
 }
 
+template<typename T>
+inline void clearVec(std::vector<T*> vec)
+{
+	for (T* i : vec)
+	{
+		delete i;
+	}
+	vec.clear();
+}
+
 //透明通道混合绘图
 void putImage(int dstX, int dstY, IMAGE* pSrcImg, DWORD dwRop = SRCCOPY)
 {

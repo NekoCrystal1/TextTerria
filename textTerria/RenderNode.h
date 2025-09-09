@@ -1,23 +1,20 @@
 #pragma once
-#include "Transform.h"
+#include "TObject.h"
 #include <vector>
-class RenderNode
+class RenderNode : public TObject
 {
 public:
 	RenderNode();
 	virtual ~RenderNode();
 public:
-	virtual void onRender();
+	virtual void onRender(float fCurTime);
 	//自动根据层级添加
 	void addNode(RenderNode* pNextNode);
 	//直接尾插：将会改变目标层级为最高层
 	void pushBack(RenderNode* pNextNode);
 	void setOrder(int i32Order);
 protected:
-	void renderNextNodes();
-protected:
-	bool m_bIsVisible;
-	Transform m_Transform;
+	void renderNextNodes(float fCurTime);
 private:
 	//当前渲染层级：渲染顺序，先渲染当前节点，然后渲染子节点，子节点排序根据层级由小到大排序，因此先渲染层级小的，默认0级
 	int m_Order;

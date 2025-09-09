@@ -5,7 +5,7 @@ class RenderManager : public Singleton<RenderManager>
 {
 	friend Singleton<RenderManager>;
 public:
-	void onRender();
+	void onRender(float fCurTime);
 private:
 	RenderManager();
 	~RenderManager();
