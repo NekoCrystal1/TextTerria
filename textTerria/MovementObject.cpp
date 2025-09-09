@@ -42,7 +42,7 @@ void MovementObject::on_update()
 		velocity.y = -max_velocity.y;
 
 
-	set_position(transform->get_position() + velocity);
+	set_position(m_Transform->get_position() + velocity);
 }
 
 void MovementObject::set_velocity(const Vector2& velocity)

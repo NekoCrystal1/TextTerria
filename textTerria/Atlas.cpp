@@ -14,7 +14,7 @@ IMAGE* Atlas::at(int index)
 	return m_vecImgs[index];
 }
 
-int Atlas::getSize()
+size_t Atlas::getSize()
 {
 	return m_vecImgs.size();
 }

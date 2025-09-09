@@ -2,7 +2,7 @@
 
 void RenderManager::onRender(float fCurTime)
 {
-	m_pRootNode->onRender(float fCurTime);
+	m_pRootNode->onRender(fCurTime);
 }
 
 RenderManager::RenderManager() : m_pRootNode(new RenderNode())

@@ -1,15 +1,15 @@
 #include "Animation.h"
 #include "UTIL.hpp"
 
-Animation::Animation() : RenderNode(), m_i32CurFrameIndex(0)
+Animation::Animation(TObject* pBindObj) : RenderNode(), m_pBindObj(pBindObj), m_i32CurFrameIndex(0)
 {
 }
 
-Animation::Animation(IMAGE* pImg) : RenderNode(), m_i32CurFrameIndex(0), m_vecFrames(1,new Frame(pImg))
+Animation::Animation(TObject* pBingObj, IMAGE* pImg) : RenderNode(), m_pBindObj(pBingObj), m_i32CurFrameIndex(0), m_vecFrames(1,new Frame(pImg))
 {
 }
 
-Animation::Animation(Atlas* atlas) : RenderNode(), m_i32CurFrameIndex(0), m_vecFrames()
+Animation::Animation(TObject* pBingObj, Atlas* atlas) : RenderNode(), m_pBindObj(pBingObj), m_i32CurFrameIndex(0), m_vecFrames()
 {
 }
 
@@ -26,9 +26,16 @@ void Animation::onRender(float fCurTime)
 	}
 	if (m_i32CurFrameIndex < m_vecFrames.size())
 	{
-		const Vector2& oCurPos = m_Transform.get_position();
-		const Vector2& oCurSize = m_Transform.get_size();
-		IMAGE* pImg = m_vecFrames[m_i32CurFrameIndex]->getImg();
+		Frame* pCurFrame = m_vecFrames[m_i32CurFrameIndex];
+		IMAGE* pImg = pCurFrame->m_pImg;
+		Vector2 oCurPos = m_Transform->get_position();
+		Vector2 oCurSize = pCurFrame->m_pTransform.get_size();
+		oCurSize.only_multiply_every_element_modify_self(m_Transform->get_scale());
+		if (m_pBindObj)
+		{
+			oCurPos += m_pBindObj->get_transform()->get_position();
+			oCurSize.only_multiply_every_element_modify_self(m_pBindObj->get_transform()->get_scale());
+		}
 		putImage(oCurPos.x, oCurPos.y, oCurSize.x, oCurSize.y, pImg, 0, 0, pImg->getwidth(), pImg->getheight());
 	}
 
@@ -43,9 +50,4 @@ void Animation::addImg(IMAGE* img)
 
 Animation::Frame::Frame(IMAGE* pImg) : m_pImg(pImg)
 {
-}
-
-IMAGE* Animation::Frame::getImg()
-{
-	return m_pImg;
 }

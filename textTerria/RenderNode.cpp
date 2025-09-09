@@ -1,6 +1,6 @@
 #include "RenderNode.h"
 
-RenderNode::RenderNode() : m_bIsVisible(true), m_Order(0), m_pParentNode(nullptr)
+RenderNode::RenderNode() : TObject(), m_Order(0), m_pParentNode(nullptr)
 {
 }
 

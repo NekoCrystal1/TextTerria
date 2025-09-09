@@ -14,7 +14,7 @@ void Button::on_update()
 {
 	Widget::on_update();
 	const ExMessage& msg = InputManager::instance()->get_mouse_msg();
-	if (msg.message == WM_LBUTTONDOWN && check_point_in_rectangle(Vector2(msg.x, msg.y), *transform) &&
+	if (msg.message == WM_LBUTTONDOWN && check_point_in_rectangle(Vector2(msg.x, msg.y), *m_Transform) &&
 		on_left_click_callback && tree_event->cur_available_num) {
 		on_left_click_callback();
 		tree_event->cur_available_num--;

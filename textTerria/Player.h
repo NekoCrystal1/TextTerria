@@ -11,7 +11,6 @@ public:
 	virtual void set_position(float x, float y) override;
 	Storage* get_storage() const;
 private:
-	Animation::Frame* player_frame;
 	Storage* bag_pack;
 	//将会绑定back中一个格子的格子号
 	short main_hand_slot_id;

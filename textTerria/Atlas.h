@@ -1,7 +1,8 @@
 #pragma once
 #include <easyx.h>
 #include <vector>
-class Atlas {
+class Atlas 
+{
 public:
 	Atlas(std::vector<IMAGE*> vecImgs);
 	~Atlas();

@@ -23,7 +23,7 @@ inline void clearVec(std::vector<T*> vec)
 }
 
 //透明通道混合绘图
-void putImage(int dstX, int dstY, IMAGE* pSrcImg, DWORD dwRop = SRCCOPY)
+inline void putImage(int dstX, int dstY, IMAGE* pSrcImg, DWORD dwRop = SRCCOPY)
 {
 	DWORD* pSrcImgBuffer = GetImageBuffer(pSrcImg);
 	//获取目标图像缓冲区指针
@@ -61,7 +61,7 @@ void putImage(int dstX, int dstY, IMAGE* pSrcImg, DWORD dwRop = SRCCOPY)
 	}
 }
 //使用windowsAPI缩放 -- deepseek
-void putImage(int dstX, int dstY, int dstWidth, int dstHeight, IMAGE* pSrcImg, int srcX, int srcY, int srcWidth, int srcHeight)
+inline void putImage(int dstX, int dstY, int dstWidth, int dstHeight, IMAGE* pSrcImg, int srcX, int srcY, int srcWidth, int srcHeight)
 {
 	HDC dstDC = GetImageHDC(NULL); // 目标DC（通常是屏幕）
 	HDC srcDC = GetImageHDC(pSrcImg); // 源图像DC

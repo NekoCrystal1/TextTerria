@@ -7,9 +7,7 @@ is_item_visible(false)
 
 void UI_Button::on_render() const
 {
-	if (!is_visiable)
+	if (!m_bIsVisible)
 		return;
 	Button::on_render();
-	if(is_item_visible)
-		item_frame->on_render_ui();
 }

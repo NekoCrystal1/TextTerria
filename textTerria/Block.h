@@ -14,5 +14,4 @@ protected:
 private:
 	void initial(const Vector2& size, const Vector2& position);
 private:
-	Animation::Frame* frame;
 };

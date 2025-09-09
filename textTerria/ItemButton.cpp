@@ -1,7 +1,7 @@
 #include "ItemButton.h"
 
 ItemButton::ItemButton(Widget* parent, const Vector2& size, const Vector2& position) : Button(parent,size, position),
-bind_storage(nullptr), item_id(-1), item_frame(AnimationManager::instance()->create_frame())
+bind_storage(nullptr), item_id(-1)
 {
 }
 
@@ -11,24 +11,21 @@ ItemButton::~ItemButton()
 
 void ItemButton::on_update()
 {
-	const Vector2& pos = transform->get_position();
-	const Vector2& size = transform->get_size();
-	item_frame->set_position(pos + (size - item_frame->get_transform().get_size()) * 0.5f);
+	const Vector2& pos = m_Transform->get_position();
+	const Vector2& size = m_Transform->get_size();
 	Button::on_update();
 }
 
 void ItemButton::on_render() const
 {
-	if (!is_visiable)
+	if (!m_bIsVisible)
 		return;
 	Button::on_render();
-	item_frame->on_render_ui();
 }
 
 bool ItemButton::update_animation()
 {
 	if (bind_storage && bind_storage->at(item_id)) {
-		*item_frame = *bind_storage->at(item_id)->get_frame();
 		return true;
 	}
 	return false;

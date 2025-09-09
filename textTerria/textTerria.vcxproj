@@ -163,7 +163,6 @@
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="StorageManager.cpp" />
     <ClCompile Include="StorageWidget.cpp" />
-    <ClCompile Include="TComponentObject.cpp" />
     <ClCompile Include="TestBow.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TObject.cpp" />
@@ -215,7 +214,6 @@
     <ClInclude Include="SenceManager.h" />
     <ClInclude Include="ItemManager.h" />
     <ClInclude Include="StorageWidget.h" />
-    <ClInclude Include="TComponentObject.h" />
     <ClInclude Include="TestBow.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TObject.h" />

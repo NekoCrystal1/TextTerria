@@ -16,5 +16,4 @@ protected:
 	Storage* bind_storage;
 	//将会绑定容器中一个格子的格子号
 	short item_id;
-	Animation::Frame* item_frame;
 };

@@ -1,14 +1,9 @@
 #include "Player.h"
 #include "InputManager.h"
 #include "ItemManager.h"
-Player::Player(const Vector2& size, const Vector2& position) : TObject(size, position, true), Character(size, position, is_visiable),
+Player::Player(const Vector2& size, const Vector2& position) : TObject(size, position, true), Character(size, position, m_bIsVisible),
 bag_pack(ItemManager::instance()->create_storage(this, 45)), main_hand_slot_id(0)
 {
-	player_frame = AnimationManager::instance()->create_frame(0xAA88AA, 0xFF2200, true,transform->get_position());
-	//Íæ¼Ò´óÐ¡30*80
-	player_frame->set_points(std::vector<POINT>({
-		{15,0},{30,13},{30,40},{20,40},{20,70},{30,70},{30,80},{0,80},{0,70},{10,70},{10,40},{0,40},{0,13}
-		}));
 	collision_box->set_collision_shape(CollisionBox::CollisionShape::rectangle);
 	collision_box->set_collision_dst_layer(0x3);
 	collision_box->set_collision_src_layer(0x3);
@@ -52,22 +47,19 @@ void Player::on_update()
 
 void Player::on_render() const
 {
-	if (!is_visiable)
+	if (!m_bIsVisible)
 		return;
-	player_frame->on_render();
 	collision_box->on_render();
 }
 
 void Player::set_position(const Vector2& pos)
 {
 	Actor::set_position(pos);
-	player_frame->set_position(pos);
 }
 
 void Player::set_position(float x, float y)
 {
 	Actor::set_position(x, y);
-	player_frame->set_position(x, y);
 }
 
 Storage* Player::get_storage() const

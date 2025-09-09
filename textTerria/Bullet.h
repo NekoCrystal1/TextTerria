@@ -11,7 +11,6 @@ public:
 	virtual void set_position(float x, float y)override;
 protected:
 	float damage;
-	Animation::Frame* bullet_frame;
 	Timer life_time_timer;
 	Actor* spawn_scource;
 };

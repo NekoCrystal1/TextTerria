@@ -7,17 +7,16 @@
 class Animation : public RenderNode
 {
 public:
-	Animation();
-	Animation(IMAGE* pImg);
-	Animation(Atlas* atlas);
+	Animation(TObject* pBingObj);
+	Animation(TObject* pBingObj, IMAGE* pImg);
+	Animation(TObject* pBingObj, Atlas* atlas);
 	~Animation();
-public:
+protected:
 	struct Frame
 	{
 		Frame(IMAGE* pImg);
 		~Frame() = default;
-		IMAGE* getImg();
-	protected:
+	public:
 		IMAGE* m_pImg;
 		Transform m_pTransform;
 	};
@@ -26,6 +25,7 @@ public:
 	void addImg(IMAGE* img);
 private:
 	int m_i32CurFrameIndex;
-	MilisecondTimer m_oTimer;
+	const TObject* m_pBindObj;
+	//MilisecondTimer m_oTimer;
 	std::vector<Frame*> m_vecFrames;
 };

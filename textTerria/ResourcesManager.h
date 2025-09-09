@@ -8,6 +8,7 @@ class ResourcesManager : public Singleton<ResourcesManager>
 {
 	friend Singleton<ResourcesManager>;
 public:
+	IMAGE* createImg(std::string imgName, std::vector<POINT> points, COLORREF fillcolor, COLORREF linecolor, bool is_filled);
 	void loadResources();
 	IMAGE* getImage(std::string strImgName) const;
 	Atlas* getAtlas(std::string strAtlasName) const;

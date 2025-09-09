@@ -20,7 +20,7 @@ on_collision_func(nullptr), is_collision(false), target(nullptr)
 
 CollisionBox::~CollisionBox()
 {
-	transform = nullptr;
+	m_Transform = nullptr;
 }
 
 void CollisionBox::on_update()
@@ -31,12 +31,12 @@ void CollisionBox::on_update()
 
 void CollisionBox::on_render() const
 {
-	if (!is_visiable)
+	if (!m_bIsVisible)
 		return;
 	const Camera& camera = *Camera::instance();
-	const Vector2& render_centre = camera.get_render_centre(transform->get_centre_position());
-	const Vector2& render_size = camera.get_render_size(transform->get_size());
-	const Vector2& render_pos = camera.get_render_pos(transform->get_centre_position(), transform->get_size());
+	const Vector2& render_centre = camera.get_render_centre(m_Transform->get_centre_position());
+	const Vector2& render_size = camera.get_render_size(m_Transform->get_size());
+	const Vector2& render_pos = camera.get_render_pos(m_Transform->get_centre_position(), m_Transform->get_size());
 
 	switch (collision_shape)
 	{
@@ -130,17 +130,17 @@ const unsigned int CollisionBox::get_collision_dst_layer()const
 
 const Vector2& CollisionBox::get_position() const
 {
-	return transform->get_position();
+	return m_Transform->get_position();
 }
 
 const Vector2& CollisionBox::get_centre_position() const
 {
-	return transform->get_centre_position();
+	return m_Transform->get_centre_position();
 }
 
 const Vector2& CollisionBox::get_size() const
 {
-	return transform->get_size();
+	return m_Transform->get_size();
 }
 
 CollisionBox* CollisionBox::get_target() const

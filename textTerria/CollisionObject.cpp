@@ -1,7 +1,7 @@
 #include "CollisionObject.h"
 CollisionObject::CollisionObject(CollisionBox::CollisionType collision_type, Actor* p,
 	const Vector2& size, const Vector2& position, bool is_visiable) :
-	TObject(size, position,is_visiable),collision_box(CollisionManager::instance()->create_collision_box(collision_type, p, transform))
+	TObject(size, position,is_visiable),collision_box(CollisionManager::instance()->create_collision_box(collision_type, p, m_Transform))
 {
 }
 
@@ -20,13 +20,13 @@ void CollisionObject::on_update()
 void CollisionObject::set_position(const Vector2& position)
 {
 	collision_box->set_position(position);
-	transform->set_position(collision_box->get_position());
+	m_Transform->set_position(collision_box->get_position());
 }
 
 void CollisionObject::set_position(float x, float y)
 {
 	collision_box->set_position(x, y);
-	transform->set_position(collision_box->get_position());
+	m_Transform->set_position(collision_box->get_position());
 }
 
 void CollisionObject::set_collision_src_layer(unsigned int src_layer)

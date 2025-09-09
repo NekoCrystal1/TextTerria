@@ -30,13 +30,13 @@ void Widget::on_update()
 
 void Widget::on_render() const
 {
-	if (!is_visiable)
+	if (!m_bIsVisible)
 		return;
 	if (is_background_visiable) {
 		setlinecolor(this->background_frame_line_color);
 		setfillcolor(this->background_color);
-		const Vector2& pos = transform->get_position();
-		const Vector2& size = transform->get_size();
+		const Vector2& pos = m_Transform->get_position();
+		const Vector2& size = m_Transform->get_size();
 		fillrectangle(pos.x, pos.y, pos.x + size.x, pos.y + size.y);
 	}
 	for (Widget* p : childs)
@@ -58,7 +58,7 @@ void Widget::remove_child(Widget* child)
 
 Vector2 Widget::get_layout(int layout_idx, const Vector2& target_size) const
 {
-	Vector2 size = transform->get_size();
+	Vector2 size = m_Transform->get_size();
 	Vector2 ans = Vector2();
 	switch (layout_idx)
 	{
@@ -90,7 +90,7 @@ Vector2 Widget::get_layout(int layout_idx, const Vector2& target_size) const
 		ans = Vector2(size.x - target_size.x, size.y - target_size.y);
 		break;
 	}
-	return ans + transform->get_position();
+	return ans + m_Transform->get_position();
 }
 
 void Widget::set_background_color(COLORREF color)
@@ -105,7 +105,7 @@ void Widget::set_background_frame_line_color(COLORREF color)
 
 void Widget::set_all_visiable(bool is_all_visible)
 {
-	this->is_visiable = is_all_visible;
+	this->m_bIsVisible = is_all_visible;
 	this->is_background_visiable = is_all_visible;
 	this->is_background_frame_line_visiable = is_all_visible;
 }

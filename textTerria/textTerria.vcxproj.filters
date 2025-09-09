@@ -222,9 +222,6 @@
     <ClCompile Include="ResourcesManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="TComponentObject.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sence.h">
@@ -378,9 +375,6 @@
       <Filter>头文件\Game\GameItem\Actor</Filter>
     </ClInclude>
     <ClInclude Include="TObject.h">
-      <Filter>头文件\Game\Basic\Virtual_Obj</Filter>
-    </ClInclude>
-    <ClInclude Include="TComponentObject.h">
       <Filter>头文件\Game\Basic\Virtual_Obj</Filter>
     </ClInclude>
   </ItemGroup>

@@ -25,8 +25,8 @@ public:
 	//CollisionBox(Actor* p ,const Vector2& size = Vector2(), const Vector2& position = Vector2());
 	CollisionBox(CollisionType type, Actor* p, Transform* bind_transform);
 	~CollisionBox();
-	void on_update()override;
-	void on_render()const override;
+	void on_update();
+	void on_render()const ;
 	void on_collision();
 	virtual void set_position(const Vector2& position) override;
 	virtual void set_position(float x, float y) override;

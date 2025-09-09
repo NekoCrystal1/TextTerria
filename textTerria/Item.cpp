@@ -9,9 +9,9 @@ Item* Item::get_null_item()
 }
 
 Item::Item(Storage* included_storage, int id, bool can_stack, short number) :TObject(),
-	id(id), can_stack(can_stack), number(number), use_cd_timer(new Timer(60,false)),item_frame(nullptr),included_storage(included_storage)
+	id(id), can_stack(can_stack), number(number), use_cd_timer(new Timer(60,false)), included_storage(included_storage)
 {
-	is_visiable = true;
+	m_bIsVisible = true;
 }
 
 Item::~Item()
@@ -26,17 +26,11 @@ void Item::on_update()
 
 void Item::on_render() const
 {
-	if (!is_visiable)
+	if (!m_bIsVisible)
 		return;
-	if(item_frame)
-		item_frame->on_render();
 }
 
 void Item::on_use()
 {
 }
 
-const Animation::Frame* Item::get_frame() const
-{
-	return this->item_frame;
-}
