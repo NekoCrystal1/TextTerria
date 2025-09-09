@@ -1,20 +1,7 @@
 #include "Camera.h"
 
-Camera* Camera::camera = nullptr;
-Camera* Camera::instance()
-{
-	if (!camera)
-		camera = new Camera();
-	return camera;
-}
-
 Camera::Camera():transform(Vector2(getwidth(), getheight()), Vector2()), vision_scale(1.0f)
 {
-}
-
-Camera::~Camera()
-{
-	delete camera;
 }
 
 void Camera::on_input(ExMessage& msg)

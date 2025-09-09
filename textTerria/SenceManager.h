@@ -1,13 +1,12 @@
 #pragma once
-#include <easyx.h>
 #include <unordered_map>
 #include <string>
 #include "Sence.h"
-#include "Camera.h"
-class SenceManager {
+#include "Singleton.hpp"
+class SenceManager : public Singleton<SenceManager>
+{
+	friend Singleton<SenceManager>;
 public:
-	static SenceManager* instance();
-
 	void on_update();
 	void on_render()const;
 	void switch_to(std::string target);
@@ -15,9 +14,7 @@ public:
 	void set_cur_sence(Sence* sence);
 private:
 	SenceManager();
-	~SenceManager();
-private:
-	static SenceManager* manager;
+	~SenceManager() = default;
 private:
 	Sence* cur_sence;
 	std::unordered_map<std::string, Sence*> sences;

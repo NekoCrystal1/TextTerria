@@ -9,15 +9,19 @@
 
 class Game : public Singleton<Game>
 {
+	friend Singleton<Game>;
 public:
-	bool getGameRUnning();
+	bool getIsGameRunning();
 	void setGameRunning(bool bIsGameRunning);
 	void runGame();
 private:
 	void initGame();
 private:
-	bool m_bIsGameRunning = 1;
+	Game();
+	~Game();
+private:
+	bool m_bIsGameRunning;
 	MenuSence* m_pMainMenuScene;
 	GameSence* m_pGameScene;
-	Camera* m_pCamera;
 };
+static Game* GAME = Game::instance();

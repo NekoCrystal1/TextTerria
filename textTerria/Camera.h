@@ -1,10 +1,11 @@
 #pragma once
 #include <easyx.h>
 #include "Transform.h"
-class Camera {
+#include "Singleton.hpp"
+class Camera : public Singleton<Camera>
+{
+	friend Singleton<Camera>;
 public:
-	static Camera* instance();
-
 	void on_input(ExMessage& msg);
 	void on_uodate();
 	const Transform& get_transform()const;
@@ -19,10 +20,10 @@ public:
 	void set_position(const Vector2& position);
 private:
 	Camera();
-	~Camera();
-	static Camera* camera;
+	~Camera() = default;
 private:
 	Transform transform;
 	bool up = 0, down = 0, left = 0, right = 0,add_scale = 0,sub_scale = 0;
 	Vector2 vision_scale;
 };
+static Camera* CAMERA = Camera::instance();

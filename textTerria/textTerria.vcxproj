@@ -182,6 +182,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="ItemButton.h" />
+    <ClInclude Include="RenderManager.h" />
     <ClInclude Include="ShortcutItemButton.h" />
     <ClInclude Include="Singleton.hpp" />
     <ClInclude Include="Storage.h" />

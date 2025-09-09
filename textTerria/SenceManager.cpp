@@ -1,12 +1,5 @@
 #include "SenceManager.h"
 #include "TObjectManager.h"
-SenceManager* SenceManager::manager = nullptr;
-SenceManager* SenceManager::instance()
-{
-    if (!manager)
-        manager = new SenceManager();
-    return manager;
-}
 
 void SenceManager::on_update()
 {
@@ -44,9 +37,4 @@ void SenceManager::set_cur_sence(Sence* sence)
 SenceManager::SenceManager() :cur_sence(nullptr),sences()
 {
 };
-
-SenceManager::~SenceManager()
-{
-    delete manager;
-}
  

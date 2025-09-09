@@ -2,16 +2,20 @@
 #include <iostream>
 
 const static float per_frame_milisecond = (float)1000 / (float)60;
-//Game* GAME = Game::instance();
+
+Game::Game() : m_bIsGameRunning(true), m_pMainMenuScene(new MenuSence()), m_pGameScene(new GameSence())
+{
+}
+
+Game::~Game()
+{
+}
 
 void Game::initGame()
 {
 	initgraph(1280, 720);
 	setbkmode(TRANSPARENT);
-	m_pCamera = Camera::instance();
-	m_pMainMenuScene = new MenuSence();
 	SenceManager::instance()->add_sence("menu", m_pMainMenuScene);
-	m_pGameScene = new GameSence();
 	SenceManager::instance()->add_sence("game", m_pGameScene);
 	SenceManager::instance()->switch_to("menu");
 }
@@ -31,7 +35,7 @@ void Game::runGame()
 		//input
 		while (peekmessage(&msg))
 		{
-			m_pCamera->on_input(msg);
+			CAMERA->on_input(msg);
 			InputManager::instance()->on_input(msg);
 		}
 		cur_time = std::chrono::high_resolution_clock::now();
@@ -45,7 +49,7 @@ void Game::runGame()
 				frames = 0;
 			}
 			//update
-			m_pCamera->on_uodate();
+			CAMERA->on_uodate();
 			SenceManager::instance()->on_update();
 			InputManager::instance()->on_update();
 			delta -= per_frame_milisecond;
@@ -62,7 +66,7 @@ void Game::runGame()
 
 }
 
-bool Game::getGameRUnning()
+bool Game::getIsGameRunning()
 {
 	return this->m_bIsGameRunning;
 }
