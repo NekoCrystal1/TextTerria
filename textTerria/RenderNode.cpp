@@ -1,6 +1,6 @@
 #include "RenderNode.h"
 
-RenderNode::RenderNode() : m_Order(0), m_pParentNode(nullptr)
+RenderNode::RenderNode() : m_bIsVisible(true), m_Order(0), m_pParentNode(nullptr)
 {
 }
 
@@ -13,12 +13,21 @@ RenderNode::~RenderNode()
 	m_vecNextNodes.clear();
 }
 
-void RenderNode::onRender()
+void RenderNode::renderNextNodes()
 {
 	for (RenderNode* node : m_vecNextNodes)
 	{
 		node->onRender();
 	}
+}
+
+void RenderNode::onRender()
+{
+	if (!m_bIsVisible)
+	{
+		return;
+	}
+	renderNextNodes();
 }
 
 void RenderNode::addNode(RenderNode* pNextNode)
