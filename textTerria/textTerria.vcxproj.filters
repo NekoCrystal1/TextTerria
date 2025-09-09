@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\Sence">
+      <UniqueIdentifier>{4028d1af-102e-4442-88cc-5085ed75e0c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Widget">
+      <UniqueIdentifier>{c5bf04b4-c5cd-4e45-95ac-e66237595d25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\AnimationRelated">
+      <UniqueIdentifier>{48136ddd-9d18-475e-9715-d145f2ab1fb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Basic">
+      <UniqueIdentifier>{bc31c036-783b-445f-ac8a-d9524d4e6441}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\GameItem">
+      <UniqueIdentifier>{7bdd01e8-dc89-4951-91a0-8c3b02ac0dbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\GameItem\Character">
+      <UniqueIdentifier>{9129a042-2a0f-44f5-a3e4-bdb559798e0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\GameItem\Basic">
+      <UniqueIdentifier>{779dbda6-17bd-4272-981d-005a08736ee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\GameItem\Collision">
+      <UniqueIdentifier>{42c1ff4f-7b6d-4d31-8c1f-0af271c0bdd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\GameItem\Virtual_Obj">
+      <UniqueIdentifier>{e5fd9e58-b97f-4a74-9930-24fddc022754}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Widget\Display_Widget">
+      <UniqueIdentifier>{2ab740eb-7322-4a32-bc25-8ed67b4ba581}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Widget\Layer_Widget">
+      <UniqueIdentifier>{89ae555b-60ef-4a5e-bd2d-cbadee34b560}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Widget\Basic">
+      <UniqueIdentifier>{407b6034-ee63-42bb-9efd-8b6292df9a11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Widget\unused">
+      <UniqueIdentifier>{c2681989-6e59-4ca6-82a1-cc0000bae1cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Widget\Func_Button">
+      <UniqueIdentifier>{a4e87a43-bc06-4398-b3ce-abea4e833dc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\GameItem\Actor">
+      <UniqueIdentifier>{6c16d382-e3fb-4831-84d0-b4dde66b0971}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\GameItem\Actor\Item">
+      <UniqueIdentifier>{492efe45-e507-43d4-99a5-17b2d45dffac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\GameItem\Actor\Bullet">
+      <UniqueIdentifier>{4f14a91b-87c0-4c40-b63b-1591ccbab042}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuButton.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WidgetManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Widget.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Sence.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuSence.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Atlas.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SenceManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WidgetTree.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HorizontalWidgetList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="VerticalWidgetList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WidgetList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSence.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TObjectManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionBox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MovementObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Storage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemButton.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ShortcutItemButton.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StorageManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TestBow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Arrow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StorageWidget.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Button.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sence.h">
+      <Filter>头文件\Sence</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuSence.h">
+      <Filter>头文件\Sence</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>头文件\AnimationRelated</Filter>
+    </ClInclude>
+    <ClInclude Include="Atlas.h">
+      <Filter>头文件\AnimationRelated</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>头文件\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>头文件\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources.h">
+      <Filter>头文件\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>头文件\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationManager.h">
+      <Filter>头文件\AnimationRelated</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourcesManager.h">
+      <Filter>头文件\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="SenceManager.h">
+      <Filter>头文件\Sence</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSence.h">
+      <Filter>头文件\Sence</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>头文件\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="UTIL.hpp">
+      <Filter>头文件\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>头文件\GameItem\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="TObjectManager.h">
+      <Filter>头文件\GameItem\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>头文件\GameItem\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionBox.h">
+      <Filter>头文件\GameItem\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionObject.h">
+      <Filter>头文件\GameItem\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>头文件\GameItem\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>头文件\GameItem\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>头文件\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>头文件\GameItem\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>头文件\GameItem\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorManager.h">
+      <Filter>头文件\GameItem\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="Storage.h">
+      <Filter>头文件\GameItem\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>头文件\GameItem\Virtual_Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="TObject.h">
+      <Filter>头文件\GameItem\Virtual_Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementObject.h">
+      <Filter>头文件\GameItem\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuButton.h">
+      <Filter>头文件\Widget\Func_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="HorizontalWidgetList.h">
+      <Filter>头文件\Widget\Layer_Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="VerticalWidgetList.h">
+      <Filter>头文件\Widget\Layer_Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>头文件\Widget\Display_Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="Widget.h">
+      <Filter>头文件\Widget\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="WidgetList.h">
+      <Filter>头文件\Widget\Layer_Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="WidgetManager.h">
+      <Filter>头文件\Widget\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="WidgetTree.h">
+      <Filter>头文件\Widget\unused</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>头文件\Widget\Func_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemButton.h">
+      <Filter>头文件\Widget\Func_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortcutItemButton.h">
+      <Filter>头文件\Widget\Func_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemManager.h">
+      <Filter>头文件\GameItem\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="TestBow.h">
+      <Filter>头文件\GameItem\Actor\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Arrow.h">
+      <Filter>头文件\GameItem\Actor\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="StorageWidget.h">
+      <Filter>头文件\Widget\Layer_Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Button.h">
+      <Filter>头文件\Widget\Func_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>头文件\GameItem\Actor\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>头文件\GameItem\Actor\Item</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
