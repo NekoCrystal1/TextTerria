@@ -73,6 +73,9 @@
     <Filter Include="头文件\Widget\Singleton">
       <UniqueIdentifier>{cdba21f5-310c-401b-96b2-185da8a3b249}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Game\Render">
+      <UniqueIdentifier>{b776a00e-841b-454a-8da9-6bdf0c843688}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -208,6 +211,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderNode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -361,6 +370,9 @@
     </ClInclude>
     <ClInclude Include="SenceManager.h">
       <Filter>头文件\Game\Basic\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderNode.h">
+      <Filter>头文件\Game\Render</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

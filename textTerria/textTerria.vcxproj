@@ -154,6 +154,8 @@
     <ClCompile Include="MovementObject.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RenderManager.cpp" />
+    <ClCompile Include="RenderNode.cpp" />
     <ClCompile Include="Sence.cpp" />
     <ClCompile Include="SenceManager.cpp" />
     <ClCompile Include="ShortcutItemButton.cpp" />
@@ -183,6 +185,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="ItemButton.h" />
     <ClInclude Include="RenderManager.h" />
+    <ClInclude Include="RenderNode.h" />
     <ClInclude Include="ShortcutItemButton.h" />
     <ClInclude Include="Singleton.hpp" />
     <ClInclude Include="Storage.h" />
