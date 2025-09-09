@@ -1,0 +1,73 @@
+#include "Game.h"
+#include <iostream>
+
+const static float per_frame_milisecond = (float)1000 / (float)60;
+//Game* GAME = Game::instance();
+
+void Game::initGame()
+{
+	initgraph(1280, 720);
+	setbkmode(TRANSPARENT);
+	m_pCamera = Camera::instance();
+	m_pMainMenuScene = new MenuSence();
+	SenceManager::instance()->add_sence("menu", m_pMainMenuScene);
+	m_pGameScene = new GameSence();
+	SenceManager::instance()->add_sence("game", m_pGameScene);
+	SenceManager::instance()->switch_to("menu");
+}
+
+void Game::runGame()
+{
+	initGame();
+	ExMessage msg;
+	auto cur_time = std::chrono::high_resolution_clock::now();
+	auto last_time = cur_time;
+	int delta = 0;
+	//IMAGE* temp = new IMAGE(100,100);
+	int frames = 0;//记录经过帧数->计算每秒帧数
+	int timer = 0;//记录经过时间
+	BeginBatchDraw();
+	while (m_bIsGameRunning) {
+		//input
+		while (peekmessage(&msg))
+		{
+			m_pCamera->on_input(msg);
+			InputManager::instance()->on_input(msg);
+		}
+		cur_time = std::chrono::high_resolution_clock::now();
+		delta += (cur_time - last_time).count() / 1000000;
+		last_time = cur_time;
+		while (delta > per_frame_milisecond) {
+			timer++;
+			if (timer > 60) {
+				timer -= 60;
+				std::cout << "当前每秒帧数：" << frames << "\n";
+				frames = 0;
+			}
+			//update
+			m_pCamera->on_uodate();
+			SenceManager::instance()->on_update();
+			InputManager::instance()->on_update();
+			delta -= per_frame_milisecond;
+		}
+		//render
+		cleardevice();
+		SenceManager::instance()->on_render();
+		FlushBatchDraw();
+		frames++;
+		Sleep(1);
+	}
+	EndBatchDraw();
+	closegraph();
+
+}
+
+bool Game::getGameRUnning()
+{
+	return this->m_bIsGameRunning;
+}
+
+void Game::setGameRunning(bool bIsGameRunning)
+{
+	m_bIsGameRunning = bIsGameRunning;
+}

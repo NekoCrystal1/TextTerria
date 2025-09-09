@@ -2,9 +2,9 @@
 #include "WidgetManager.h"
 #include "SenceManager.h"
 #include "WidgetList.h"
-//extern bool is_game_runing;
-extern bool is_game_runing;
+#include "Game.h"
 MenuSence::MenuSence()
+
 {
 	//设置背景需要与窗口大小相同，设置其颜色、可见
 	//menu_background_widget = WidgetManger::instance()->create_widget(Vector2(getwidth(), getheight()));
@@ -63,7 +63,8 @@ MenuSence::MenuSence()
 
 	btn = new Menu_Button(button_list);
 	btn->set_left_click_callback([]() {
-		is_game_runing = false; });
+		Game::instance()->setGameRunning(false);
+		});
 	btn->set_text(_T("退出游戏"));
 	btn->set_visiable();
 	btn->set_text_color(0x666666);
