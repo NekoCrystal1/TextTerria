@@ -32,6 +32,9 @@ void RenderNode::onRender()
 
 void RenderNode::addNode(RenderNode* pNextNode)
 {
+	if (!pNextNode)
+		return;
+	pNextNode->m_pParentNode = this;
 	bool bHasAdd = false;
 	for (int i = 0; i < m_vecNextNodes.size(); i++)
 	{
@@ -51,6 +54,9 @@ void RenderNode::addNode(RenderNode* pNextNode)
 
 void RenderNode::pushBack(RenderNode* pNextNode)
 {
+	if (!pNextNode)
+		return;
+	pNextNode->m_pParentNode = this;
 	if (!m_vecNextNodes.empty())
 	{
 		pNextNode->m_Order = m_vecNextNodes.back()->m_Order;
