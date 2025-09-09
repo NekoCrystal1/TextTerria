@@ -1,7 +1,10 @@
 #pragma once
 #include <vector>
 #include <easyx.h>
-class InputManager {
+#include "Singleton.hpp"
+class InputManager : public Singleton<InputManager>
+{
+	friend Singleton<InputManager>;
 public:
 	//枚举按键状态
 	enum class KeyStatus
@@ -26,8 +29,6 @@ public:
 		r_btn_doubleclick,
 	};
 public:
-	static InputManager* instance();
-
 	void on_input(const ExMessage& msg);
 	void on_update();
 	void clear();
@@ -37,9 +38,8 @@ public:
 	const ExMessage& get_mouse_msg();
 private:
 	InputManager();
-	~InputManager();
+	~InputManager() = default;
 private:
-	static InputManager* manager;
 	//按键映射列表记录按键状态
 	std::vector<InputManager::KeyStatus> key_status;
 	//记录鼠标消息

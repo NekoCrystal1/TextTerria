@@ -2,10 +2,11 @@
 #include <vector>
 #include <queue>
 #include "CollisionBox.h"
-//#include "CollisionObject.h"
-class CollisionManager{
+#include "Singleton.hpp"
+class CollisionManager : public Singleton<CollisionManager>
+{
+	friend Singleton<CollisionManager>;
 public:
-	static CollisionManager* instance();
 
 	int mod(float x, int mod_num) const;
 	//网格对齐函数，返回网格对齐后的世界坐标
@@ -19,11 +20,9 @@ public:
 	void remove_box(CollisionBox* box);
 private:
 	CollisionManager();
-	~CollisionManager();
+	~CollisionManager() = default;
 	
-	static CollisionManager* manager;
 private:
-	//std::vector<CollisionBox*> static_collision_boxes;
 	//二维数组作为二维网格碰撞
 	std::vector<std::vector<CollisionBox*>> static_collision_boxes;
 	int left, right, top, bottom;

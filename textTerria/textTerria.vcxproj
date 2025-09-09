@@ -181,6 +181,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="ItemButton.h" />
     <ClInclude Include="ShortcutItemButton.h" />
+    <ClInclude Include="Singleton.hpp" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="MenuButton.h" />

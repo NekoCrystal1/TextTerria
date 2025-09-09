@@ -1,12 +1,4 @@
 #include "CollisionManager.h"
-CollisionManager* CollisionManager::manager = nullptr;
-CollisionManager* CollisionManager::instance()
-{
-    if (!manager)
-        manager = new CollisionManager();
-    return manager;
-}
-
 //unenable
 int CollisionManager::mod(float x, int mod_num) const
 {
@@ -228,9 +220,4 @@ void CollisionManager::remove_box(CollisionBox* box)
 
 CollisionManager::CollisionManager() : left(0),right(0),top(0),bottom(0), static_collision_boxes(1, std::vector<CollisionBox*>(1))
 {
-}
-
-CollisionManager::~CollisionManager()
-{
-    delete manager;
 }

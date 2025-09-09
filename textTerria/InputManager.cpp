@@ -1,14 +1,5 @@
 #include "InputManager.h"
 
-InputManager* InputManager::manager = nullptr;
-
-InputManager* InputManager::instance()
-{
-	if (!manager)
-		manager = new InputManager();
-	return manager;
-}
-
 void InputManager::on_input(const ExMessage& msg)
 {
 	//按键虚拟键码即位映射表索引，且由枚举确定状态
@@ -65,9 +56,4 @@ const ExMessage& InputManager::get_mouse_msg()
 //一共有255个虚拟键码值，列表大小为255
 InputManager::InputManager() : key_status(0xFF),mouse_msg()
 {
-}
-
-InputManager::~InputManager()
-{
-	delete manager;
 }
