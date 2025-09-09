@@ -4,7 +4,6 @@
 #include "WidgetList.h"
 #include "Game.h"
 MenuSence::MenuSence()
-
 {
 	//设置背景需要与窗口大小相同，设置其颜色、可见
 	//menu_background_widget = WidgetManger::instance()->create_widget(Vector2(getwidth(), getheight()));

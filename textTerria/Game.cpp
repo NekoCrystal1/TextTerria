@@ -3,7 +3,7 @@
 
 const static float per_frame_milisecond = (float)1000 / (float)60;
 
-Game::Game() : m_bIsGameRunning(true), m_pMainMenuScene(new MenuSence()), m_pGameScene(new GameSence())
+Game::Game() : m_bIsGameRunning(true), m_pMainMenuScene(nullptr), m_pGameScene(nullptr)
 {
 }
 
@@ -15,6 +15,8 @@ void Game::initGame()
 {
 	initgraph(1280, 720);
 	setbkmode(TRANSPARENT);
+	m_pMainMenuScene = new MenuSence();
+	m_pGameScene = new GameSence();
 	SenceManager::instance()->add_sence("menu", m_pMainMenuScene);
 	SenceManager::instance()->add_sence("game", m_pGameScene);
 	SenceManager::instance()->switch_to("menu");
@@ -66,7 +68,7 @@ void Game::runGame()
 
 }
 
-bool Game::getIsGameRunning()
+bool Game::getGameRUnning()
 {
 	return this->m_bIsGameRunning;
 }

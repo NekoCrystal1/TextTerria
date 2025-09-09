@@ -2,6 +2,9 @@
 #include <easyx.h>
 #include "Transform.h"
 #include "Singleton.hpp"
+
+#define CAMERA Camera::instance()
+
 class Camera : public Singleton<Camera>
 {
 	friend Singleton<Camera>;
@@ -26,4 +29,3 @@ private:
 	bool up = 0, down = 0, left = 0, right = 0,add_scale = 0,sub_scale = 0;
 	Vector2 vision_scale;
 };
-static Camera* CAMERA = Camera::instance();

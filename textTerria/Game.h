@@ -11,7 +11,7 @@ class Game : public Singleton<Game>
 {
 	friend Singleton<Game>;
 public:
-	bool getIsGameRunning();
+	bool getGameRUnning();
 	void setGameRunning(bool bIsGameRunning);
 	void runGame();
 private:
