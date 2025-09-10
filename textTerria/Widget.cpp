@@ -1,8 +1,9 @@
 #include "Widget.h"
 
-Widget::Widget(Widget* parent, const Vector2& size, const Vector2& position) :
-	TObject(size, position, true), is_background_visiable(false), is_background_frame_line_visiable(false), background_color(0xFFFFFF), background_frame_line_color(0xFFFFFF),
-	parent(parent), childs(), tree_event(nullptr)
+Widget::Widget(Widget* parent, const Vector2& size, const Vector2& position) : TEntityObject(size, position),
+m_bIsVisible(true),	is_background_visiable(false), is_background_frame_line_visiable(false),
+background_color(0xFFFFFF), background_frame_line_color(0xFFFFFF),
+parent(parent), childs(), tree_event(nullptr)
 {
 	if (parent) {
 		parent->add_child(this);
@@ -101,6 +102,11 @@ void Widget::set_background_color(COLORREF color)
 void Widget::set_background_frame_line_color(COLORREF color)
 {
 	this->background_frame_line_color = color;
+}
+
+void Widget::set_visiable(bool bIsVisiable)
+{
+	this->m_bIsVisible = bIsVisiable;	
 }
 
 void Widget::set_all_visiable(bool is_all_visible)

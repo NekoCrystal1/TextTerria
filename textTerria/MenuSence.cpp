@@ -77,6 +77,11 @@ MenuSence::~MenuSence()
 {
 }
 
+void MenuSence::on_render() const
+{
+	menu_background_widget->on_render();
+}
+
 void MenuSence::on_enter()
 {
 }

@@ -1,16 +1,14 @@
 #pragma once
 #include <easyx.h>
-#include "Vector2.h"
-#include "Transform.h"
-#include "TObject.h"
 #include <vector>
+#include "TEntityObject.h"
 /*
 * 控件类
 * 包含位置、背景色以及是否透明(背景/控件)
 * 构造时可以设置大小及背景，透明默认均为false,背景默认白色
 * 
 */
-class Widget : public TObject{
+class Widget : public TEntityObject{
 protected:
 	struct WidgetEvent
 	{
@@ -26,7 +24,8 @@ public:
 	Widget(Widget* parent = nullptr, const Vector2& size = Vector2(), const Vector2& position = Vector2());
 	virtual ~Widget();
 	virtual void on_update();
-	virtual void on_render()const;
+	//控件的渲染暂时使用自身函数
+	virtual void on_render() const;
 	virtual void add_child(Widget* child);
 	virtual void remove_child(Widget* child);
 	//获得当前控件特定布局位置，从左上角到右下角，从左到右，从上到下，分别为0~8
@@ -34,6 +33,7 @@ public:
 	Vector2 get_layout(int layout_idx = 0, const Vector2& target_size = Vector2(0,0)) const;
 	void set_background_color(COLORREF color);
 	void set_background_frame_line_color(COLORREF color);
+	void set_visiable(bool bIsVisiable = true);
 	void set_all_visiable(bool is_all_visible = true);
 	void set_background_visiable(bool is_background_visiable = true);
 	void set_background_frame_line_visiable(bool is_background_frame_line_visiable = true);
@@ -41,6 +41,7 @@ public:
 protected:
 	Widget* parent;
 	std::vector<Widget*> childs;
+	bool m_bIsVisible;
 	bool is_background_visiable;
 	bool is_background_frame_line_visiable;
 	COLORREF background_color;

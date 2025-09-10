@@ -1,9 +1,10 @@
 #pragma once
 #include <vector>
+#include <easyx.h>
 #include <functional>
-#include "TObject.h"
+#include "TEntityObject.h"
 class Actor;
-class CollisionBox : public TObject {
+class CollisionBox : public TEntityObject{
 public:
 	enum class CollisionType
 	{
@@ -23,7 +24,7 @@ public:
 public:
 	//需要设置碰撞源、碰撞目标、形状
 	//CollisionBox(Actor* p ,const Vector2& size = Vector2(), const Vector2& position = Vector2());
-	CollisionBox(CollisionType type, Actor* p, Transform* bind_transform);
+	CollisionBox(CollisionType type, Actor* p, const Transform& transform);
 	~CollisionBox();
 	void on_update();
 	void on_render()const ;

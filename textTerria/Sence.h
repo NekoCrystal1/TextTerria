@@ -2,7 +2,7 @@
 #include <easyx.h>
 #include <vector>
 #include "Camera.h"
-#include "TObject.h"
+#include "TEntityObject.h"
 class Sence {
 public:
 	Sence();
@@ -11,8 +11,8 @@ public:
 	virtual void on_render()const;
 	virtual void on_enter() = 0;
 	virtual void on_exit() = 0;
-	const std::vector<TObject*>& get_object_set()const;
-	void push_element(TObject* obj);
+	const std::vector<TEntityObject*>& get_object_set()const;
+	void push_element(TEntityObject* obj);
 protected:
-	std::vector<TObject*> sence_objects;
+	std::vector<TEntityObject*> sence_objects;
 };

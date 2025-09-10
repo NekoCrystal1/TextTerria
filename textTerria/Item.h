@@ -2,7 +2,7 @@
 #include "Actor.h"
 #include "Timer.h"
 class Storage;
-class Item : public TObject {
+class Item : public Actor {
 private:
 	static Item* null_item;
 public:
@@ -11,7 +11,6 @@ public:
 	Item(Storage* included_storage, int id = 0, bool can_stack = 0, short number = 1);
 	virtual ~Item();
 	virtual void on_update();
-	virtual void on_render() const;
 	virtual void on_use();
 protected:
 	int id;

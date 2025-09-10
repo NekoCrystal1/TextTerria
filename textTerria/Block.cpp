@@ -8,7 +8,7 @@ void Block::initial(const Vector2& size, const Vector2& position)
 	this->collision_box->set_collision_shape(CollisionBox::CollisionShape::rectangle);
 	this->collision_box->set_collision_src_layer(0x1);
 	collision_box->set_collision_func([&]() {
-		this->colide_func(collision_box->get_target()->get_parent());
+		this->colide_func(collision_box->get_target()->get_parent()->getMovementComponent());
 		});
 }
 
@@ -18,8 +18,7 @@ void Block::initial(const Vector2& size, const Vector2& position)
 //	initial(size, position);
 //}
 
-Block::Block(COLORREF fillcolor, COLORREF linecolor, const Vector2& size, const Vector2& position): TObject(size, position, true),
-	Actor(CollisionBox::CollisionType::Static_Collision, size, position,true)
+Block::Block(COLORREF fillcolor, COLORREF linecolor, const Vector2& size, const Vector2& position): Actor(size, position)
 {
 	initial(size, position);
 }
@@ -33,18 +32,12 @@ void Block::on_update()
 	//CollisionObject::on_update();
 }
 
-void Block::on_render() const
-{
-	if (!m_bIsVisible)
-		return;
-}
-
 void Block::set_position(const Vector2& position)
 {
 	Actor::set_position(position);
 }
 
-void Block::colide_func(MovementObject* target)
+void Block::colide_func(MovementComponent* target)
 {
 	const Vector2& target_pos = target->get_transform()->get_position();
 	const Vector2& target_size = target->get_transform()->get_size();

@@ -67,17 +67,18 @@ Vector2 CollisionManager::get_netvector_pos(const Vector2& pos)
 }
 
 //CollisionBox* CollisionManager::create_collision_box(CollisionType collision_type, Actor* p, const Vector2& size, const Vector2& position)
-CollisionBox* CollisionManager::create_collision_box(CollisionBox::CollisionType collision_type, Actor* p, Transform* bind_transform)
+CollisionBox* CollisionManager::create_collision_box(CollisionBox::CollisionType collision_type, Actor* p,const Transform& bind_transform)
 {
 	CollisionBox* box = nullptr;
+	Transform boxTransform = bind_transform;
 	switch (collision_type)
 	{
 	case CollisionBox::CollisionType::Static_Collision: {
-		Vector2 alignment_pos = net_align(bind_transform->get_position());
+		Vector2 alignment_pos = net_align(boxTransform.get_position());
 		Vector2 netvector_pos = get_netvector_pos(alignment_pos);
 		if (!static_collision_boxes[netvector_pos.y][netvector_pos.x]) {
-			bind_transform->set_position(alignment_pos);
-			box = new CollisionBox(collision_type, p, bind_transform);
+			boxTransform.set_position(alignment_pos);
+			box = new CollisionBox(collision_type, p, boxTransform);
 			static_collision_boxes[netvector_pos.y][netvector_pos.x] = box;
 		}
 		else
@@ -85,7 +86,7 @@ CollisionBox* CollisionManager::create_collision_box(CollisionBox::CollisionType
 		break;
 	}
 	case CollisionBox::CollisionType::Dynamic_Collision:
-		box = new CollisionBox(collision_type, p, bind_transform);
+		box = new CollisionBox(collision_type, p, boxTransform);
 		dynamic_collision_boxes.push_back(box);
 		break;
 	default:

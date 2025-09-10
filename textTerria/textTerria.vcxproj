@@ -163,6 +163,8 @@
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="StorageManager.cpp" />
     <ClCompile Include="StorageWidget.cpp" />
+    <ClCompile Include="TComponentObject.cpp" />
+    <ClCompile Include="TEntityObject.cpp" />
     <ClCompile Include="TestBow.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TObject.cpp" />
@@ -185,6 +187,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="ItemButton.h" />
+    <ClInclude Include="Macro.hpp" />
     <ClInclude Include="MilisecondTimer.h" />
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="RenderNode.h" />
@@ -206,7 +209,7 @@
     <ClInclude Include="Label.h" />
     <ClInclude Include="MenuSence.h" />
     <ClInclude Include="CollisionObject.h" />
-    <ClInclude Include="MovementObject.h" />
+    <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ResourcesManager.h" />
@@ -214,6 +217,8 @@
     <ClInclude Include="SenceManager.h" />
     <ClInclude Include="ItemManager.h" />
     <ClInclude Include="StorageWidget.h" />
+    <ClInclude Include="TComponentObject.h" />
+    <ClInclude Include="TEntityObject.h" />
     <ClInclude Include="TestBow.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TObject.h" />

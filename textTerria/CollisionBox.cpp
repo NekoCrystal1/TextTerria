@@ -1,4 +1,5 @@
 #include "CollisionBox.h"
+#include "Camera.h"
 //根据碰撞层级能单独筛选该层级颜色，绘制时可根据包含的层级自动组合
 std::vector<COLORREF> CollisionBox::box_colors = std::vector<COLORREF>({
 	0x000000,0xEE0000,0x0000EE
@@ -10,8 +11,8 @@ std::vector<COLORREF> CollisionBox::box_colors = std::vector<COLORREF>({
 //	on_collision_func(nullptr), is_collision(false), target(nullptr)
 //{
 //}
-CollisionBox::CollisionBox(CollisionType type, Actor* p, Transform* bind_transform) : parent(p),collision_type(type),
-TObject(bind_transform), is_valid(true), collision_shape(CollisionShape::null),
+CollisionBox::CollisionBox(CollisionType type, Actor* p, const Transform& oTransform) : TEntityObject(oTransform),
+parent(p),collision_type(type), is_valid(true), collision_shape(CollisionShape::null),
 collision_src_layer(0), collision_dst_layer(0),
 on_collision_func(nullptr), is_collision(false), target(nullptr)
 {
@@ -31,8 +32,6 @@ void CollisionBox::on_update()
 
 void CollisionBox::on_render() const
 {
-	if (!m_bIsVisible)
-		return;
 	const Camera& camera = *Camera::instance();
 	const Vector2& render_centre = camera.get_render_centre(m_Transform->get_centre_position());
 	const Vector2& render_size = camera.get_render_size(m_Transform->get_size());

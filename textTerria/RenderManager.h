@@ -7,8 +7,9 @@ class RenderManager : public Singleton<RenderManager>
 public:
 	void onRender(float fCurTime);
 private:
-	RenderManager();
-	~RenderManager();
+	RenderManager() = default;
+	~RenderManager() = default;
 private:
-	RenderNode* m_pRootNode;
+	std::vector<RenderNode*> m_vecRenderRoots;
+	
 };

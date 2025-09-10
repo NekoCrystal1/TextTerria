@@ -9,7 +9,7 @@ void Platform::initial(const Vector2& size, const Vector2& position)
 	//collision_box->set_collision_dst_layer(0x2);
 	collision_box->set_collision_src_layer(0x2);
 	collision_box->set_collision_func([&]() {
-		this->colide_func(collision_box->get_target()->get_parent());
+		this->colide_func(collision_box->get_target()->get_parent()->getMovementComponent());
 		});
 }
 
@@ -23,8 +23,7 @@ void Platform::initial(const Vector2& size, const Vector2& position)
 //	initial(size, position);
 //}
 
-Platform::Platform(COLORREF fillcolor, COLORREF linecolor, const Vector2& size, const Vector2& position) : TObject(size, position, true),
-	Actor(CollisionBox::CollisionType::Static_Collision, size, position, true)
+Platform::Platform(COLORREF fillcolor, COLORREF linecolor, const Vector2& size, const Vector2& position) : Actor(size, position)
 {
 	initial(size, position);
 }
@@ -38,12 +37,6 @@ void Platform::on_update()
 	//CollisionObject::on_update();
 }
 
-void Platform::on_render() const
-{
-	if (!m_bIsVisible)
-		return;
-}
-
 void Platform::set_position(const Vector2& position)
 {
 	Actor::set_position(position);
@@ -54,7 +47,7 @@ void Platform::set_position(float x, float y)
 	Actor::set_position(x, y);
 }
 
-void Platform::colide_func(MovementObject* target)
+void Platform::colide_func(MovementComponent* target)
 {
 	const Vector2& target_pos = target->get_transform()->get_position();
 	const Vector2& target_size = target->get_transform()->get_size();

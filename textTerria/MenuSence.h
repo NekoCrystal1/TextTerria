@@ -7,10 +7,9 @@ class MenuSence : public Sence {
 public:
 	MenuSence();
 	~MenuSence();
+	virtual void on_render() const override;
 	void on_enter()override;
 	void on_exit()override;
 private:
 	Widget* menu_background_widget;
-	//VerticalWidgetList* button_list;
-	//Label* game_title;
 };

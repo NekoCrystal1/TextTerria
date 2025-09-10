@@ -1,18 +1,17 @@
 #pragma once
 #include <string>
 #include <unordered_map>
-#include "CollisionObject.h"
-#include "MovementObject.h"
+#include "TEntityObject.h"
+#include "MovementComponent.h"
 #include "AnimationManager.h"
 #include "CollisionManager.h"
-class Actor : public CollisionObject, public MovementObject {
+class Actor : public TEntityObject{
 public:
-	Actor(CollisionBox::CollisionType collision_type, const Vector2& size = Vector2(), const Vector2& position = Vector2(), bool is_visiable = true);
+	Actor(const Vector2& size = Vector2(), const Vector2& position = Vector2());
 	virtual ~Actor();
-	virtual void on_update()override;
-	virtual void set_position(const Vector2& pos)override;
-	virtual void set_position(float x, float y)override;
+	virtual void on_update() override;
+	MovementComponent* getMovementComponent();
 protected:
-	//std::unordered_map<std::string, Animation*> animation_pool;
-
+	MovementComponent* m_pMovementComponent;
+	CollisionBox* collision_box;
 };

@@ -9,11 +9,10 @@ public:
 	Platform(COLORREF fillcolor = (COLORREF)0x0000FF, COLORREF linecolor = (COLORREF)0x0000FF, const Vector2& size = Vector2(), const Vector2& position = Vector2());
 	~Platform();
 	virtual void on_update();
-	virtual void on_render()const;
 	virtual void set_position(const Vector2& position) override;
 	virtual void set_position(float x, float y) override;
 protected:
-	void colide_func(MovementObject* target);
+	void colide_func(MovementComponent* target);
 private:
 	void initial(const Vector2& size, const Vector2& position);
 private:

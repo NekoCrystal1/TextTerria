@@ -1,6 +1,7 @@
 #include "RenderNode.h"
 
-RenderNode::RenderNode() : TObject(), m_Order(0), m_pParentNode(nullptr)
+RenderNode::RenderNode(Transform* pTransform, bool bIsVisible) : TComponentObject(pTransform),
+m_bIsVisible(bIsVisible), m_Order(0), m_pParentNode(nullptr)
 {
 }
 

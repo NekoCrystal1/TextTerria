@@ -1,10 +1,11 @@
 #pragma once
+#include "TComponentObject.h"
 #include "TObject.h"
 #include <vector>
-class RenderNode : public TObject
+class RenderNode : public TComponentObject
 {
 public:
-	RenderNode();
+	RenderNode(Transform* pTransform, bool bIsVisible = true);
 	virtual ~RenderNode();
 public:
 	virtual void onRender(float fCurTime);
@@ -15,6 +16,8 @@ public:
 	void setOrder(int i32Order);
 protected:
 	void renderNextNodes(float fCurTime);
+protected:
+	bool m_bIsVisible;
 private:
 	//当前渲染层级：渲染顺序，先渲染当前节点，然后渲染子节点，子节点排序根据层级由小到大排序，因此先渲染层级小的，默认0级
 	int m_Order;

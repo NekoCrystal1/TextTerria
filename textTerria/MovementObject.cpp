@@ -1,88 +1,125 @@
-#include "MovementObject.h"
+#include "MovementComponent.h"
 
 
-MovementObject::MovementObject() : TObject(),
-max_velocity(16,160), velocity(), acceleration(0,0), fx_acceleration(5), gravity(1), is_free_fall_heighest_y(0)
+MovementComponent::MovementComponent(Transform* pTransform) : TComponentObject(pTransform),
+m_oMaxVelocity(16,160), m_oVelocity(), m_oAcceleration(0,0), fx_acceleration(5), gravity(1), m_bIsFreeFallHeighest(0)
 {
 }
 
-MovementObject::~MovementObject()
+void MovementComponent::on_update()
 {
-}
-
-void MovementObject::on_update()
-{
-	velocity += acceleration;
-	if (velocity.y + gravity == 0)
-		is_free_fall_heighest_y = true;
+	m_oVelocity += m_oAcceleration;
+	if (m_oVelocity.y + gravity == 0)
+		m_bIsFreeFallHeighest = true;
 	else
-		is_free_fall_heighest_y = false;
-	velocity.y += gravity;
-	float x_v1 = velocity.x - fx_acceleration;
-	float x_v2 = velocity.x + fx_acceleration;
+		m_bIsFreeFallHeighest = false;
+	m_oVelocity.y += gravity;
+	float x_v1 = m_oVelocity.x - fx_acceleration;
+	float x_v2 = m_oVelocity.x + fx_acceleration;
 	
 	if(fx_acceleration)
-		if (x_v1 > 0 && x_v1 < velocity.x)
-			velocity.x = x_v1;
+		if (x_v1 > 0 && x_v1 < m_oVelocity.x)
+			m_oVelocity.x = x_v1;
 		else if (x_v1 > -fx_acceleration)
-			velocity.x = 0;
+			m_oVelocity.x = 0;
 		else if (x_v2 > 0)
-			velocity.x = 0;
+			m_oVelocity.x = 0;
 		else
-			velocity.x = x_v2;
+			m_oVelocity.x = x_v2;
 
 	//限制最大速度
-	if (velocity.x > 0 && velocity.x > max_velocity.x)
-		velocity.x = max_velocity.x;
-	else if (velocity.x < 0 && velocity.x < -max_velocity.x)
-		velocity.x = -max_velocity.x;
-	if (velocity.y > 0 && velocity.y > max_velocity.y)
-		velocity.y = max_velocity.y;
-	else if (velocity.y < 0 && velocity.y < -max_velocity.y)
-		velocity.y = -max_velocity.y;
+	if (m_oVelocity.x > 0 && m_oVelocity.x > m_oMaxVelocity.x)
+		m_oVelocity.x = m_oMaxVelocity.x;
+	else if (m_oVelocity.x < 0 && m_oVelocity.x < -m_oMaxVelocity.x)
+		m_oVelocity.x = -m_oMaxVelocity.x;
+	if (m_oVelocity.y > 0 && m_oVelocity.y > m_oMaxVelocity.y)
+		m_oVelocity.y = m_oMaxVelocity.y;
+	else if (m_oVelocity.y < 0 && m_oVelocity.y < -m_oMaxVelocity.y)
+		m_oVelocity.y = -m_oMaxVelocity.y;
 
 
-	set_position(m_Transform->get_position() + velocity);
+	set_position(m_Transform->get_position() + m_oVelocity);
 }
 
-void MovementObject::set_velocity(const Vector2& velocity)
+void MovementComponent::setAcceleration(const Vector2& value)
 {
-	this->velocity = velocity;
+	m_oAcceleration = value;
 }
 
-void MovementObject::set_velocity(float x, float y)
+void MovementComponent::setAcceleration(float x, float y)
 {
-	this->velocity.x = x;
-	this->velocity.y = y;
+	m_oAcceleration.x = x;
+	m_oAcceleration.y = y;
 }
 
-void MovementObject::set_velocity_x(float x)
+void MovementComponent::setAcceleration_x(float x)
 {
-	this->velocity.x = x;
+	m_oAcceleration.x = x;
 }
 
-void MovementObject::set_velocity_y(float y)
+void MovementComponent::setAcceleration_y(float y)
 {
-	this->velocity.y = y;
+	m_oAcceleration.y = y;
 }
 
-void MovementObject::set_max_velocity(const Vector2& max_vec)
+const Vector2& MovementComponent::getAcceleration() const
 {
-	this->max_velocity = max_vec;
+	return m_oAcceleration;
 }
 
-void MovementObject::set_fx(float fx)
+float MovementComponent::getAcceleration_x() const
+{
+	return m_oAcceleration.x;
+}
+
+float MovementComponent::getAcceleration_y() const
+{
+	return m_oAcceleration.y;
+}
+
+void MovementComponent::set_velocity(const Vector2& velocity)
+{
+	this->m_oVelocity = velocity;
+}
+
+void MovementComponent::set_velocity(float x, float y)
+{
+	this->m_oVelocity.x = x;
+	this->m_oVelocity.y = y;
+}
+
+void MovementComponent::set_velocity_x(float x)
+{
+	this->m_oVelocity.x = x;
+}
+
+void MovementComponent::set_velocity_y(float y)
+{
+	this->m_oVelocity.y = y;
+}
+
+void MovementComponent::set_max_velocity(const Vector2& max_vec)
+{
+	this->m_oMaxVelocity = max_vec;
+}
+
+void MovementComponent::set_fx(float fx)
 {
 	this->fx_acceleration = fx;
 }
 
-void MovementObject::set_gravity(float g)
+void MovementComponent::set_gravity(float g)
 {
 	this->gravity = g;
 }
 
-const Vector2& MovementObject::get_velocity() const
+bool MovementComponent::getIsFreeFallHeighest()
 {
-	return velocity;
+	return m_bIsFreeFallHeighest;
+}
+
+const Vector2& MovementComponent::get_velocity() const
+{
+	return m_oVelocity;
 }
 

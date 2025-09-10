@@ -8,10 +8,9 @@ Item* Item::get_null_item()
 	return null_item;
 }
 
-Item::Item(Storage* included_storage, int id, bool can_stack, short number) :TObject(),
+Item::Item(Storage* included_storage, int id, bool can_stack, short number) :Actor(),
 	id(id), can_stack(can_stack), number(number), use_cd_timer(new Timer(60,false)), included_storage(included_storage)
 {
-	m_bIsVisible = true;
 }
 
 Item::~Item()
@@ -22,12 +21,6 @@ Item::~Item()
 void Item::on_update()
 {
 	use_cd_timer->on_update();
-}
-
-void Item::on_render() const
-{
-	if (!m_bIsVisible)
-		return;
 }
 
 void Item::on_use()
