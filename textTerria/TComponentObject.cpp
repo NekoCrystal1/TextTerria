@@ -1,5 +1,6 @@
 #include "TComponentObject.h"
 
-TComponentObject::TComponentObject(Transform* transform) : TObject(transform)
+TComponentObject::TComponentObject(TEntityObject* pParent) : TObject(pParent->m_Transform),
+m_pParent(pParent)
 {
 }

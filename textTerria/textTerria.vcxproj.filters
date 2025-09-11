@@ -49,12 +49,6 @@
     <Filter Include="头文件\Game\GameItem\Actor">
       <UniqueIdentifier>{6c16d382-e3fb-4831-84d0-b4dde66b0971}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\Game\GameItem\Actor\Item">
-      <UniqueIdentifier>{492efe45-e507-43d4-99a5-17b2d45dffac}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\Game\GameItem\Actor\Bullet">
-      <UniqueIdentifier>{4f14a91b-87c0-4c40-b63b-1591ccbab042}</UniqueIdentifier>
-    </Filter>
     <Filter Include="头文件\Game\Sence">
       <UniqueIdentifier>{4028d1af-102e-4442-88cc-5085ed75e0c2}</UniqueIdentifier>
     </Filter>
@@ -120,6 +114,24 @@
     </Filter>
     <Filter Include="源文件\Game\Sence">
       <UniqueIdentifier>{5a53a4e4-1c5f-40f0-bb40-7462bcf7d52a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Game\GameItem\Actor\Chunck">
+      <UniqueIdentifier>{d579ada5-ecf1-4db7-a5f2-e724688eea1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Game\GameItem\Actor\Chunck\Block">
+      <UniqueIdentifier>{1fd91aff-00ba-47e1-966e-85f7317e0ad2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Game\GameItem\Actor\Chunck\Playform">
+      <UniqueIdentifier>{085f8129-3c4b-4c1b-91eb-89e34aace41c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Game\GameItem\Actor\Pawn">
+      <UniqueIdentifier>{ccbf47ae-40b7-4741-9e62-010d0e520f20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Game\GameItem\Actor\Pawn\Bullet">
+      <UniqueIdentifier>{4f14a91b-87c0-4c40-b63b-1591ccbab042}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Game\GameItem\Actor\Pawn\Item">
+      <UniqueIdentifier>{492efe45-e507-43d4-99a5-17b2d45dffac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -273,6 +285,18 @@
     <ClCompile Include="TestBow.cpp">
       <Filter>源文件\Game\GameItem</Filter>
     </ClCompile>
+    <ClCompile Include="NormalPlayform.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticCollisionActor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Pawn.h">
+      <Filter>头文件\Game\GameItem\Actor\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="Pawn.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sence.h">
@@ -299,20 +323,11 @@
     <ClInclude Include="UTIL.hpp">
       <Filter>头文件\Game\Basic</Filter>
     </ClInclude>
-    <ClInclude Include="Block.h">
-      <Filter>头文件\Game\GameItem\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>头文件\Game\GameItem\Character</Filter>
     </ClInclude>
     <ClInclude Include="CollisionBox.h">
       <Filter>头文件\Game\GameItem\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionObject.h">
-      <Filter>头文件\Game\GameItem\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="Platform.h">
-      <Filter>头文件\Game\GameItem\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
       <Filter>头文件\Game\GameItem\Character</Filter>
@@ -357,10 +372,10 @@
       <Filter>头文件\Game\GameItem\Factory</Filter>
     </ClInclude>
     <ClInclude Include="TestBow.h">
-      <Filter>头文件\Game\GameItem\Actor\Item</Filter>
+      <Filter>头文件\Game\GameItem\Actor\Pawn\Item</Filter>
     </ClInclude>
     <ClInclude Include="Arrow.h">
-      <Filter>头文件\Game\GameItem\Actor\Bullet</Filter>
+      <Filter>头文件\Game\GameItem\Actor\Pawn\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="StorageWidget.h">
       <Filter>头文件\Widget\Layer_Widget</Filter>
@@ -369,18 +384,15 @@
       <Filter>头文件\Widget\Func_Button</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>头文件\Game\GameItem\Actor\Bullet</Filter>
+      <Filter>头文件\Game\GameItem\Actor\Pawn\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
-      <Filter>头文件\Game\GameItem\Actor\Item</Filter>
+      <Filter>头文件\Game\GameItem\Actor\Pawn\Item</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.hpp">
       <Filter>头文件\Game\Basic\BasicSingleton</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
-      <Filter>头文件\Game\Basic\BasicSingleton</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourcesManager.h">
       <Filter>头文件\Game\Basic\BasicSingleton</Filter>
     </ClInclude>
     <ClInclude Include="WidgetManager.h">
@@ -410,9 +422,6 @@
     <ClInclude Include="TEntityObject.h">
       <Filter>头文件\Game\Basic\Virtual_Obj</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionManager.h">
-      <Filter>头文件\Game\GameItem\Collision</Filter>
-    </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>头文件\Game\Basic\Time</Filter>
     </ClInclude>
@@ -436,6 +445,27 @@
     </ClInclude>
     <ClInclude Include="Macro.hpp">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>头文件\Game\GameItem\Actor\Chunck\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>头文件\Game\GameItem\Actor\Chunck\Playform</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalPlayform.h">
+      <Filter>头文件\Game\GameItem\Actor\Chunck\Playform</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourcesManager.h">
+      <Filter>头文件\Game\Render\AnimationRelated</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionComponent.h">
+      <Filter>头文件\Game\GameItem\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticCollisionActor.h">
+      <Filter>头文件\Game\GameItem\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>头文件\Game\GameItem\Collision</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

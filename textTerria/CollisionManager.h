@@ -13,8 +13,7 @@ public:
 	inline Vector2 net_align(const Vector2& pos);
 	//返回对象在网格数组中的坐标
 	Vector2 get_netvector_pos(const Vector2& pos);
-	//CollisionBox* create_collision_box(CollisionType collision_type,Actor* p, const Vector2& size = Vector2(), const Vector2& position = Vector2());
-	CollisionBox* create_collision_box(CollisionBox::CollisionType collision_type,Actor* p,const Transform& bind_transform);
+	CollisionBox* create_collision_box(CollisionBox::CollisionType collision_type, CollisionComponent* pParent);
 	void on_update();
 	bool check_collision(CollisionBox* dst_box, CollisionBox* src_box);
 	void remove_box(CollisionBox* box);

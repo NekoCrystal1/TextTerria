@@ -152,6 +152,9 @@
     <ClCompile Include="MenuSence.cpp" />
     <ClCompile Include="CollisionObject.cpp" />
     <ClCompile Include="MovementObject.cpp" />
+    <ClCompile Include="NormalPlayform.cpp" />
+    <ClCompile Include="Pawn.cpp" />
+    <ClCompile Include="Pawn.h" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderManager.cpp" />
@@ -160,6 +163,7 @@
     <ClCompile Include="Sence.cpp" />
     <ClCompile Include="SenceManager.cpp" />
     <ClCompile Include="ShortcutItemButton.cpp" />
+    <ClCompile Include="StaticCollisionActor.cpp" />
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="StorageManager.cpp" />
     <ClCompile Include="StorageWidget.cpp" />
@@ -189,10 +193,12 @@
     <ClInclude Include="ItemButton.h" />
     <ClInclude Include="Macro.hpp" />
     <ClInclude Include="MilisecondTimer.h" />
+    <ClInclude Include="NormalPlayform.h" />
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="RenderNode.h" />
     <ClInclude Include="ShortcutItemButton.h" />
     <ClInclude Include="Singleton.hpp" />
+    <ClInclude Include="StaticCollisionActor.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="MenuButton.h" />
@@ -208,7 +214,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="MenuSence.h" />
-    <ClInclude Include="CollisionObject.h" />
+    <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />

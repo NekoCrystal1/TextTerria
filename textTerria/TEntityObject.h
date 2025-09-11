@@ -3,6 +3,7 @@
 
 class TEntityObject : public TObject
 {
+	friend TComponentObject;
 private:
 	TEntityObject(const TEntityObject& t) = delete;
 public:
@@ -11,6 +12,7 @@ public:
 	virtual ~TEntityObject();
 public:
 	virtual void on_update() = 0;
+	void setCanBeDeleted(bool bValue = true);
 	bool IsCanBeDeleted() const;
 protected:
 	bool m_bIsCanBeDeleted;

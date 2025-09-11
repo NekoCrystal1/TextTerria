@@ -3,7 +3,7 @@
 #include <easyx.h>
 #include <functional>
 #include "TEntityObject.h"
-class Actor;
+class CollisionComponent;
 class CollisionBox : public TEntityObject{
 public:
 	enum class CollisionType
@@ -23,8 +23,7 @@ public:
 	static std::vector<COLORREF> box_colors;
 public:
 	//需要设置碰撞源、碰撞目标、形状
-	//CollisionBox(Actor* p ,const Vector2& size = Vector2(), const Vector2& position = Vector2());
-	CollisionBox(CollisionType type, Actor* p, const Transform& transform);
+	CollisionBox(CollisionType type, CollisionComponent* p, const Transform& transform);
 	~CollisionBox();
 	void on_update();
 	void on_render()const ;
@@ -46,8 +45,7 @@ public:
 	const Vector2& get_position()const;
 	const Vector2& get_centre_position()const;
 	const Vector2& get_size()const;
-	Actor* get_parent()const;
-	CollisionBox* get_target()const;
+	CollisionComponent* get_parent()const;
 	CollisionType get_collision_type() const;
 protected:
 	bool is_valid;
@@ -60,7 +58,7 @@ protected:
 	unsigned int collision_dst_layer;
 	std::function<void()> on_collision_func;
 	bool is_collision;
-	Actor* parent;
+	CollisionComponent* m_pParent;
 	CollisionBox* target;
 	CollisionType collision_type;
 };

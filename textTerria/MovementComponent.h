@@ -5,7 +5,7 @@
 
 class MovementComponent : public TComponentObject {
 public:
-	MovementComponent(Transform* pTransform);
+	MovementComponent(TEntityObject* pParent);
 	~MovementComponent() = default;
 public:
 	virtual void on_update();

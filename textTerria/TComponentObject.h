@@ -1,10 +1,12 @@
 #pragma once
-#include "TObject.h"
+#include "TEntityObject.h"
 
 class TComponentObject : public TObject
 {
 public:
-	TComponentObject(Transform* pTransform);
+	TComponentObject(TEntityObject* pParent);
 	virtual ~TComponentObject() = default;
+protected:
+	TEntityObject* m_pParent;
 };
 	

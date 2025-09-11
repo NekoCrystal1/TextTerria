@@ -1,7 +1,7 @@
 #include "MovementComponent.h"
 
 
-MovementComponent::MovementComponent(Transform* pTransform) : TComponentObject(pTransform),
+MovementComponent::MovementComponent(TEntityObject* pParent) : TComponentObject(pParent),
 m_oMaxVelocity(16,160), m_oVelocity(), m_oAcceleration(0,0), fx_acceleration(5), gravity(1), m_bIsFreeFallHeighest(0)
 {
 }

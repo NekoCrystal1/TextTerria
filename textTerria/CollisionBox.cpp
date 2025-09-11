@@ -5,19 +5,12 @@ std::vector<COLORREF> CollisionBox::box_colors = std::vector<COLORREF>({
 	0x000000,0xEE0000,0x0000EE
 	});
 
-//CollisionBox::CollisionBox(Actor* p, const Vector2& size, const Vector2& position) : parent(p),
-//	TObject(size, position), is_valid(true), collision_shape(CollisionShape::null),
-//	collision_src_layer(0), collision_dst_layer(0),
-//	on_collision_func(nullptr), is_collision(false), target(nullptr)
-//{
-//}
-CollisionBox::CollisionBox(CollisionType type, Actor* p, const Transform& oTransform) : TEntityObject(oTransform),
-parent(p),collision_type(type), is_valid(true), collision_shape(CollisionShape::null),
+CollisionBox::CollisionBox(CollisionType type, CollisionComponent* p, const Transform& oTransform) : TEntityObject(oTransform),
+m_pParent(p),collision_type(type), is_valid(true), collision_shape(CollisionShape::null),
 collision_src_layer(0), collision_dst_layer(0),
 on_collision_func(nullptr), is_collision(false), target(nullptr)
 {
 }
-
 
 CollisionBox::~CollisionBox()
 {
@@ -152,7 +145,7 @@ CollisionBox::CollisionType CollisionBox::get_collision_type() const
 	return this->collision_type;
 }
 
-Actor* CollisionBox::get_parent() const
+CollisionComponent* CollisionBox::get_parent() const
 {
-	return this->parent;
+	return this->m_pParent;
 }

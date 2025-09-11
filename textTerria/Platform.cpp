@@ -1,29 +1,18 @@
 #include "Platform.h"
-
+#include "Pawn.h"
+#include "CollisionManager.h"
 void Platform::initial(const Vector2& size, const Vector2& position)
 {
-	//frame->set_points(std::vector<POINT>({ POINT({0,0}),POINT({(int)size.x,0}) ,POINT({(int)size.x,(int)size.y}) ,POINT({0,(int)size.y}) }));
-	//frame->set_position(m_Transform->get_position());
-	//this->m_Transform->set_size(frame->get_transform().get_size());
+	m_pCollisionComponent->addCollisionBox("PlatformBody", CollisionManager::instance()->create_collision_box(
+	CollisionBox::CollisionType::Static_Collision, m_pCollisionComponent));
 	collision_box->set_collision_shape(CollisionBox::CollisionShape::platform_linear);
-	//collision_box->set_collision_dst_layer(0x2);
 	collision_box->set_collision_src_layer(0x2);
 	collision_box->set_collision_func([&]() {
 		this->colide_func(collision_box->get_target()->get_parent()->getMovementComponent());
 		});
 }
 
-//平台默认可见,红色填充,黑色线框,碰撞为线性碰撞
-//Platform::Platform(COLORREF linecolor, const Vector2& size, const Vector2& position) : TObject(size, position, true),
-//	Dynamic_Actor(size, position, true), frame(AnimationManager::instance()->create_frame(linecolor, linecolor, false, position))
-//{
-//	//frame->set_points(std::vector<POINT>({ POINT({0,0}),POINT({(int)size.x,0}) ,POINT({(int)size.x,(int)size.y}) ,POINT({0,(int)size.y}) }));
-//	//this->transform.set_size(frame->get_transform().get_size());
-//	//collision_box->set_collision_shape(CollisionBox::CollisionShape::rectangle);
-//	initial(size, position);
-//}
-
-Platform::Platform(COLORREF fillcolor, COLORREF linecolor, const Vector2& size, const Vector2& position) : Actor(size, position)
+Platform::Platform(const Vector2& size, const Vector2& position)
 {
 	initial(size, position);
 }
@@ -47,13 +36,20 @@ void Platform::set_position(float x, float y)
 	Actor::set_position(x, y);
 }
 
-void Platform::colide_func(MovementComponent* target)
+void Platform::colide_func(TEntityObject* pTarget)
 {
-	const Vector2& target_pos = target->get_transform()->get_position();
-	const Vector2& target_size = target->get_transform()->get_size();
+	Pawn* pTargetPawn = dynamic_cast<Pawn*>(pTarget);
+	if (!pTargetPawn)
+	{
+		return;
+	}
+	
+	const Vector2& target_pos = pTargetPawn->get_transform()->get_position();
+	const Vector2& target_size = pTargetPawn->get_transform()->get_size();
 	const Vector2& pos = m_Transform->get_position();
-	if (target_pos.y + target_size.y >= pos.y && target_pos.y + target_size.y - target->get_velocity().y <= pos.y) {
-		target->set_position(target_pos.x, pos.y - target_size.y);
-		target->set_velocity_y(0);
+	if (target_pos.y + target_size.y >= pos.y && target_pos.y + target_size.y - pTargetPawn->getMovementComponent()->get_velocity().y <= pos.y) 
+	{
+		pTargetPawn->set_position(target_pos.x, pos.y - target_size.y);
+		pTargetPawn->getMovementComponent()->set_velocity_y(0);
 	}
 }

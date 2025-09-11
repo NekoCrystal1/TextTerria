@@ -1,7 +1,9 @@
 #pragma once
 #include "Transform.h"
+class TComponentObject;
 class TObject
 {
+	friend TComponentObject;
 private:
 	TObject(const TObject& t) = delete;
 public:
