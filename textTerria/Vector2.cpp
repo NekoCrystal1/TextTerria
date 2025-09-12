@@ -9,12 +9,12 @@ Vector2::Vector2(const Vector2& vec) :x(vec.x), y(vec.y) {
 Vector2::~Vector2() {
 }
 
-const float Vector2::length() const
+inline const float Vector2::length() const
 {
 	return sqrt(x * x + y * y);
 }
 
-const Vector2& Vector2::normalize()
+inline const Vector2& Vector2::normalize()
 {
 	float len = sqrt(x * x + y * y);
 	x /= len;
@@ -22,26 +22,26 @@ const Vector2& Vector2::normalize()
 	return *this;
 }
 
-const Vector2& Vector2::only_multiply_every_element_modify_self(const Vector2& vec)
+inline const Vector2& Vector2::only_multiply_every_element_modify_self(const Vector2& vec)
 {
 	x *= vec.x;
 	y *= vec.y;
 	return *this;
 }
 
-const Vector2& Vector2::only_multiply_every_element_modify_self(float num)
+inline const Vector2& Vector2::only_multiply_every_element_modify_self(float num)
 {
 	x *= num;
 	y *= num;
 	return *this;
 }
 
-Vector2 Vector2::only_multiply_every_element(const Vector2& vec) const
+inline Vector2 Vector2::only_multiply_every_element(const Vector2& vec) const
 {
 	return Vector2(x * vec.x,y * vec.y);
 }
 
-Vector2 Vector2::absolute()
+inline Vector2 Vector2::absolute()
 {
 	Vector2 ans(x,y);
 	if (x < 0)
@@ -51,62 +51,62 @@ Vector2 Vector2::absolute()
 	return ans;
 }
 
-Vector2 Vector2::operator+(const Vector2& vec) const
+inline Vector2 Vector2::operator+(const Vector2& vec) const
 {
 	return Vector2(x + vec.x, y + vec.y);
 }
 
-Vector2 Vector2::operator-(const Vector2& vec) const
+inline Vector2 Vector2::operator-(const Vector2& vec) const
 {
 	return Vector2(x - vec.x, y - vec.y);
 }
 
-Vector2 Vector2::operator*(const float s) const
+inline Vector2 Vector2::operator*(const float s) const
 {
 	return Vector2(x * s, y * s);
 }
 
-float Vector2::operator*(const Vector2& vec) const
+inline float Vector2::operator*(const Vector2& vec) const
 {
 	return x * vec.x + y * vec.y;
 }
 
-Vector2& Vector2::operator=(const Vector2& vec)
+inline Vector2& Vector2::operator=(const Vector2& vec)
 {
 	x = vec.x;
 	y = vec.y;
 	return *this;
 }
 
-Vector2& Vector2::operator+=(const Vector2& vec)
+inline Vector2& Vector2::operator+=(const Vector2& vec)
 {
 	x += vec.x;
 	y += vec.y;
 	return *this;
 }
 
-bool Vector2::operator>(const Vector2& vec) const
+inline bool Vector2::operator>(const Vector2& vec) const
 {
 	if (x > vec.x && y > vec.y)
 		return true;
 	return false;
 }
 
-bool Vector2::operator>=(const Vector2& vec) const
+inline bool Vector2::operator>=(const Vector2& vec) const
 {
 	if (x >= vec.x && y >= vec.y)
 		return true;
 	return false;
 }
 
-bool Vector2::operator<(const Vector2& vec) const
+inline bool Vector2::operator<(const Vector2& vec) const
 {
 	if (x < vec.x && y < vec.y)
 		return true;
 	return false;
 }
 
-bool Vector2::operator<=(const Vector2& vec) const
+inline bool Vector2::operator<=(const Vector2& vec) const
 {
 	if (x <= vec.x && y <= vec.y)
 		return true;

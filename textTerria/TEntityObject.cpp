@@ -12,9 +12,9 @@ m_bIsCanBeDeleted(false)
 
 TEntityObject::~TEntityObject()
 {
-	if (m_Transform) {
-		delete m_Transform;
-		m_Transform = nullptr;
+	if (m_pTransform) {
+		delete m_pTransform;
+		m_pTransform = nullptr;
 	}
 }
 

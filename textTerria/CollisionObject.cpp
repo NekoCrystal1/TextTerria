@@ -43,7 +43,7 @@ void CollisionComponent::set_collision_func(std::string sBoxName, std::function<
 	get_collision_box(sBoxName)->set_collision_func(on_collision);
 }
 
-CollisionBox* CollisionComponent::get_collision_box(std::string sBoxName)
+CollisionBox* CollisionComponent::get_collision_box(std::string sBoxName) const
 {
 	auto pair = m_mapCollisionBoxes.find(sBoxName);
 	if (pair == m_mapCollisionBoxes.end())

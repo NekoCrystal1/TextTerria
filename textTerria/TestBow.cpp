@@ -8,6 +8,6 @@ void TestBow::on_use()
 {
 	//printf("fire");
 	Arrow* arrow = TObjectManager::instance()->create_arrow(this->included_storage->get_parent(),
-		this->included_storage->get_parent()->get_transform()->get_position());
+		this->included_storage->get_parent()->getTransform()->get_position());
 
 }

@@ -14,17 +14,17 @@ void WidgetList::refresh_transform()
 	switch (list_mode)
 	{
 	case WidgetList::ListMode::horizontal:
-		m_Transform->set_size(original_interval, max_size.y);
+		m_pTransform->set_size(original_interval, max_size.y);
 		for (Widget* i : childs) {
-			i->set_position(Vector2(m_Transform->get_position().x + m_Transform->get_size().x, this->get_layout(alignment, i->get_transform()->get_size()).y));
-			m_Transform->set_size_x(m_Transform->get_size().x + i->get_transform()->get_size().x + interval);
+			i->set_position(Vector2(m_pTransform->get_position().x + m_pTransform->get_size().x, this->get_layout(alignment, i->getTransform()->get_size()).y));
+			m_pTransform->set_size_x(m_pTransform->get_size().x + i->getTransform()->get_size().x + interval);
 		}
 		break;
 	case WidgetList::ListMode::vertical:
-		m_Transform->set_size(max_size.x, original_interval);
+		m_pTransform->set_size(max_size.x, original_interval);
 		for (Widget* i : childs) {
-			i->set_position(Vector2(this->get_layout(alignment, i->get_transform()->get_size()).x, m_Transform->get_position().y + m_Transform->get_size().y));
-			m_Transform->set_size_y(m_Transform->get_size().y + i->get_transform()->get_size().y + interval);
+			i->set_position(Vector2(this->get_layout(alignment, i->getTransform()->get_size()).x, m_pTransform->get_position().y + m_pTransform->get_size().y));
+			m_pTransform->set_size_y(m_pTransform->get_size().y + i->getTransform()->get_size().y + interval);
 		}
 		break;
 	default:
@@ -46,10 +46,10 @@ void WidgetList::set_position(float x, float y)
 
 void WidgetList::add_child(Widget* widget)
 {
-	if (max_size.x < widget->get_transform()->get_size().x)
-		max_size.x = widget->get_transform()->get_size().x;
-	if (max_size.y < widget->get_transform()->get_size().y)
-		max_size.y = widget->get_transform()->get_size().y;
+	if (max_size.x < widget->getTransform()->get_size().x)
+		max_size.x = widget->getTransform()->get_size().x;
+	if (max_size.y < widget->getTransform()->get_size().y)
+		max_size.y = widget->getTransform()->get_size().y;
 	childs.push_back(widget);
 	//在基类中实现时每次添加控件都需要刷新，有较大的性能开销，可以将其放入子类直接实现以减少开销
 	refresh_transform();

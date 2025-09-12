@@ -9,9 +9,9 @@ private:
 public:
 	TObject(Transform* transform);
 	virtual ~TObject() = default;
-	virtual const Transform* get_transform()const;
+	virtual const Transform* getTransform()const;
 	virtual void set_position(const Vector2& position);
 	virtual void set_position(float x, float y);
 protected:
-	Transform* m_Transform;
+	Transform* m_pTransform;
 };

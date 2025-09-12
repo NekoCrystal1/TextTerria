@@ -1,5 +1,6 @@
-#include "CollisionBox.h"
 #include "Camera.h"
+#include "CollisionBox.h"
+#include "CollisionComponent.h"
 //根据碰撞层级能单独筛选该层级颜色，绘制时可根据包含的层级自动组合
 std::vector<COLORREF> CollisionBox::box_colors = std::vector<COLORREF>({
 	0x000000,0xEE0000,0x0000EE
@@ -14,7 +15,7 @@ on_collision_func(nullptr), is_collision(false), target(nullptr)
 
 CollisionBox::~CollisionBox()
 {
-	m_Transform = nullptr;
+	m_pTransform = nullptr;
 }
 
 void CollisionBox::on_update()
@@ -26,9 +27,9 @@ void CollisionBox::on_update()
 void CollisionBox::on_render() const
 {
 	const Camera& camera = *Camera::instance();
-	const Vector2& render_centre = camera.get_render_centre(m_Transform->get_centre_position());
-	const Vector2& render_size = camera.get_render_size(m_Transform->get_size());
-	const Vector2& render_pos = camera.get_render_pos(m_Transform->get_centre_position(), m_Transform->get_size());
+	const Vector2& render_centre = camera.get_render_centre(m_pTransform->get_centre_position());
+	const Vector2& render_size = camera.get_render_size(m_pTransform->get_size());
+	const Vector2& render_pos = camera.get_render_pos(m_pTransform->get_centre_position(), m_pTransform->get_size());
 
 	switch (collision_shape)
 	{
@@ -122,30 +123,40 @@ const unsigned int CollisionBox::get_collision_dst_layer()const
 
 const Vector2& CollisionBox::get_position() const
 {
-	return m_Transform->get_position();
+	return m_pTransform->get_position();
 }
 
 const Vector2& CollisionBox::get_centre_position() const
 {
-	return m_Transform->get_centre_position();
+	return m_pTransform->get_centre_position();
 }
 
 const Vector2& CollisionBox::get_size() const
 {
-	return m_Transform->get_size();
+	return m_pTransform->get_size();
 }
 
-CollisionBox* CollisionBox::get_target() const
+inline CollisionBox* CollisionBox::get_target() const
 {
 	return this->target;
 }
 
-CollisionBox::CollisionType CollisionBox::get_collision_type() const
+inline CollisionBox::CollisionType CollisionBox::get_collision_type() const
 {
 	return this->collision_type;
 }
 
-CollisionComponent* CollisionBox::get_parent() const
+inline TEntityObject* CollisionBox::getParentEntity() const
+{
+	return this->m_pParent->getParent();
+}
+
+inline TEntityObject* CollisionBox::getTargetEntity() const
+{
+	return this->target->m_pParent->getParent();
+}
+
+inline CollisionComponent* CollisionBox::getParentCollisionComponent() const
 {
 	return this->m_pParent;
 }

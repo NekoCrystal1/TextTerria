@@ -21,7 +21,7 @@ void GameSence::on_update()
 {
 	Sence::on_update();
 	CollisionManager::instance()->on_update();
-	Camera::instance()->set_centre_position(player->get_transform()->get_centre_position());
+	Camera::instance()->set_centre_position(player->getTransform()->get_centre_position());
 }
 
 void GameSence::on_enter()
@@ -29,7 +29,7 @@ void GameSence::on_enter()
 	TObjectManager::instance()->set_output_sence(this);
 	player = TObjectManager::instance()->create_player();
 
-	ItemButton* game_ui_widget = new UI_Button(game_background_widget, game_background_widget->get_transform()->get_size());
+	ItemButton* game_ui_widget = new UI_Button(game_background_widget, game_background_widget->getTransform()->get_size());
 	game_ui_widget->set_bind_storage(player->get_storage());
 	game_ui_widget->set_item_id(0);
 	game_ui_widget->set_left_click_callback([game_ui_widget]() {
@@ -53,7 +53,7 @@ void GameSence::on_enter()
 	}
 	player_storage_btn_list->bind_elements_storage();
 	player_storage_btn_list->set_interval(5);
-	player_storage_btn_list->set_position(game_ui_widget->get_layout(0, player_storage_btn_list->get_transform()->get_size()) + Vector2(5, 5));
+	player_storage_btn_list->set_position(game_ui_widget->get_layout(0, player_storage_btn_list->getTransform()->get_size()) + Vector2(5, 5));
 
 	load_map();
 }

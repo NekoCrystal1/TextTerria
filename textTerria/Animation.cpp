@@ -28,9 +28,9 @@ void Animation::onRender(float fCurTime)
 	{
 		Frame* pCurFrame = m_vecFrames[m_i32CurFrameIndex];
 		IMAGE* pImg = pCurFrame->m_pImg;
-		Vector2 oCurPos = m_Transform->get_position();
+		Vector2 oCurPos = m_pTransform->get_position();
 		Vector2 oCurSize = pCurFrame->m_pTransform.get_size();
-		oCurSize.only_multiply_every_element_modify_self(m_Transform->get_scale());
+		oCurSize.only_multiply_every_element_modify_self(m_pTransform->get_scale());
 		putImage(oCurPos.x, oCurPos.y, oCurSize.x, oCurSize.y, pImg, 0, 0, pImg->getwidth(), pImg->getheight());
 	}
 

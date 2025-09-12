@@ -7,7 +7,6 @@ class CollisionManager : public Singleton<CollisionManager>
 {
 	friend Singleton<CollisionManager>;
 public:
-
 	int mod(float x, int mod_num) const;
 	//网格对齐函数，返回网格对齐后的世界坐标
 	inline Vector2 net_align(const Vector2& pos);

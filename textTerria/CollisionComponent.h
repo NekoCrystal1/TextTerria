@@ -15,7 +15,7 @@ public:
 	void set_collision_layer(std::string sBoxName, unsigned int src_layer, unsigned int dst_layer);
 	void set_collision_shape(std::string sBoxName, CollisionBox::CollisionShape shape);
 	void set_collision_func(std::string sBoxName, std::function<void()> on_collision);
-	CollisionBox* get_collision_box(std::string sBoxName);
+	CollisionBox* get_collision_box(std::string sBoxName) const;
 protected:
 	//使用map存储碰撞箱，可以根据字符串命名查找
 	std::unordered_map<std::string, CollisionBox*> m_mapCollisionBoxes;

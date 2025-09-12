@@ -13,7 +13,7 @@ Menu_Button::~Menu_Button()
 void Menu_Button::set_text(const std::wstring& new_text)
 {
 	label->set_text(new_text);
-	*this->m_Transform = *label->get_transform();
+	*this->m_pTransform = *label->getTransform();
 }
 
 void Menu_Button::set_text_height(int height)
@@ -45,7 +45,7 @@ void Menu_Button::set_position(const Vector2& vec)
 void Menu_Button::on_update()
 {
 	label->on_update();
-	*this->m_Transform = *label->get_transform();
+	*this->m_pTransform = *label->getTransform();
 	Button::on_update();
 }
 

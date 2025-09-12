@@ -45,8 +45,11 @@ public:
 	const Vector2& get_position()const;
 	const Vector2& get_centre_position()const;
 	const Vector2& get_size()const;
-	CollisionComponent* get_parent()const;
+	CollisionBox* get_target() const;
+	CollisionComponent* getParentCollisionComponent()const;
 	CollisionType get_collision_type() const;
+	TEntityObject* getParentEntity() const;
+	TEntityObject* getTargetEntity() const;
 protected:
 	bool is_valid;
 	CollisionShape collision_shape;
