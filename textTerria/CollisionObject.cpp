@@ -48,7 +48,7 @@ CollisionBox* CollisionComponent::get_collision_box(std::string sBoxName) const
 	auto pair = m_mapCollisionBoxes.find(sBoxName);
 	if (pair == m_mapCollisionBoxes.end())
 	{
-		return;
+		return nullptr;
 	}
 	return pair->second;
 }

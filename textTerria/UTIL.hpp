@@ -1,6 +1,7 @@
 #pragma once
 #pragma comment(lib, "MSIMG32.LIB")
 #include <easyx.h>
+#include <vector>
 #include "Transform.h"
 inline bool check_point_in_rectangle(const Vector2& point, const Vector2& range1, const Vector2& range2) {
 	if (point.x > (range1.x < range2.x ? range1.x : range2.x) && point.x < (range1.x > range2.x ? range1.x : range2.x) &&
@@ -13,7 +14,7 @@ inline bool check_point_in_rectangle(const Vector2& point, const Transform& rang
 }
 
 template<typename T>
-inline void clearVec(std::vector<T*> vec)
+inline void clearVec(std::vector<T*>& vec)
 {
 	for (T* i : vec)
 	{

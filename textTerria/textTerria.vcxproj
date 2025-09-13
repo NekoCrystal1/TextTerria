@@ -227,6 +227,7 @@
     <ClInclude Include="TEntityObject.h" />
     <ClInclude Include="TestBow.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="TNodeInterface.hpp" />
     <ClInclude Include="TObject.h" />
     <ClInclude Include="TObjectManager.h" />
     <ClInclude Include="Transform.h" />

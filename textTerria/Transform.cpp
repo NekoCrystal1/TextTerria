@@ -107,7 +107,7 @@ inline void Transform::set_size_x(float x)
 	refresh_scaled_size();
 }
 
-vinline oid Transform::set_size_y(float y)
+inline void Transform::set_size_y(float y)
 {
 	this->size.y = y;
 	refresh_scaled_size();
