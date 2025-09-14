@@ -136,27 +136,27 @@ const Vector2& CollisionBox::get_size() const
 	return m_pTransform->get_size();
 }
 
-inline CollisionBox* CollisionBox::get_target() const
+CollisionBox* CollisionBox::get_target() const
 {
 	return this->target;
 }
 
-inline CollisionBox::CollisionType CollisionBox::get_collision_type() const
+CollisionBox::CollisionType CollisionBox::get_collision_type() const
 {
 	return this->collision_type;
 }
 
-inline TEntityObject* CollisionBox::getParentEntity() const
+TEntityObject* CollisionBox::getParentEntity() const
 {
 	return this->m_pParent->getParent();
 }
 
-inline TEntityObject* CollisionBox::getTargetEntity() const
+TEntityObject* CollisionBox::getTargetEntity() const
 {
 	return this->target->m_pParent->getParent();
 }
 
-inline CollisionComponent* CollisionBox::getParentCollisionComponent() const
+CollisionComponent* CollisionBox::getParentCollisionComponent() const
 {
 	return this->m_pParent;
 }

@@ -25,101 +25,101 @@ Transform& Transform::operator=(const Transform& transform)
 	return *this;
 }
 
-inline const Vector2& Transform::get_position() const
+const Vector2& Transform::get_position() const
 {
 	return position;
 }
 
-inline const Vector2& Transform::get_centre_position() const
+const Vector2& Transform::get_centre_position() const
 {
 	return centre;
 }
 
-inline const Vector2& Transform::get_size() const
+const Vector2& Transform::get_size() const
 {
 	return scaled_size;
 }
 
-inline const Vector2& Transform::get_scale() const
+const Vector2& Transform::get_scale() const
 {
 	return scale;
 }
 
-inline void Transform::refresh_scaled_size()
+void Transform::refresh_scaled_size()
 {
 	scaled_size.x = size.x * scale.x;
 	scaled_size.y = size.y * scale.y;
 	refresh_centre();
 }
 
-inline void Transform::refresh_centre()
+void Transform::refresh_centre()
 {
 	centre = position + scaled_size * 0.5f;
 }
 
-inline void Transform::set_position(const Vector2& pos)
+void Transform::set_position(const Vector2& pos)
 {
 	this->position = pos;
 	refresh_centre();
 }
 
-inline void Transform::set_position(float x, float y)
+void Transform::set_position(float x, float y)
 {
 	this->position.x = x;
 	this->position.y = y;
 	refresh_centre();
 }
 
-inline void Transform::set_pos_x(float x)
+void Transform::set_pos_x(float x)
 {
 	this->position.x = x;
 	refresh_centre();
 }
 
-inline void Transform::set_pos_y(float y)
+void Transform::set_pos_y(float y)
 {
 	this->position.y = y;
 	refresh_centre();
 }
 
-inline void Transform::set_centre_position(const Vector2& centre)
+void Transform::set_centre_position(const Vector2& centre)
 {
 	this->centre = centre;
 	position = centre - scaled_size * 0.5f;
 }
 
-inline void Transform::set_size(const Vector2& size)
+void Transform::set_size(const Vector2& size)
 {
 	this->size = size;
 	refresh_scaled_size();
 }
 
-inline void Transform::set_size(float x, float y)
+void Transform::set_size(float x, float y)
 {
 	this->size.x = x;
 	this->size.y = y;
 	refresh_scaled_size();
 }
 
-inline void Transform::set_size_x(float x)
+void Transform::set_size_x(float x)
 {
 	this->size.x = x;
 	refresh_scaled_size();
 }
 
-inline void Transform::set_size_y(float y)
+void Transform::set_size_y(float y)
 {
 	this->size.y = y;
 	refresh_scaled_size();
 }
 
-inline void Transform::set_scale(const Vector2& scale)
+void Transform::set_scale(const Vector2& scale)
 {
 	this->scale = scale;
 	refresh_scaled_size();
 }
 
-inline void Transform::set_scale(float scale)
+void Transform::set_scale(float scale)
 {
 	this->scale.x = scale;
 	this->scale.y = scale;
