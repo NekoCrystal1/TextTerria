@@ -15,6 +15,11 @@ CollisionComponent* StaticCollisionActor::getCollisionComponent()
 	return m_pCollisionComponent;
 }
 
+bool StaticCollisionActor::initial()
+{
+	return false;
+}
+
 void StaticCollisionActor::colide_func(TEntityObject* target)
 {
 }

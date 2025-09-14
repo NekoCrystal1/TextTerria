@@ -1,0 +1,18 @@
+#pragma once
+
+enum class ItemId
+{
+	ITEM_NULL,
+	ITEM_TEST_BOW,
+	ITEM_TEST_GUN,
+	ITEM_TEST_SWORD,
+	ITEM_TEST_STAFF,//∑®’»
+	ITEM_TEST_SUMMON_STAFF,
+	ITEM_TEST_NORMAL_PLATFORM,
+};
+
+enum class BlockId
+{
+	BLOCK_NULL,
+	BLOCK_TEST_PLATFORM,
+};

@@ -152,8 +152,9 @@
     <ClCompile Include="MenuSence.cpp" />
     <ClCompile Include="CollisionObject.cpp" />
     <ClCompile Include="MovementObject.cpp" />
-    <ClCompile Include="NormalPlayform.cpp" />
+    <ClCompile Include="NormalPlatform.cpp" />
     <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="PlatformFactory.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="RenderNode.cpp" />
@@ -188,10 +189,12 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameId.h" />
     <ClInclude Include="ItemButton.h" />
     <ClInclude Include="Macro.hpp" />
     <ClInclude Include="MilisecondTimer.h" />
-    <ClInclude Include="NormalPlayform.h" />
+    <ClInclude Include="NormalPlatform.h" />
+    <ClInclude Include="PlatformFactory.h" />
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="RenderNode.h" />
     <ClInclude Include="ShortcutItemButton.h" />

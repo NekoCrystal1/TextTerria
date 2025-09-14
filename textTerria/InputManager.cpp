@@ -28,7 +28,7 @@ void InputManager::clear()
 	for (InputManager::KeyStatus& i : key_status)
 		//只有抬起的按键输入会被清空
 		if(i == KeyStatus::up)
-			i = KeyStatus::null;
+			i = KeyStatus::ITEM_NULL;
 	mouse_msg = ExMessage();
 }
 

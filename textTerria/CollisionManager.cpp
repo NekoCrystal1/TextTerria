@@ -70,7 +70,7 @@ Vector2 CollisionManager::get_netvector_pos(const Vector2& pos)
 CollisionBox* CollisionManager::create_collision_box(CollisionBox::CollisionType collision_type, CollisionComponent* pParent)
 {
 	CollisionBox* box = nullptr;
-	Transform boxTransform = pParent->getWorldTransform();
+	Transform boxTransform = pParent->gerLocalTransform();
 	switch (collision_type)
 	{
 		//¾²Ì¬Åö×²Ïä»á×Ô¶¯Íø¸ñ¶ÔÆë
@@ -149,18 +149,18 @@ bool CollisionManager::check_collision(CollisionBox* dst_box, CollisionBox* src_
 		const Vector2& src_size = src_box->get_size();
 		switch (dst_box->get_collision_shape())
 		{
-		case CollisionBox::CollisionShape::rectangle:
+		case CollisionBox::CollisionShape::SHAPE_RECTANGLE:
 			switch (src_box->get_collision_shape())
 			{
-			case CollisionBox::CollisionShape::rectangle:
+			case CollisionBox::CollisionShape::SHAPE_RECTANGLE:
 				if ((dst_box->get_centre_position() - src_box->get_centre_position()).absolute() * 2 <
 					(dst_box->get_size() + src_box->get_size()) )
 					return true;
 				break;
-			case CollisionBox::CollisionShape::circle:
+			case CollisionBox::CollisionShape::SHAPE_CIRCLE:
 				//ÅÐ¶Ï¾ØÐÎ×²Ô²ÐÎ
 				break;
-			case CollisionBox::CollisionShape::platform_linear:
+			case CollisionBox::CollisionShape::SHAPE_PLATFORM_LINEAR:
 				//ÅÐ¶Ï¾ØÐÎ×²Æ½Ì¨
 				if (src_pos.y > dst_pos.y && src_pos.y < dst_pos.y + dst_size.y &&
 					dst_pos.x - src_pos.x > -dst_size.x && dst_pos.x - src_pos.x < src_size.x) 
@@ -168,25 +168,25 @@ bool CollisionManager::check_collision(CollisionBox* dst_box, CollisionBox* src_
 				break;
 			}
 			break;
-		case CollisionBox::CollisionShape::circle:
+		case CollisionBox::CollisionShape::SHAPE_CIRCLE:
 			switch (src_box->get_collision_shape())
 			{
-			case CollisionBox::CollisionShape::rectangle:
+			case CollisionBox::CollisionShape::SHAPE_RECTANGLE:
 				break;
-			case CollisionBox::CollisionShape::circle:
+			case CollisionBox::CollisionShape::SHAPE_CIRCLE:
 				break;
-			case CollisionBox::CollisionShape::platform_linear:
+			case CollisionBox::CollisionShape::SHAPE_PLATFORM_LINEAR:
 				break;
 			}
 			break;
-		case CollisionBox::CollisionShape::platform_linear:
+		case CollisionBox::CollisionShape::SHAPE_PLATFORM_LINEAR:
 			switch (src_box->get_collision_shape())
 			{
-			case CollisionBox::CollisionShape::rectangle:
+			case CollisionBox::CollisionShape::SHAPE_RECTANGLE:
 				break;
-			case CollisionBox::CollisionShape::circle:
+			case CollisionBox::CollisionShape::SHAPE_CIRCLE:
 				break;
-			case CollisionBox::CollisionShape::platform_linear:
+			case CollisionBox::CollisionShape::SHAPE_PLATFORM_LINEAR:
 				break;
 			}
 			break;

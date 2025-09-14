@@ -11,8 +11,8 @@ ItemButton::~ItemButton()
 
 void ItemButton::on_update()
 {
-	const Vector2& pos = m_pTransform->get_position();
-	const Vector2& size = m_pTransform->get_size();
+	const Vector2& pos = m_pLocalTransform->get_position();
+	const Vector2& size = m_pLocalTransform->get_size();
 	Button::on_update();
 }
 

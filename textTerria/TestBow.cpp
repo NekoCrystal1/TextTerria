@@ -1,6 +1,6 @@
 #include "TestBow.h"
 #include "TObjectManager.h"
-TestBow::TestBow(Storage* included_storage) : Item(included_storage, 1)
+TestBow::TestBow(Storage* included_storage) : Item(included_storage, ItemId::ITEM_TEST_BOW)
 {
 }
 

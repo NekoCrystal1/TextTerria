@@ -1,10 +1,12 @@
-#include "GameSence.h"
-#include "TObjectManager.h"
-#include "WidgetManager.h"
 #include "CollisionManager.h"
+#include "GameSence.h"
+#include "PlatformFactory.h"
 #include "ShortcutItemButton.h"
 #include "StorageWidget.h"
+#include "TObjectManager.h"
 #include "UI_Button.h"
+#include "WidgetManager.h"
+
 GameSence::GameSence() : player(nullptr)
 {
 	game_background_widget = new Widget(nullptr, Vector2(getwidth(), getheight()));
@@ -15,7 +17,6 @@ GameSence::GameSence() : player(nullptr)
 GameSence::~GameSence()
 {
 }
-
 
 void GameSence::on_update()
 {
@@ -73,14 +74,12 @@ void GameSence::load_map()
 				int k = 0;
 				printf("%d",k);
 			}
-			Platform* plat = TObjectManager::instance()->create_platform(Vector2(32,16), Vector2(j, i));
-			//plat->set_position(Vector2(j, i));
+			NormalPlatform* pPlatform = PlatformFactory::instance()->tryCreateNormalPlatform(BlockId::BLOCK_TEST_PLATFORM, Vector2(j, i));
 		}
 	long long platform_n = sence_objects.size() - 2;
 	printf("平台数量：%llu\t", platform_n);
 	for (int i = -3200; i < 16000; i += 32) {
 		Block* block = TObjectManager::instance()->create_block(Vector2(32,32), Vector2(i, 864));
-		//block->set_position(Vector2(i, 864));
 	}
 	printf("方块数量：%llu\n", sence_objects.size() - 2 - platform_n);
 }

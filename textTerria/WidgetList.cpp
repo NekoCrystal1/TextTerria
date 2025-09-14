@@ -14,17 +14,17 @@ void WidgetList::refresh_transform()
 	switch (list_mode)
 	{
 	case WidgetList::ListMode::horizontal:
-		m_pTransform->set_size(original_interval, max_size.y);
+		m_pLocalTransform->set_size(original_interval, max_size.y);
 		for (Widget* i : childs) {
-			i->set_position(Vector2(m_pTransform->get_position().x + m_pTransform->get_size().x, this->get_layout(alignment, i->getTransform()->get_size()).y));
-			m_pTransform->set_size_x(m_pTransform->get_size().x + i->getTransform()->get_size().x + interval);
+			i->set_position(Vector2(m_pLocalTransform->get_position().x + m_pLocalTransform->get_size().x, this->get_layout(alignment, i->getTransform()->get_size()).y));
+			m_pLocalTransform->set_size_x(m_pLocalTransform->get_size().x + i->getTransform()->get_size().x + interval);
 		}
 		break;
 	case WidgetList::ListMode::vertical:
-		m_pTransform->set_size(max_size.x, original_interval);
+		m_pLocalTransform->set_size(max_size.x, original_interval);
 		for (Widget* i : childs) {
-			i->set_position(Vector2(this->get_layout(alignment, i->getTransform()->get_size()).x, m_pTransform->get_position().y + m_pTransform->get_size().y));
-			m_pTransform->set_size_y(m_pTransform->get_size().y + i->getTransform()->get_size().y + interval);
+			i->set_position(Vector2(this->get_layout(alignment, i->getTransform()->get_size()).x, m_pLocalTransform->get_position().y + m_pLocalTransform->get_size().y));
+			m_pLocalTransform->set_size_y(m_pLocalTransform->get_size().y + i->getTransform()->get_size().y + interval);
 		}
 		break;
 	default:

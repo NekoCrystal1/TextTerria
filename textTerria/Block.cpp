@@ -6,7 +6,7 @@ void Block::initial(const Vector2& size, const Vector2& position)
 	m_pCollisionComponent->addCollisionBox("BlockBody", CollisionManager::instance()->create_collision_box(
 		CollisionBox::CollisionType::Static_Collision, m_pCollisionComponent));
 	CollisionBox* collision_box = m_pCollisionComponent->get_collision_box("BlockBody");
-	collision_box->set_collision_shape(CollisionBox::CollisionShape::rectangle);
+	collision_box->set_collision_shape(CollisionBox::CollisionShape::SHAPE_RECTANGLE);
 	collision_box->set_collision_src_layer(0x1);
 	collision_box->set_collision_func([&]() {
 		this->colide_func(collision_box->getTargetEntity());
@@ -35,7 +35,7 @@ void Block::colide_func(TEntityObject* pTarget)
 	}
 	const Vector2& target_pos = pTargetPawn->getTransform()->get_position();
 	const Vector2& target_size = pTargetPawn->getTransform()->get_size();
-	const Vector2& pos = m_pTransform->get_position();
+	const Vector2& pos = m_pLocalTransform->get_position();
 	if (target_pos.y + target_size.y >= pos.y && target_pos.y + target_size.y - pTargetPawn->getMovementComponent()->get_velocity().y <= pos.y)
 	{
 		pTargetPawn->set_position(target_pos.x, pos.y - target_size.y);

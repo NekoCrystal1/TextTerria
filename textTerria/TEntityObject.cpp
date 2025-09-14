@@ -12,9 +12,9 @@ m_bIsCanBeDeleted(false), m_bIsTransformDirty(false), m_pWorldTransform(new Tran
 
 TEntityObject::~TEntityObject()
 {
-	if (m_pTransform) {
-		delete m_pTransform;
-		m_pTransform = nullptr;
+	if (m_pLocalTransform) {
+		delete m_pLocalTransform;
+		m_pLocalTransform = nullptr;
 	}
 }
 
@@ -41,7 +41,7 @@ const Transform& TEntityObject::getWorldTransform()
 
 void TEntityObject::updateTransform()
 {
-	*m_pWorldTransform = *m_pTransform + m_pParentNode->getWorldTransform();
+	*m_pWorldTransform = *m_pLocalTransform + m_pParentNode->getWorldTransform();
 }
 
 void TEntityObject::makeDirty()

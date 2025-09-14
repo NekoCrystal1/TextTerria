@@ -1,19 +1,21 @@
 #pragma once
 #include "Actor.h"
 #include "Timer.h"
+#include "GameId.h"
 class Storage;
 class Item : public Actor {
 private:
 	static Item* null_item;
 public:
 	static Item* get_null_item();
+
 public:
-	Item(Storage* included_storage, int id = 0, bool can_stack = 0, short number = 1);
+	Item(Storage* included_storage, ItemId id = ItemId::ITEM_NULL, bool can_stack = 0, short number = 1);
 	virtual ~Item();
 	virtual void on_update();
 	virtual void on_use();
 protected:
-	int id;
+	ItemId id;
 	short number;
 	//ÊÇ·ñ¿É¶Ñµþ
 	bool can_stack;

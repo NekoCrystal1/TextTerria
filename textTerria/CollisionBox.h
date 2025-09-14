@@ -15,10 +15,10 @@ public:
 	//暂时仅使用AABB矩形碰撞,以及平台线性碰撞
 	enum class CollisionShape
 	{
-		null,
-		rectangle,			//position为左上坐标,size + position为右下坐标
-		circle,				//position为圆左上坐标,position + size * 0.5f 为圆心坐标,size的x是半径(size.y应该与size.x相等否则会产生碰撞偏移)
-		platform_linear,	//平台线性碰撞
+		SHAPE_NULL,
+		SHAPE_RECTANGLE,			//position为左上坐标,size + position为右下坐标
+		SHAPE_CIRCLE,				//position为圆左上坐标,position + size * 0.5f 为圆心坐标,size的x是半径(size.y应该与size.x相等否则会产生碰撞偏移)
+		SHAPE_PLATFORM_LINEAR,	//平台线性碰撞
 	};
 	static std::vector<COLORREF> box_colors;
 public:

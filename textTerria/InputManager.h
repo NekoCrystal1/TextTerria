@@ -9,7 +9,7 @@ public:
 	//Ã¶¾Ù°´¼ü×´Ì¬
 	enum class KeyStatus
 	{
-		null,
+		ITEM_NULL,
 		down,
 		up,
 	};

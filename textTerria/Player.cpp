@@ -7,7 +7,7 @@ bag_pack(ItemManager::instance()->create_storage(this, 45)), main_hand_slot_id(0
 	m_pCollisionComponent->addCollisionBox("PlayerBody", CollisionManager::instance()->create_collision_box(
 		CollisionBox::CollisionType::Static_Collision, m_pCollisionComponent));
 	CollisionBox* collision_box = m_pCollisionComponent->get_collision_box("PlayerBody");
-	collision_box->set_collision_shape(CollisionBox::CollisionShape::rectangle);
+	collision_box->set_collision_shape(CollisionBox::CollisionShape::SHAPE_RECTANGLE);
 	collision_box->set_collision_dst_layer(0x3);
 	collision_box->set_collision_src_layer(0x3);
 	//collision_box->set_visiable();
@@ -18,7 +18,7 @@ bag_pack(ItemManager::instance()->create_storage(this, 45)), main_hand_slot_id(0
 		//	break;
 		//}
 		//});
-	bag_pack->modify_in(0, ItemManager::instance()->create_Item(bag_pack,1));
+	bag_pack->modify_in(0, ItemManager::instance()->create_Item(bag_pack,ItemId::ITEM_TEST_BOW));
 }
 
 Player::~Player()

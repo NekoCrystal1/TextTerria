@@ -13,4 +13,5 @@ protected:
 	void renderNextNodes(float fCurTime);
 protected:
 	bool m_bIsVisible;
+
 };

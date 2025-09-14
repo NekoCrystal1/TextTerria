@@ -36,8 +36,8 @@ void Widget::on_render() const
 	if (is_background_visiable) {
 		setlinecolor(this->background_frame_line_color);
 		setfillcolor(this->background_color);
-		const Vector2& pos = m_pTransform->get_position();
-		const Vector2& size = m_pTransform->get_size();
+		const Vector2& pos = m_pLocalTransform->get_position();
+		const Vector2& size = m_pLocalTransform->get_size();
 		fillrectangle(pos.x, pos.y, pos.x + size.x, pos.y + size.y);
 	}
 	for (Widget* p : childs)
@@ -59,7 +59,7 @@ void Widget::remove_child(Widget* child)
 
 Vector2 Widget::get_layout(int layout_idx, const Vector2& target_size) const
 {
-	Vector2 size = m_pTransform->get_size();
+	Vector2 size = m_pLocalTransform->get_size();
 	Vector2 ans = Vector2();
 	switch (layout_idx)
 	{
@@ -91,7 +91,7 @@ Vector2 Widget::get_layout(int layout_idx, const Vector2& target_size) const
 		ans = Vector2(size.x - target_size.x, size.y - target_size.y);
 		break;
 	}
-	return ans + m_pTransform->get_position();
+	return ans + m_pLocalTransform->get_position();
 }
 
 void Widget::set_background_color(COLORREF color)

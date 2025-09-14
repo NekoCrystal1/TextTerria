@@ -15,5 +15,5 @@ public:
 	virtual void set_position(const Vector2& position);
 	virtual void set_position(float x, float y);
 protected:
-	Transform* m_pTransform;
+	Transform* m_pLocalTransform;
 };

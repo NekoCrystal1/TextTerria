@@ -7,7 +7,7 @@ std::vector<COLORREF> CollisionBox::box_colors = std::vector<COLORREF>({
 	});
 
 CollisionBox::CollisionBox(CollisionType type, CollisionComponent* p, const Transform& oTransform) : TEntityObject(oTransform),
-m_pParent(p),collision_type(type), is_valid(true), collision_shape(CollisionShape::null),
+m_pParent(p),collision_type(type), is_valid(true), collision_shape(CollisionShape::SHAPE_NULL),
 collision_src_layer(0), collision_dst_layer(0),
 on_collision_func(nullptr), is_collision(false), target(nullptr)
 {
@@ -15,7 +15,7 @@ on_collision_func(nullptr), is_collision(false), target(nullptr)
 
 CollisionBox::~CollisionBox()
 {
-	m_pTransform = nullptr;
+	m_pLocalTransform = nullptr;
 }
 
 void CollisionBox::on_update()
@@ -27,19 +27,19 @@ void CollisionBox::on_update()
 void CollisionBox::on_render() const
 {
 	const Camera& camera = *Camera::instance();
-	const Vector2& render_centre = camera.get_render_centre(m_pTransform->get_centre_position());
-	const Vector2& render_size = camera.get_render_size(m_pTransform->get_size());
-	const Vector2& render_pos = camera.get_render_pos(m_pTransform->get_centre_position(), m_pTransform->get_size());
+	const Vector2& render_centre = camera.get_render_centre(m_pLocalTransform->get_centre_position());
+	const Vector2& render_size = camera.get_render_size(m_pLocalTransform->get_size());
+	const Vector2& render_pos = camera.get_render_pos(m_pLocalTransform->get_centre_position(), m_pLocalTransform->get_size());
 
 	switch (collision_shape)
 	{
-	case CollisionBox::CollisionShape::null:
+	case CollisionBox::CollisionShape::SHAPE_NULL:
 		break;
-	case CollisionBox::CollisionShape::rectangle:
+	case CollisionBox::CollisionShape::SHAPE_RECTANGLE:
 		//setlinecolor(box_colors[collision_src_layer] + box_colors[collision_src_layer]);
 		rectangle(render_pos.x, render_pos.y, render_pos.x + render_size.x, render_pos.y + render_size.y);
 		break;
-	case CollisionBox::CollisionShape::circle:
+	case CollisionBox::CollisionShape::SHAPE_CIRCLE:
 
 		break;
 	}
@@ -123,17 +123,17 @@ const unsigned int CollisionBox::get_collision_dst_layer()const
 
 const Vector2& CollisionBox::get_position() const
 {
-	return m_pTransform->get_position();
+	return m_pLocalTransform->get_position();
 }
 
 const Vector2& CollisionBox::get_centre_position() const
 {
-	return m_pTransform->get_centre_position();
+	return m_pLocalTransform->get_centre_position();
 }
 
 const Vector2& CollisionBox::get_size() const
 {
-	return m_pTransform->get_size();
+	return m_pLocalTransform->get_size();
 }
 
 CollisionBox* CollisionBox::get_target() const
