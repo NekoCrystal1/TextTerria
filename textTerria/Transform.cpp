@@ -25,6 +25,15 @@ Transform& Transform::operator=(const Transform& transform)
 	return *this;
 }
 
+Transform& Transform::operator+(const Transform& transform)
+{
+	Transform oAns(*this);
+	oAns.set_position(this->position + transform.position);
+	oAns.set_scale(this->scale * transform.scale);
+	oAns.rotation = this->rotation + transform.rotation;
+	return oAns;
+}
+
 const Vector2& Transform::get_position() const
 {
 	return position;

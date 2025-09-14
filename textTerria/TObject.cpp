@@ -9,6 +9,11 @@ inline const Transform* TObject::getTransform() const
 	return m_pTransform;
 }
 
+const Transform& TObject::gerLocalTransform() const
+{
+	return *m_pTransform;
+}
+
 inline void TObject::set_position(const Vector2& pos)
 {
 	m_pTransform->set_position(pos);

@@ -7,6 +7,7 @@ public:
 	Transform(const Transform& transform);
 	~Transform();
 	Transform& operator= (const Transform& transform);
+	Transform& operator+(const Transform& transform);
 	const Vector2& get_position()const;
 	const Vector2& get_centre_position()const;
 	const Vector2& get_size()const;

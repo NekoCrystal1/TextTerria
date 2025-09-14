@@ -14,7 +14,8 @@ CollisionComponent::~CollisionComponent()
 
 void CollisionComponent::addCollisionBox(std::string sBoxName, CollisionBox* pCollisionBox)
 {
-	m_mapCollisionBoxes.insert(std::pair<std::string, CollisionBox*>(sBoxName, pCollisionBox));
+	if(pCollisionBox)
+		m_mapCollisionBoxes.insert(std::pair<std::string, CollisionBox*>(sBoxName, pCollisionBox));
 }
 
 void CollisionComponent::set_collision_src_layer(std::string sBoxName, unsigned int src_layer)
