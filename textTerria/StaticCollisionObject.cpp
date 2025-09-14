@@ -1,6 +1,6 @@
-#include "StaticCollisionActor.h"
+#include "StaticCollisionObject.h"
 
-StaticCollisionActor::StaticCollisionActor(const Vector2& size, const Vector2& position) : Actor(size, position),
+StaticCollisionActor::StaticCollisionActor(const Vector2& size, const Vector2& position) : TEntityObject(size, position),
 m_pCollisionComponent(new CollisionComponent(this))
 {
 }
@@ -13,4 +13,8 @@ StaticCollisionActor::~StaticCollisionActor()
 CollisionComponent* StaticCollisionActor::getCollisionComponent()
 {
 	return m_pCollisionComponent;
+}
+
+void StaticCollisionActor::colide_func(TEntityObject* target)
+{
 }

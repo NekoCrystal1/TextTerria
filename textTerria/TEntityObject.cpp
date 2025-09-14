@@ -18,6 +18,10 @@ TEntityObject::~TEntityObject()
 	}
 }
 
+void TEntityObject::on_update()
+{
+}
+
 void TEntityObject::setCanBeDeleted(bool bValue)
 {
 	m_bIsCanBeDeleted = bValue;

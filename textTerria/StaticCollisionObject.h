@@ -1,7 +1,7 @@
 #pragma once
-#include "Actor.h"
+#include "TEntityObject.h"
 #include "CollisionComponent.h"
-class StaticCollisionActor : public Actor
+class StaticCollisionActor : public TEntityObject
 {
 public:
 	StaticCollisionActor(const Vector2& size = Vector2(), const Vector2& position = Vector2());
@@ -9,7 +9,7 @@ public:
 public:
 	CollisionComponent* getCollisionComponent();
 protected:
-	virtual void colide_func(TEntityObject* target) = 0;
+	virtual void colide_func(TEntityObject* target);
 protected:
 	CollisionComponent* m_pCollisionComponent;
 };

@@ -1,5 +1,5 @@
 #include "Platform.h"
-#include "Pawn.h"
+#include "Actor.h"
 #include "CollisionManager.h"
 void Platform::initial(const Vector2& size, const Vector2& position)
 {
@@ -22,24 +22,9 @@ Platform::~Platform()
 {
 }
 
-void Platform::on_update()
-{
-	//CollisionObject::on_update();
-}
-
-void Platform::set_position(const Vector2& position)
-{
-	Actor::set_position(position);
-}
-
-void Platform::set_position(float x, float y)
-{
-	Actor::set_position(x, y);
-}
-
 void Platform::colide_func(TEntityObject* pTarget)
 {
-	Pawn* pTargetPawn = dynamic_cast<Pawn*>(pTarget);
+	Actor* pTargetPawn = dynamic_cast<Actor*>(pTarget);
 	if (!pTargetPawn)
 	{
 		return;

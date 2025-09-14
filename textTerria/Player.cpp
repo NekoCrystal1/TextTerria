@@ -4,6 +4,9 @@
 Player::Player(const Vector2& size, const Vector2& position) : Character(size, position),
 bag_pack(ItemManager::instance()->create_storage(this, 45)), main_hand_slot_id(0)
 {
+	m_pCollisionComponent->addCollisionBox("PlayerBody", CollisionManager::instance()->create_collision_box(
+		CollisionBox::CollisionType::Static_Collision, m_pCollisionComponent));
+	CollisionBox* collision_box = m_pCollisionComponent->get_collision_box("PlayerBody");
 	collision_box->set_collision_shape(CollisionBox::CollisionShape::rectangle);
 	collision_box->set_collision_dst_layer(0x3);
 	collision_box->set_collision_src_layer(0x3);
@@ -34,13 +37,14 @@ void Player::on_update()
 	else if (input->is_key_down('D'))
 		m_pMovementComponent->setAcceleration_x(10);
 
+	CollisionBox* collision_box = m_pCollisionComponent->get_collision_box("PlayerBody");
 	if (input->is_key_down(VK_SPACE))
 		if(input->is_key_down('S'))
-			this->collision_box->set_collision_dst_layer(collision_box->get_collision_dst_layer() & 0xFFFFFFFD);
+			collision_box->set_collision_dst_layer(collision_box->get_collision_dst_layer() & 0xFFFFFFFD);
 		else if (input->is_key_down(VK_SPACE) && m_pMovementComponent->getAcceleration_y() == 0 && !m_pMovementComponent->getIsFreeFallHeighest())
 			m_pMovementComponent->setAcceleration_y(22);
 	if (input->is_key_up('S') || input->is_key_up(VK_SPACE))
-		this->collision_box->set_collision_dst_layer(collision_box->get_collision_dst_layer() | 0x2);
+		collision_box->set_collision_dst_layer(collision_box->get_collision_dst_layer() | 0x2);
 
 	Actor::on_update();
 }

@@ -11,7 +11,7 @@ public:
 	TEntityObject(const Transform& transform = Transform());
 	virtual ~TEntityObject();
 public:
-	virtual void on_update() = 0;
+	virtual void on_update();
 	void setCanBeDeleted(bool bValue = true);
 	bool IsCanBeDeleted() const;
 protected:

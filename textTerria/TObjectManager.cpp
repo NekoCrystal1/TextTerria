@@ -34,7 +34,7 @@ Platform* TObjectManager::create_platform(const Vector2& size, const Vector2& po
 {
 	Platform* platform = nullptr;
 	if (cur_sence) {
-		platform = new Platform(fillcolor, linecolor, size, position);
+		platform = new Platform(size, position);
 		cur_sence->push_element(platform);
 	}
 	return platform;

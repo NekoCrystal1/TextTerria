@@ -1,12 +1,12 @@
 #pragma once
-#include <string>
-#include <unordered_map>
-#include "TEntityObject.h"
-#include "AnimationManager.h"
-class Actor : public TEntityObject{
+#include "MovementComponent.h"
+#include "StaticCollisionObject.h"
+class Actor : public StaticCollisionActor{
 public:
 	Actor(const Vector2& size = Vector2(), const Vector2& position = Vector2());
 	virtual ~Actor();
+public:
+	MovementComponent* getMovementComponent();
 protected:
-	Animation* m_pAnimation;
+	MovementComponent* m_pMovementComponent;
 };

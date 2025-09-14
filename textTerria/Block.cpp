@@ -1,5 +1,5 @@
 #include "Block.h"
-#include "Pawn.h"
+#include "Actor.h"
 
 void Block::initial(const Vector2& size, const Vector2& position)
 {
@@ -13,7 +13,7 @@ void Block::initial(const Vector2& size, const Vector2& position)
 		});
 }
 
-Block::Block(COLORREF fillcolor, COLORREF linecolor, const Vector2& size, const Vector2& position): Actor(size, position)
+Block::Block(COLORREF fillcolor, COLORREF linecolor, const Vector2& size, const Vector2& position): StaticCollisionActor(size, position)
 {
 	initial(size, position);
 }
@@ -28,7 +28,7 @@ void Block::on_update()
 
 void Block::colide_func(TEntityObject* pTarget)
 {
-	Pawn* pTargetPawn = dynamic_cast<Pawn*>(pTarget);
+	Actor* pTargetPawn = dynamic_cast<Actor*>(pTarget);
 	if (!pTargetPawn)
 	{
 		return;

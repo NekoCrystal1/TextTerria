@@ -153,8 +153,6 @@
     <ClCompile Include="CollisionObject.cpp" />
     <ClCompile Include="MovementObject.cpp" />
     <ClCompile Include="NormalPlayform.cpp" />
-    <ClCompile Include="Pawn.cpp" />
-    <ClCompile Include="Pawn.h" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderManager.cpp" />
@@ -163,7 +161,7 @@
     <ClCompile Include="Sence.cpp" />
     <ClCompile Include="SenceManager.cpp" />
     <ClCompile Include="ShortcutItemButton.cpp" />
-    <ClCompile Include="StaticCollisionActor.cpp" />
+    <ClCompile Include="StaticCollisionObject.cpp" />
     <ClCompile Include="Storage.cpp" />
     <ClCompile Include="StorageManager.cpp" />
     <ClCompile Include="StorageWidget.cpp" />
@@ -198,7 +196,7 @@
     <ClInclude Include="RenderNode.h" />
     <ClInclude Include="ShortcutItemButton.h" />
     <ClInclude Include="Singleton.hpp" />
-    <ClInclude Include="StaticCollisionActor.h" />
+    <ClInclude Include="StaticCollisionObject.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="MenuButton.h" />
