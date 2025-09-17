@@ -8,6 +8,7 @@ public:
 	MenuSence();
 	~MenuSence();
 	virtual void on_render() const override;
+	virtual void on_update() override;
 	void on_enter()override;
 	void on_exit()override;
 private:

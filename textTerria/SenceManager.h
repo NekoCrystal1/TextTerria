@@ -3,6 +3,7 @@
 #include <string>
 #include "Sence.h"
 #include "Singleton.hpp"
+#define SENCE_MANAGER SenceManager::instance()
 class SenceManager : public Singleton<SenceManager>
 {
 	friend Singleton<SenceManager>;

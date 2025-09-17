@@ -1,6 +1,6 @@
 #include "Widget.h"
-
-Widget::Widget(Widget* parent, const Vector2& size, const Vector2& position) : TEntityObject(size, position),
+#include "UTIL.hpp"
+Widget::Widget(Widget* parent, const Vector2& size, const Vector2& position) : TObject(new Transform(size, position)),
 m_bIsVisible(true),	is_background_visiable(false), is_background_frame_line_visiable(false),
 background_color(0xFFFFFF), background_frame_line_color(0xFFFFFF),
 parent(parent), childs(), tree_event(nullptr)
@@ -16,9 +16,9 @@ parent(parent), childs(), tree_event(nullptr)
 Widget::~Widget() {
 	if (parent)
 		parent->remove_child(this);
-	for (Widget* c : childs)
-		delete c;
-	childs.clear();
+	clearVec(childs);
+	delete m_pLocalTransform;
+	m_pLocalTransform = nullptr;
 }
 
 void Widget::on_update()

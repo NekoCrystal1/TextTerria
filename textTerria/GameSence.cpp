@@ -10,7 +10,7 @@
 GameSence::GameSence() : player(nullptr)
 {
 	game_background_widget = new Widget(nullptr, Vector2(getwidth(), getheight()));
-	sence_objects.push_back(game_background_widget);
+	//sence_objects.push_back(game_background_widget);
 	game_background_widget->set_all_visiable();
 }
 

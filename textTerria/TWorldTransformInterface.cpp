@@ -15,7 +15,9 @@ m_pWorldTransform(new Transform())
 TWorldTransformObject::~TWorldTransformObject()
 {
 	delete m_pLocalTransform;
+	m_pLocalTransform = nullptr;
 	delete m_pWorldTransform;
+	m_pWorldTransform = nullptr;
 }
 
 const Transform& TWorldTransformObject::getWorldTransform()

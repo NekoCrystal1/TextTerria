@@ -19,6 +19,7 @@ inline void clearVec(std::vector<T*>& vec)
 	for (T* i : vec)
 	{
 		delete i;
+		i = nullptr;
 	}
 	vec.clear();
 }

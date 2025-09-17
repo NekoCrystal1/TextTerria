@@ -8,7 +8,7 @@ MenuSence::MenuSence()
 	//设置背景需要与窗口大小相同，设置其颜色、可见
 	//menu_background_widget = WidgetManger::instance()->create_widget(Vector2(getwidth(), getheight()));
 	menu_background_widget = new Widget(nullptr,Vector2(getwidth(), getheight()));
-	sence_objects.push_back(menu_background_widget);
+	//sence_objects.push_back(menu_background_widget);
 	menu_background_widget->set_background_color(0xEEEEEE);
 	menu_background_widget->set_all_visiable();
 
@@ -80,6 +80,14 @@ MenuSence::~MenuSence()
 void MenuSence::on_render() const
 {
 	menu_background_widget->on_render();
+}
+
+void MenuSence::on_update()
+{
+	menu_background_widget->on_update();
+
+	//由于重构导致目前ui不可用，因此在第二帧自动切换到游戏场景以便测试
+	SENCE_MANAGER->switch_to("game");
 }
 
 void MenuSence::on_enter()

@@ -1,14 +1,14 @@
 #pragma once
 #include <easyx.h>
 #include <vector>
-#include "TEntityObject.h"
+#include "TObject.h"
 /*
 * 控件类
 * 包含位置、背景色以及是否透明(背景/控件)
 * 构造时可以设置大小及背景，透明默认均为false,背景默认白色
 * 
 */
-class Widget : public TEntityObject{
+class Widget : public TObject{
 protected:
 	struct WidgetEvent
 	{

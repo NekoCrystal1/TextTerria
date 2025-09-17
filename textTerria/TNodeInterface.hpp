@@ -82,6 +82,7 @@ template<typename T>
 inline TNodeInterface<T>::~TNodeInterface()
 {
 	clearVec(this->m_vecNextNodes);
+	//T000:此处需要预留一个函数，使自身被移除时，将自身从父节点中删除，需要防止子节点重复调用该函数（因为它们的父节点也会被删除），且不可重复delete
 }
 
 template<typename T>
