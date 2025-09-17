@@ -1,6 +1,6 @@
 #include "StaticCollisionObject.h"
 #include "TLevelManager.h"
-StaticCollisionObject::StaticCollisionObject(const Vector2& size, const Vector2& position) : TEntityObject(size, position, ),
+StaticCollisionObject::StaticCollisionObject(const Vector2& size, const Vector2& position) : TEntityObject(LEVEL_MANAGER->gerCruWorkNode(), size, position),
 m_pCollisionComponent(new CollisionComponent(this))
 {
 }

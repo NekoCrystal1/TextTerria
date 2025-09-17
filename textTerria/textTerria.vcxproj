@@ -234,7 +234,7 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TLevelManager.h" />
     <ClInclude Include="TNodeInterface.hpp" />
-    <ClInclude Include="TNodeManagerInterface.h" />
+    <ClInclude Include="TNodeManagerInterface.hpp" />
     <ClInclude Include="TObject.h" />
     <ClInclude Include="TObjectManager.h" />
     <ClInclude Include="Transform.h" />

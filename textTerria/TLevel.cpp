@@ -1,6 +1,6 @@
 #include "TLevel.h"
 
-TLevel::TLevel() : TObject(new Transform()), TNodeInterface(nullptr)
+TLevel::TLevel(TEntityObject* pParent) : TEntityObject(pParent, Vector2())
 {
 }
 

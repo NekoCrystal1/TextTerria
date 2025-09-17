@@ -497,7 +497,7 @@
     <ClInclude Include="StaticCollisionObject.h">
       <Filter>头文件\Game\GameItem\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="TNodeManagerInterface.h">
+    <ClInclude Include="TNodeManagerInterface.hpp">
       <Filter>头文件\Game\Basic\Interface</Filter>
     </ClInclude>
   </ItemGroup>

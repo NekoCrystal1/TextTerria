@@ -9,8 +9,8 @@ class Animation : public RenderNode
 public:
 	//使用RenderManager中的当前工作节点作为父节点：可在场景切换时自行修改，如果需要更换，可以修改RenderManager工作节点或者使用setParent
 	Animation(const Vector2& size = Vector2(), const Vector2& position = Vector2());
-	Animation(const Vector2& size = Vector2(), const Vector2& position = Vector2(), IMAGE* pImg);
-	Animation(const Vector2& size = Vector2(), const Vector2& position = Vector2(), Atlas* atlas);
+	Animation(IMAGE* pImg, const Vector2& size = Vector2(), const Vector2& position = Vector2());
+	Animation(Atlas* pAtlas, const Vector2& size = Vector2(), const Vector2& position = Vector2());
 	~Animation();
 protected:
 	struct Frame

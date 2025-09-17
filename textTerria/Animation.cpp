@@ -2,17 +2,17 @@
 #include "RenderManager.h"
 #include "UTIL.hpp"
 
-Animation::Animation(const Vector2& size = Vector2(), const Vector2& position = Vector2()) :
+Animation::Animation(const Vector2& size, const Vector2& position) :
 	RenderNode(RENDER_MANAGER->gerCruWorkNode(), size, position), m_i32CurFrameIndex(0)
 {
 }
 
-Animation::Animation(const Vector2& size = Vector2(), const Vector2& position = Vector2(), IMAGE* pImg) : 
+Animation::Animation(IMAGE* pImg, const Vector2& size, const Vector2& position) :
 	RenderNode(RENDER_MANAGER->gerCruWorkNode(), size, position), m_i32CurFrameIndex(0), m_vecFrames(1,new Frame(pImg))
 {
 }
 
-Animation::Animation(const Vector2& size = Vector2(), const Vector2& position = Vector2(), Atlas* atlas) :
+Animation::Animation(Atlas* pAtlas, const Vector2& size, const Vector2& position) :
 	RenderNode(RENDER_MANAGER->gerCruWorkNode(), size, position), m_i32CurFrameIndex(0), m_vecFrames()
 {
 }

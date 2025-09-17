@@ -84,6 +84,7 @@ float Vector2::operator*(const Vector2& vec) const
 Vector2& Vector2::operator/(const Vector2& vec) const
 {
 	Vector2 ans = Vector2(x / vec.x, y / vec.y);
+	return ans;
 }
 
 Vector2& Vector2::operator=(const Vector2& vec)
