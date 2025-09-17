@@ -2,6 +2,8 @@
 #include <vector>
 #include "UTIL.hpp"
 
+//如果可以确保T是该类的子类，则这些函数可以有该类实现
+
 #define defaultSetParent(TypeName) \
 public:\
 virtual void setParentNode(TypeName##* pNewParent)override\
@@ -26,10 +28,17 @@ virtual void removeNextNodesTo(TypeName##* pNewParent)override\
 		node->m_pParentNode = pNewParent;\
 		if(pNewParent)\
 		{\
-			pNewParent.addNode(node); \
+			pNewParent->addNode(node); \
 		}\
 	}\
 	m_vecNextNodes.clear();\
+}
+
+#define defaultChangeNextNodeParent(TypeName) \
+protected:\
+virtual void changeNextNodeParent(TypeName##* pNextNode)override\
+{\
+pNextNode->m_pParentNode = this;\
 }
 
 template<typename T>
@@ -47,6 +56,8 @@ public:
 	virtual void setParentNode(T* pNewParent) = 0;
 	virtual void removeNextNodesTo(T* pNewParent) = 0;
 protected:
+	//由于新增节点需要修改新节点的父节点，因此需要利用该函数实现;
+	virtual void changeNextNodeParent(T* pNextNode) = 0;
 	//由于移除需要改变pTarget的父节点，但是T*不具备此功能，所以使用setParent来控制
 	void eraseNode(T* pTarget);
 	//自动根据层级添加，protected理由同上
@@ -86,20 +97,19 @@ inline void TNodeInterface<T>::addNode(T* pNextNode)
 			//不可重复添加
 			return;
 		}
-		if (pNextNode->m_Order < m_vecNextNodes[i]->m_Order)
+		if (pNextNode->m_i32Order < m_vecNextNodes[i]->m_i32Order)
 		{
 			m_vecNextNodes.insert(m_vecNextNodes.begin() + i, pNextNode);
 			bHasAdd = true;
 			break;
 		}
 	}
-	pNextNode->m_pParentNode = this;
+	changeNextNodeParent(pNextNode);
 	//如果子节点为空或者加入节点最大，则尾插
 	if (!bHasAdd)
 	{
 		m_vecNextNodes.push_back(pNextNode);
 	}
-
 }
 
 template<typename T>
@@ -114,11 +124,10 @@ inline void TNodeInterface<T>::pushBack(T* pNextNode)
 	}
 	if (!m_vecNextNodes.empty())
 	{
-		pNextNode->m_Order = m_vecNextNodes.back()->m_Order;
+		pNextNode->m_i32Order = m_vecNextNodes.back()->m_i32Order;
 	}
 	m_vecNextNodes.push_back(pNextNode);
-	pNextNode->m_pParentNode = this;
-
+	changeNextNodeParent(pNextNode);
 }
 
 template<typename T>
@@ -145,7 +154,7 @@ inline void TNodeInterface<T>::setOrder(int i32Order)
 	{
 		for (int i = i32PastIndex; i >= 0; i--)
 		{
-			if (i == 0 || vecParentNextNodes[i - 1]->m_Order < i32Order)
+			if (i == 0 || vecParentNextNodes[i - 1]->m_i32Order < i32Order)
 			{
 				vecParentNextNodes[i] = this;
 				break;
@@ -162,7 +171,7 @@ inline void TNodeInterface<T>::setOrder(int i32Order)
 		int i32VecEndIndex = vecParentNextNodes.size() - 1;
 		for (int i = i32PastIndex; i <= i32VecEndIndex; i++)
 		{
-			if (i == i32VecEndIndex || vecParentNextNodes[i + 1]->m_Order > i32Order)
+			if (i == i32VecEndIndex || vecParentNextNodes[i + 1]->m_i32Order > i32Order)
 			{
 				vecParentNextNodes[i] = this;
 				break;

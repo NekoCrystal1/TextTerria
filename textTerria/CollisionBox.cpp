@@ -6,7 +6,7 @@ std::vector<COLORREF> CollisionBox::box_colors = std::vector<COLORREF>({
 	0x000000,0xEE0000,0x0000EE
 	});
 
-CollisionBox::CollisionBox(CollisionType type, CollisionComponent* p, const Transform& oTransform) : TEntityObject(oTransform),
+CollisionBox::CollisionBox(CollisionType type, CollisionComponent* p, const Transform& oTransform) : TEntityObject(p->getParent(), oTransform),
 m_pParent(p),collision_type(type), is_valid(true), collision_shape(CollisionShape::SHAPE_NULL),
 collision_src_layer(0), collision_dst_layer(0),
 on_collision_func(nullptr), is_collision(false), target(nullptr)

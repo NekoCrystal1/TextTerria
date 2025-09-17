@@ -5,6 +5,7 @@ class RenderNode : public TWorldTransformObject, public TNodeInterface<RenderNod
 {
 	defaultSetParent(RenderNode);
 	defaultRemoveNextNodesTo(RenderNode);
+	defaultChangeNextNodeParent(RenderNode);
 	defaultWorldTransformVirtualFuncInNode;
 public:
 	RenderNode(RenderNode* pParent, const Vector2& size = Vector2(), const Vector2& position = Vector2(), bool bIsVisible = true);

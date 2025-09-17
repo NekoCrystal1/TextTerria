@@ -18,13 +18,3 @@ void Bullet::on_update()
 	Actor::on_update();
 }
 
-void Bullet::set_position(const Vector2& pos)
-{
-	Actor::setLocalPosition(pos);
-}
-
-void Bullet::setLocalPosition(float x, float y)
-{
-	Actor::setLocalPosition(x, y);
-}
-
