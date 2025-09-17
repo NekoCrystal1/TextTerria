@@ -14,6 +14,14 @@ Transform::~Transform()
 {
 }
 
+Transform& Transform::operator+=(const Transform& transform)
+{
+	this->set_position(this->position + transform.position);
+	this->set_scale(this->scale * transform.scale);
+	this->rotation = this->rotation + transform.rotation;
+	return *this;
+}
+
 Transform& Transform::operator=(const Transform& transform)
 {
 	this->position = transform.position;
@@ -25,12 +33,29 @@ Transform& Transform::operator=(const Transform& transform)
 	return *this;
 }
 
-Transform& Transform::operator+(const Transform& transform)
-{
+Transform& Transform::operator+(const Transform& transform) const
+{ 
 	Transform oAns(*this);
 	oAns.set_position(this->position + transform.position);
-	oAns.set_scale(this->scale * transform.scale);
+	oAns.set_scale(this->scale.only_multiply_every_element(transform.scale));
 	oAns.rotation = this->rotation + transform.rotation;
+	return oAns;
+}
+
+Transform& Transform::operator-(const Transform& transform) const
+{
+	Transform oAns(*this);
+	oAns.set_position(this->position - transform.position);
+	oAns.set_scale(this->scale / transform.scale);
+	oAns.rotation = this->rotation - transform.rotation;
+	return oAns;
+}
+
+Transform& Transform::operator*(float fVal)
+{
+	Transform oAns(*this);
+	oAns.set_position(oAns.position * fVal);
+	oAns.set_scale(oAns.scale * fVal);
 	return oAns;
 }
 
@@ -133,5 +158,35 @@ void Transform::set_scale(float scale)
 	this->scale.x = scale;
 	this->scale.y = scale;
 	refresh_scaled_size();
+}
+
+void Transform::makeTransformTo(const Transform& transform, float fPerscentage)
+{
+	Transform subTransform = transform - *this;
+	this->set_position(this->position + subTransform.position * fPerscentage);
+	this->rotation = this->rotation + subTransform.rotation * fPerscentage;
+	if (subTransform.scale.x == 1)
+	{
+	}
+	else if (subTransform.scale.x > 1)
+	{
+		subTransform.scale.x = 1 + fPerscentage;
+	}
+	else
+	{
+		subTransform.scale.x = 1 - fPerscentage;
+	}
+	if (subTransform.scale.y == 1)
+	{
+	}
+	else if (subTransform.scale.y > 1)
+	{
+		subTransform.scale.y = 1 + fPerscentage;
+	}
+	else
+	{
+		subTransform.scale.y = 1 - fPerscentage;
+	}
+	this->set_scale(this->scale.only_multiply_every_element(subTransform.scale));
 }
 

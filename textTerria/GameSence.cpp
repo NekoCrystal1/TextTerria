@@ -54,7 +54,7 @@ void GameSence::on_enter()
 	}
 	player_storage_btn_list->bind_elements_storage();
 	player_storage_btn_list->set_interval(5);
-	player_storage_btn_list->set_position(game_ui_widget->get_layout(0, player_storage_btn_list->getTransform()->get_size()) + Vector2(5, 5));
+	player_storage_btn_list->setLocalPosition(game_ui_widget->get_layout(0, player_storage_btn_list->getTransform()->get_size()) + Vector2(5, 5));
 
 	load_map();
 }

@@ -49,14 +49,14 @@ void Player::on_update()
 	Actor::on_update();
 }
 
-void Player::set_position(const Vector2& pos)
+void Player::setLocalPosition(const Vector2& pos)
 {
-	Actor::set_position(pos);
+	Actor::setLocalPosition(pos);
 }
 
-void Player::set_position(float x, float y)
+void Player::setLocalPosition(float x, float y)
 {
-	Actor::set_position(x, y);
+	Actor::setLocalPosition(x, y);
 }
 
 Storage* Player::get_storage() const

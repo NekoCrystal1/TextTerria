@@ -12,7 +12,7 @@ public:
 	void set_text_color(const COLORREF color);
 	void set_text_handle_color(const COLORREF color);
 	void set_text_visiable(bool visiable = true);
-	void set_position(const Vector2& vec)override;
+	void setLocalPosition(const Vector2& vec)override;
 protected:
 	Label* label;
 };

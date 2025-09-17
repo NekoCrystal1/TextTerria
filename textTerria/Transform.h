@@ -6,8 +6,12 @@ public:
 		const Vector2& scale = Vector2(1), const Vector2& anchor = Vector2(), const Vector2& rotation = Vector2());
 	Transform(const Transform& transform);
 	~Transform();
+	Transform& operator+= (const Transform& transform);
 	Transform& operator= (const Transform& transform);
-	Transform& operator+(const Transform& transform);
+	Transform& operator+ (const Transform& transform) const;
+	Transform& operator- (const Transform& transform) const;
+	//实现各属性缩放
+	Transform& operator* (float fVal);
 	const Vector2& get_position()const;
 	const Vector2& get_centre_position()const;
 	const Vector2& get_size()const;
@@ -25,12 +29,15 @@ public:
 	void set_size_y(float y);
 	void set_scale(const Vector2& scale);
 	void set_scale(float scale);
+	//实现变换向另一变换的转换，并根据百分比决定转换程度
+	void makeTransformTo(const Transform& transform, float perscentage);
 private:
 	Vector2 position;
 	Vector2 size;
 	Vector2 scale;
-	Vector2 anchor;
 	Vector2 rotation;
+	Vector2 anchor;
+
 	Vector2 scaled_size;
 	Vector2 centre;
 };

@@ -36,10 +36,10 @@ void Menu_Button::set_text_visiable(bool visiable)
 	this->label->set_visiable(visiable);
 }
 
-void Menu_Button::set_position(const Vector2& vec)
+void Menu_Button::setLocalPosition(const Vector2& vec)
 {
-	TObject::set_position(vec);
-	this->label->set_position(vec);
+	TObject::setLocalPosition(vec);
+	this->label->setLocalPosition(vec);
 }
 
 void Menu_Button::on_update()

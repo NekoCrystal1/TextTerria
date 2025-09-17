@@ -1,25 +1,25 @@
 #include "StaticCollisionObject.h"
-
-StaticCollisionActor::StaticCollisionActor(const Vector2& size, const Vector2& position) : TEntityObject(size, position),
+#include "TLevelManager.h"
+StaticCollisionObject::StaticCollisionObject(const Vector2& size, const Vector2& position) : TEntityObject(size, position, ),
 m_pCollisionComponent(new CollisionComponent(this))
 {
 }
 
-StaticCollisionActor::~StaticCollisionActor()
+StaticCollisionObject::~StaticCollisionObject()
 {
 	delete m_pCollisionComponent;
 }
 
-CollisionComponent* StaticCollisionActor::getCollisionComponent()
+CollisionComponent* StaticCollisionObject::getCollisionComponent()
 {
 	return m_pCollisionComponent;
 }
 
-bool StaticCollisionActor::initial()
+bool StaticCollisionObject::initial()
 {
 	return false;
 }
 
-void StaticCollisionActor::colide_func(TEntityObject* target)
+void StaticCollisionObject::colide_func(TEntityObject* target)
 {
 }

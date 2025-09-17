@@ -70,7 +70,7 @@ MenuSence::MenuSence()
 	btn->set_text_handle_color(0x11EEEE);
 
 	//修改列表后应重新设置位置
-	button_list->set_position(menu_background_widget->get_layout(1, button_list->getTransform()->get_size()));
+	button_list->setLocalPosition(menu_background_widget->get_layout(1, button_list->getTransform()->get_size()));
 }
 
 MenuSence::~MenuSence()

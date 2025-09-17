@@ -1,17 +1,26 @@
 #pragma once
-#include "TComponentObject.h"
-#include "TObject.h"
+#include "TWorldTransformObject.h"
 #include "TNodeInterface.hpp"
-class RenderNode : public TObject, public TNodeInterface<RenderNode>
+class RenderNode : public TWorldTransformObject, public TNodeInterface<RenderNode>
 {
+	defaultSetParent(RenderNode);
+	defaultRemoveNextNodesTo(RenderNode);
+	defaultWorldTransformVirtualFuncInNode;
 public:
-	RenderNode(Transform* pTransform, bool bIsVisible = true);
+	RenderNode(RenderNode* pParent, const Vector2& size = Vector2(), const Vector2& position = Vector2(), bool bIsVisible = true);
 	virtual ~RenderNode() = default;
 public:
-	virtual void onRender(float fCurTime);
+	virtual void onRender(unsigned int ui32CurMilisecond);
+	void nextFrameMoveTo(const Vector2& newPos);
 protected:
-	void renderNextNodes(float fCurTime);
+	void renderNextNodes(unsigned int ui32CurMilisecond);
 protected:
+	unsigned int m_ui32LastMilisecond;
+	unsigned int m_ui32CurCountMilisecond;
 	bool m_bIsVisible;
-
+	bool m_bIsTransformChanged;
+	//父节点及自身改变会导致世界坐标需要更新，在get时更新
+	bool m_bIsTransformDirty;
+	Transform* m_pWorldTransform;
+	Transform* m_pTargetTransform;
 };

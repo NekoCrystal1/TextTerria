@@ -20,11 +20,11 @@ void Bullet::on_update()
 
 void Bullet::set_position(const Vector2& pos)
 {
-	Actor::set_position(pos);
+	Actor::setLocalPosition(pos);
 }
 
-void Bullet::set_position(float x, float y)
+void Bullet::setLocalPosition(float x, float y)
 {
-	Actor::set_position(x, y);
+	Actor::setLocalPosition(x, y);
 }
 

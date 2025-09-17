@@ -7,9 +7,10 @@
 class Animation : public RenderNode
 {
 public:
-	Animation(Transform* pTransform);
-	Animation(Transform* pTransform, IMAGE* pImg);
-	Animation(Transform* pTransform, Atlas* atlas);
+	//使用RenderManager中的当前工作节点作为父节点：可在场景切换时自行修改，如果需要更换，可以修改RenderManager工作节点或者使用setParent
+	Animation(const Vector2& size = Vector2(), const Vector2& position = Vector2());
+	Animation(const Vector2& size = Vector2(), const Vector2& position = Vector2(), IMAGE* pImg);
+	Animation(const Vector2& size = Vector2(), const Vector2& position = Vector2(), Atlas* atlas);
 	~Animation();
 protected:
 	struct Frame
@@ -21,7 +22,7 @@ protected:
 		Transform m_pTransform;
 	};
 public:
-	virtual void onRender(float fCurTime) override;
+	virtual void onRender(unsigned int ui32CurMilisecond) override;
 	void addImg(IMAGE* img);
 private:
 	int m_i32CurFrameIndex;

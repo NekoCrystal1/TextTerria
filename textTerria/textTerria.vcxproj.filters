@@ -133,6 +133,12 @@
     <Filter Include="头文件\Game\GameItem\Actor\Pawn\Item">
       <UniqueIdentifier>{492efe45-e507-43d4-99a5-17b2d45dffac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Game\Level">
+      <UniqueIdentifier>{53047f1d-c293-4c02-9813-7a4f61e52a9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Game\Basic\Interface">
+      <UniqueIdentifier>{fce7ecfd-cce3-4f4e-9b5a-a50f9b7b41cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -285,16 +291,22 @@
     <ClCompile Include="TestBow.cpp">
       <Filter>源文件\Game\GameItem</Filter>
     </ClCompile>
-    <ClCompile Include="NormalPlayform.cpp">
+    <ClCompile Include="NormalPlatform.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="StaticCollisionActor.cpp">
+    <ClCompile Include="PlatformFactory.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Pawn.h">
-      <Filter>头文件\Game\GameItem\Actor\Pawn</Filter>
+    <ClCompile Include="StaticCollisionObject.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Pawn.cpp">
+    <ClCompile Include="TWorldTransformInterface.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TLevel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TLevelManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -452,20 +464,41 @@
     <ClInclude Include="Platform.h">
       <Filter>头文件\Game\GameItem\Actor\Chunck\Playform</Filter>
     </ClInclude>
-    <ClInclude Include="NormalPlayform.h">
-      <Filter>头文件\Game\GameItem\Actor\Chunck\Playform</Filter>
-    </ClInclude>
     <ClInclude Include="ResourcesManager.h">
       <Filter>头文件\Game\Render\AnimationRelated</Filter>
     </ClInclude>
     <ClInclude Include="CollisionComponent.h">
       <Filter>头文件\Game\GameItem\Component</Filter>
     </ClInclude>
-    <ClInclude Include="StaticCollisionActor.h">
-      <Filter>头文件\Game\GameItem\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="CollisionManager.h">
       <Filter>头文件\Game\GameItem\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="GameId.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TLevel.h">
+      <Filter>头文件\Game\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="TLevelManager.h">
+      <Filter>头文件\Game\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalPlatform.h">
+      <Filter>头文件\Game\GameItem\Actor\Chunck\Playform</Filter>
+    </ClInclude>
+    <ClInclude Include="TWorldTransformObject.h">
+      <Filter>头文件\Game\Basic\Virtual_Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="TNodeInterface.hpp">
+      <Filter>头文件\Game\Basic\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="PlatformFactory.h">
+      <Filter>头文件\Game\GameItem\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticCollisionObject.h">
+      <Filter>头文件\Game\GameItem\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="TNodeManagerInterface.h">
+      <Filter>头文件\Game\Basic\Interface</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

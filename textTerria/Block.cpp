@@ -13,7 +13,7 @@ void Block::initial(const Vector2& size, const Vector2& position)
 		});
 }
 
-Block::Block(COLORREF fillcolor, COLORREF linecolor, const Vector2& size, const Vector2& position): StaticCollisionActor(size, position)
+Block::Block(COLORREF fillcolor, COLORREF linecolor, const Vector2& size, const Vector2& position): StaticCollisionObject(size, position)
 {
 	initial(size, position);
 }
@@ -38,7 +38,7 @@ void Block::colide_func(TEntityObject* pTarget)
 	const Vector2& pos = m_pLocalTransform->get_position();
 	if (target_pos.y + target_size.y >= pos.y && target_pos.y + target_size.y - pTargetPawn->getMovementComponent()->get_velocity().y <= pos.y)
 	{
-		pTargetPawn->set_position(target_pos.x, pos.y - target_size.y);
+		pTargetPawn->setLocalPosition(target_pos.x, pos.y - target_size.y);
 		pTargetPawn->getMovementComponent()->set_velocity_y(0);
 	}
 }

@@ -53,18 +53,6 @@ void CollisionBox::on_collision()
 	}
 }
 
-void CollisionBox::set_position(const Vector2& position)
-{
-	TObject::set_position(position);
-	
-}
-
-void CollisionBox::set_position(float x, float y)
-{
-	TObject::set_position(x, y);
-
-}
-
 void CollisionBox::set_valid(bool is_valid)
 {
 	is_valid = is_valid;

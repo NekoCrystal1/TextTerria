@@ -12,8 +12,8 @@ public:
 	WidgetList(Widget* parent = nullptr, ListMode listmode = ListMode::vertical, int alignment = 1, int interval = 0, int original_interval = 0);
 	virtual ~WidgetList();
 	virtual void refresh_transform();
-	void set_position(const Vector2& new_pos);
-	void set_position(float x, float y);
+	void setLocalPosition(const Vector2& new_pos);
+	void setLocalPosition(float x, float y);
 	void add_child(Widget* child) override;
 	void set_interval(int interval);
 	void set_original_interval(int interval);

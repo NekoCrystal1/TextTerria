@@ -1,6 +1,6 @@
 #pragma once
 #include "StaticCollisionObject.h"
-class Platform : public StaticCollisionActor 
+class Platform : public StaticCollisionObject 
 {
 public:
 	Platform(const Vector2& size = Vector2(), const Vector2& position = Vector2());

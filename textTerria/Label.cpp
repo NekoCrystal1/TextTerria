@@ -74,8 +74,8 @@ void Label::set_text_handle_color(const COLORREF color)
 	this->text_handle_color = color;
 }
 
-void Label::set_position(const Vector2& vec)
+void Label::setLocalPosition(const Vector2& vec)
 {
-	Widget::set_position(vec);
+	Widget::setLocalPosition(vec);
 	this->original_transform.set_position(vec);
 }

@@ -1,7 +1,6 @@
 #include "Game.h"
 #include <iostream>
 
-const static float per_frame_milisecond = (float)1000 / (float)60;
 
 Game::Game() : m_bIsGameRunning(true), m_pMainMenuScene(nullptr), m_pGameScene(nullptr)
 {
@@ -28,7 +27,7 @@ void Game::runGame()
 	ExMessage msg;
 	auto cur_time = std::chrono::high_resolution_clock::now();
 	auto last_time = cur_time;
-	int delta = 0;
+	unsigned int delta = 0;
 	//IMAGE* temp = new IMAGE(100,100);
 	int frames = 0;//记录经过帧数->计算每秒帧数
 	int timer = 0;//记录经过时间
@@ -43,7 +42,7 @@ void Game::runGame()
 		cur_time = std::chrono::high_resolution_clock::now();
 		delta += (cur_time - last_time).count() / 1000000;
 		last_time = cur_time;
-		while (delta > per_frame_milisecond) {
+		while (delta > PER_FRAME_MILISECOND) {
 			timer++;
 			if (timer > 60) {
 				timer -= 60;
@@ -54,7 +53,7 @@ void Game::runGame()
 			CAMERA->on_uodate();
 			SenceManager::instance()->on_update();
 			InputManager::instance()->on_update();
-			delta -= per_frame_milisecond;
+			delta -= PER_FRAME_MILISECOND;
 		}
 		//render
 		cleardevice();

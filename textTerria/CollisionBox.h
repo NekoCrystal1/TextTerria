@@ -28,8 +28,6 @@ public:
 	void on_update();
 	void on_render()const ;
 	void on_collision();
-	virtual void set_position(const Vector2& position) override;
-	virtual void set_position(float x, float y) override;
 	//对位置进行网格对齐
 	void set_valid(bool is_valid);
 	void set_collision_shape(CollisionShape shape);

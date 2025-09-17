@@ -1,11 +1,11 @@
 #pragma once
 #include "TEntityObject.h"
 #include "CollisionComponent.h"
-class StaticCollisionActor : public TEntityObject
+class StaticCollisionObject : public TEntityObject
 {
 public:
-	StaticCollisionActor(const Vector2& size = Vector2(), const Vector2& position = Vector2());
-	~StaticCollisionActor();
+	StaticCollisionObject(const Vector2& size = Vector2(), const Vector2& position = Vector2());
+	~StaticCollisionObject();
 public:
 	CollisionComponent* getCollisionComponent();
 	//需要创建碰撞箱时，根据是否创建成功返回

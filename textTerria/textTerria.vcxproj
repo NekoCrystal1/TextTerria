@@ -170,9 +170,12 @@
     <ClCompile Include="TEntityObject.cpp" />
     <ClCompile Include="TestBow.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="TLevel.cpp" />
+    <ClCompile Include="TLevelManager.cpp" />
     <ClCompile Include="TObject.cpp" />
     <ClCompile Include="TObjectManager.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="TWorldTransformInterface.cpp" />
     <ClCompile Include="UI_Button.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="VerticalWidgetList.cpp" />
@@ -191,6 +194,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameId.h" />
     <ClInclude Include="ItemButton.h" />
+    <ClInclude Include="TLevel.h" />
     <ClInclude Include="Macro.hpp" />
     <ClInclude Include="MilisecondTimer.h" />
     <ClInclude Include="NormalPlatform.h" />
@@ -228,10 +232,13 @@
     <ClInclude Include="TEntityObject.h" />
     <ClInclude Include="TestBow.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="TLevelManager.h" />
     <ClInclude Include="TNodeInterface.hpp" />
+    <ClInclude Include="TNodeManagerInterface.h" />
     <ClInclude Include="TObject.h" />
     <ClInclude Include="TObjectManager.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="TWorldTransformObject.h" />
     <ClInclude Include="UI_Button.h" />
     <ClInclude Include="UTIL.hpp" />
     <ClInclude Include="VerticalWidgetList.h" />

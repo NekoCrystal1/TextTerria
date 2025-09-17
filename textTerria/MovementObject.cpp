@@ -38,7 +38,7 @@ void MovementComponent::on_update()
 		m_oVelocity.y = -m_oMaxVelocity.y;
 
 
-	set_position(m_pLocalTransform->get_position() + m_oVelocity);
+	setLocalPosition(m_pLocalTransform->get_position() + m_oVelocity);
 }
 
 void MovementComponent::setAcceleration(const Vector2& value)

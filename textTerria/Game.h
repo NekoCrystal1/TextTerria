@@ -7,6 +7,8 @@
 #include "InputManager.h"
 #include "CollisionManager.h"
 
+const static float PER_FRAME_MILISECOND = (float)1000 / (float)60;
+
 class Game : public Singleton<Game>
 {
 	friend Singleton<Game>;

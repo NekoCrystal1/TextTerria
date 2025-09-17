@@ -12,7 +12,7 @@ public:
 	void set_text_height(int height);
 	void set_text_color(const COLORREF color);
 	void set_text_handle_color(const COLORREF color);
-	void set_position(const Vector2& vec)override;
+	void setLocalPosition(const Vector2& vec)override;
 protected:
 	std::wstring text;
 	COLORREF text_original_color;	//±êÇ©Ô­ÑÕÉ«
