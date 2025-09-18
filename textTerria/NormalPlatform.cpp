@@ -5,13 +5,19 @@ NormalPlatform::NormalPlatform(const Vector2& position) : Platform(Vector2(32, 1
 {
 }
 
+NormalPlatform::~NormalPlatform()
+{
+	delete m_pAnimation;
+	m_pAnimation = nullptr;
+}
+
 bool NormalPlatform::initial()
 {
 	bool ans = Platform::initial();
 	if (ans)
 	{
-		m_pPlatformAnimation = ANIMATION_FACTORY->tryCreateAnimation(RESOURCES_MANAGER->getImage("TestPlatformImg"), m_pLocalTransform->get_position());
-		if (m_pPlatformAnimation)
+		m_pAnimation = ANIMATION_FACTORY->tryCreateAnimation(RESOURCES_MANAGER->getImage("TestPlatformImg"), m_pLocalTransform->get_position());
+		if (m_pAnimation)
 		{
 			return true;
 		}

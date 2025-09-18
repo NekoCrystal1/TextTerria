@@ -1,6 +1,5 @@
 #pragma once
 #include "StaticCollisionObject.h"
-#include "Animation.h"
 class Platform : public StaticCollisionObject 
 {
 public:

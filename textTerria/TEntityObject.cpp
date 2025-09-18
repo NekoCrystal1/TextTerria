@@ -14,6 +14,7 @@ m_bIsCanBeDeleted(false)
 
 TEntityObject::~TEntityObject()
 {
+	
 	if (m_pLocalTransform) {
 		delete m_pLocalTransform;
 		m_pLocalTransform = nullptr;

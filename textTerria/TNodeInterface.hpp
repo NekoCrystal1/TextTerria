@@ -41,6 +41,22 @@ virtual void changeNextNodeParent(TypeName##* pNextNode)override\
 pNextNode->m_pParentNode = this;\
 }
 
+#define defaultRemoveFroemParent(TypeName) \
+protected:\
+virtual void removeFromParent() override\
+{\
+if(m_pParentNode)\
+	{\
+		m_pParentNode.eraseNode(this);\
+	}\
+}
+
+#define defaultTNodeInterfaceOverride(TypeName) \
+defaultSetParent(TypeName);\
+defaultRemoveNextNodesTo(TypeName);\
+defaultChangeNextNodeParent(TypeName);\
+defaultRemoveFroemParent(TypeName);
+
 template<typename T>
 class TNodeInterface
 {
@@ -53,7 +69,9 @@ public:
 	std::vector<T*>& getNextNodes();
 	T* getParentNode();
 	void setOrder(int i32Order);
+	//修改自身父节点
 	virtual void setParentNode(T* pNewParent) = 0;
+	//将子节点移入目标节点
 	virtual void removeNextNodesTo(T* pNewParent) = 0;
 protected:
 	//由于新增节点需要修改新节点的父节点，因此需要利用该函数实现;
@@ -64,6 +82,8 @@ protected:
 	void addNode(T* pNextNode);
 	//直接尾插：将会改变目标层级为最高层
 	void pushBack(T* pNextNode);
+	//将自身从父节点移除
+	virtual void removeFromParent() = 0;
 protected:
 	//当前渲染层级：渲染顺序，先渲染当前节点，然后渲染子节点，子节点排序根据层级由小到大排序，因此先渲染层级小的，默认0级
 	int m_i32Order;
@@ -81,8 +101,14 @@ inline TNodeInterface<T>::TNodeInterface() : m_i32Order(0), m_vecNextNodes(), m_
 template<typename T>
 inline TNodeInterface<T>::~TNodeInterface()
 {
+	//先将所有子节点的父节点置空：自身所有子节点均无需remove（因为他们的父节点也会被释放）
+	for (TNodeInterface<T>* node : m_vecNextNodes)
+	{
+		node->m_pParentNode = nullptr;
+	}
 	clearVec(this->m_vecNextNodes);
-	//T000:此处需要预留一个函数，使自身被移除时，将自身从父节点中删除，需要防止子节点重复调用该函数（因为它们的父节点也会被删除），且不可重复delete
+	//将自身从父节点中移除
+	removeFromParent();
 }
 
 template<typename T>
