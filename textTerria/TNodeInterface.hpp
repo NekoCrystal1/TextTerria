@@ -2,61 +2,7 @@
 #include <vector>
 #include "UTIL.hpp"
 
-//如果可以确保T是该类的子类，则这些函数可以有该类实现
-
-#define defaultSetParent(TypeName) \
-public:\
-virtual void setParentNode(TypeName##* pNewParent)override\
-{\
-	if (m_pParentNode)\
-	{\
-		m_pParentNode->eraseNode(this);\
-	}\
-	this->m_pParentNode = pNewParent;\
-	if(pNewParent)\
-	{\
-		pNewParent->addNode(this); \
-	}\
-}
-
-#define defaultRemoveNextNodesTo(TypeName) \
-public:\
-virtual void removeNextNodesTo(TypeName##* pNewParent)override\
-{\
-	for(TypeName##* node : m_vecNextNodes)\
-	{\
-		node->m_pParentNode = pNewParent;\
-		if(pNewParent)\
-		{\
-			pNewParent->addNode(node); \
-		}\
-	}\
-	m_vecNextNodes.clear();\
-}
-
-#define defaultChangeNextNodeParent(TypeName) \
-protected:\
-virtual void changeNextNodeParent(TypeName##* pNextNode)override\
-{\
-pNextNode->m_pParentNode = this;\
-}
-
-#define defaultRemoveFroemParent(TypeName) \
-protected:\
-virtual void removeFromParent() override\
-{\
-if(m_pParentNode)\
-	{\
-		m_pParentNode.eraseNode(this);\
-	}\
-}
-
-#define defaultTNodeInterfaceOverride(TypeName) \
-defaultSetParent(TypeName);\
-defaultRemoveNextNodesTo(TypeName);\
-defaultChangeNextNodeParent(TypeName);\
-defaultRemoveFroemParent(TypeName);
-
+//T类必为模板类子类
 template<typename T>
 class TNodeInterface
 {
@@ -70,12 +16,12 @@ public:
 	T* getParentNode();
 	void setOrder(int i32Order);
 	//修改自身父节点
-	virtual void setParentNode(T* pNewParent) = 0;
+	void setParentNode(T* pNewParent);
 	//将子节点移入目标节点
-	virtual void removeNextNodesTo(T* pNewParent) = 0;
+	void removeNextNodesTo(T* pNewParent);
 protected:
 	//由于新增节点需要修改新节点的父节点，因此需要利用该函数实现;
-	virtual void changeNextNodeParent(T* pNextNode) = 0;
+	//virtual void changeNextNodeParent(T* pNextNode) = 0;
 	//由于移除需要改变pTarget的父节点，但是T*不具备此功能，所以使用setParent来控制
 	void eraseNode(T* pTarget);
 	//自动根据层级添加，protected理由同上
@@ -83,7 +29,7 @@ protected:
 	//直接尾插：将会改变目标层级为最高层
 	void pushBack(T* pNextNode);
 	//将自身从父节点移除
-	virtual void removeFromParent() = 0;
+	virtual void removeFromParent();
 protected:
 	//当前渲染层级：渲染顺序，先渲染当前节点，然后渲染子节点，子节点排序根据层级由小到大排序，因此先渲染层级小的，默认0级
 	int m_i32Order;
@@ -131,7 +77,8 @@ inline void TNodeInterface<T>::addNode(T* pNextNode)
 			break;
 		}
 	}
-	changeNextNodeParent(pNextNode);
+	TNodeInterface<T>* pNext = static_cast<TNodeInterface<T>*>(pNextNode);
+	pNext->m_pParentNode = static_cast<T*>(this);
 	//如果子节点为空或者加入节点最大，则尾插
 	if (!bHasAdd)
 	{
@@ -154,7 +101,18 @@ inline void TNodeInterface<T>::pushBack(T* pNextNode)
 		pNextNode->m_i32Order = m_vecNextNodes.back()->m_i32Order;
 	}
 	m_vecNextNodes.push_back(pNextNode);
-	changeNextNodeParent(pNextNode);
+	TNodeInterface<T>* pNext = static_cast<TNodeInterface<T>*>(pNextNode);
+	pNext->m_pParentNode = this;
+}
+
+template<typename T>
+inline void TNodeInterface<T>::removeFromParent()
+{
+	TNodeInterface<T>* pParent = static_cast<TNodeInterface<T>*>(m_pParentNode);
+	if (pParent)
+	{
+		pParent->eraseNode(static_cast<T*>(this));
+	}
 }
 
 template<typename T>
@@ -211,6 +169,36 @@ inline void TNodeInterface<T>::setOrder(int i32Order)
 	}
 	m_i32Order = i32Order;
 
+}
+
+template<typename T>
+inline void TNodeInterface<T>::setParentNode(T* pNewParent)
+{
+	TNodeInterface<T>* pParent = static_cast<TNodeInterface<T>*>(m_pParentNode);
+	if (pParent)
+	{
+		pParent->eraseNode(static_cast<T*>(this));
+	}
+	this->m_pParentNode = pNewParent; 
+	if (pNewParent)
+	{
+		pNewParent->addNode(static_cast<T*>(this));
+	}
+}
+
+template<typename T>
+inline void TNodeInterface<T>::removeNextNodesTo(T* pNewParent)
+{
+	for (T* i : m_vecNextNodes)
+	{
+		TNodeInterface<T>* node = static_cast<TNodeInterface<T>*>(i);
+		node->m_pParentNode = pNewParent;
+		if (pNewParent)
+		{
+			pNewParent->addNode(static_cast<T*>(node));
+		}
+	}
+	m_vecNextNodes.clear(); 
 }
 
 template<typename T>

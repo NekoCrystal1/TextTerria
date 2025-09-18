@@ -3,7 +3,6 @@
 #include "TNodeInterface.hpp"
 class RenderNode : public TWorldTransformObject, public TNodeInterface<RenderNode>
 {
-	defaultTNodeInterfaceOverride(TEntityObject);
 	defaultWorldTransformVirtualFuncInNode;
 public:
 	RenderNode(const Vector2& size = Vector2(), const Vector2& position = Vector2(), bool bIsVisible = true);

@@ -6,7 +6,7 @@ class NormalBlock : public Block
 {
 public:
 	NormalBlock(const Vector2& position = Vector2());
-	~NormalBlock() = default;
+	virtual ~NormalBlock();
 public:
 	virtual bool initial() override;
 };

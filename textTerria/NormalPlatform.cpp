@@ -1,7 +1,7 @@
 #include "NormalPlatform.h"
 #include "AnimationFactory.h"
 #include "ResourcesManager.h"
-NormalPlatform::NormalPlatform(const Vector2& position) : Platform(Vector2(32, 16), position), m_pPlatformAnimation(nullptr)
+NormalPlatform::NormalPlatform(const Vector2& position) : Platform(Vector2(32, 16), position)
 {
 }
 

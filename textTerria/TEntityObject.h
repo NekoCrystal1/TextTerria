@@ -4,7 +4,6 @@
 class TEntityObject : public TWorldTransformObject, public TNodeInterface<TEntityObject>
 {
 	friend TComponentObject;
-	defaultTNodeInterfaceOverride(TEntityObject);
 	defaultWorldTransformVirtualFuncInNode;
 private:
 	TEntityObject(const TEntityObject& t) = delete;
