@@ -36,6 +36,7 @@ inline Vector2 CollisionManager::net_align(const Vector2& pos)
 Vector2 CollisionManager::get_netvector_pos(const Vector2& pos)
 {
 	Vector2 ans(((int)pos.x) / 32, ((int)pos.y) / 32);
+	//检查目标位置是否超出边界
 	bool is_extended = false;
 	if (ans.x < left) {
 		left = ans.x;
@@ -54,8 +55,10 @@ Vector2 CollisionManager::get_netvector_pos(const Vector2& pos)
 		is_extended = true;
 	}
 	ans = ans - Vector2(left, top);
-	if (is_extended) {
-		std::vector<std::vector<CollisionBox*>> new_static_collision_boxes(bottom - top + 1, std::vector<CollisionBox*>(right - left+ 1));
+
+	//实现网格自动扩展
+	if (is_extended || static_collision_boxes.empty()) {
+		std::vector<std::vector<CollisionBox*>> new_static_collision_boxes(bottom - top + 1, std::vector<CollisionBox*>(right - left+ 1, nullptr));
 		for(std::vector<CollisionBox*>& box_vec : static_collision_boxes)
 			for (CollisionBox* box : box_vec) {
 				if (box) {
@@ -219,6 +222,6 @@ void CollisionManager::remove_box(CollisionBox* box)
 	}
 }
 
-CollisionManager::CollisionManager() : left(0),right(0),top(0),bottom(0), static_collision_boxes(1, std::vector<CollisionBox*>(1))
+CollisionManager::CollisionManager() : left(0),right(0),top(0),bottom(0)
 {
 }

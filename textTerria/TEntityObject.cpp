@@ -1,12 +1,12 @@
 #include "TEntityObject.h"
 
-TEntityObject::TEntityObject(TEntityObject* pParent, const Vector2& size, const Vector2& position) : TNodeInterface(pParent),
+TEntityObject::TEntityObject(const Vector2& size, const Vector2& position) : TNodeInterface(),
 	TWorldTransformObject(size, position),
 m_bIsCanBeDeleted(false)
 {
 }
 
-TEntityObject::TEntityObject(TEntityObject* pParent, const Transform& transform) : TNodeInterface(pParent),
+TEntityObject::TEntityObject(const Transform& transform) : TNodeInterface(),
 	TWorldTransformObject(transform),
 m_bIsCanBeDeleted(false)
 {

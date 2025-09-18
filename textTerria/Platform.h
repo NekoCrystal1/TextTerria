@@ -1,5 +1,6 @@
 #pragma once
 #include "StaticCollisionObject.h"
+#include "Animation.h"
 class Platform : public StaticCollisionObject 
 {
 public:
@@ -9,5 +10,6 @@ public:
 	virtual bool initial() override;
 protected:
 	virtual void colide_func(TEntityObject* target);
-	
+protected:
+	Animation* m_pPlatformAnimation;
 };

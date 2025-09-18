@@ -46,7 +46,7 @@ class TNodeInterface
 {
 public:
 	//允许父节点为空
-	TNodeInterface(T* pParent);
+	TNodeInterface();
 	virtual ~TNodeInterface();
 public:
 	//获取的是vector引用
@@ -74,7 +74,7 @@ protected:
 };
 
 template<typename T>
-inline TNodeInterface<T>::TNodeInterface(T* pParent) : m_i32Order(0), m_vecNextNodes(), m_pParentNode(pParent)
+inline TNodeInterface<T>::TNodeInterface() : m_i32Order(0), m_vecNextNodes(), m_pParentNode(nullptr)
 {
 }
 

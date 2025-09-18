@@ -11,8 +11,8 @@ class TEntityObject : public TWorldTransformObject, public TNodeInterface<TEntit
 private:
 	TEntityObject(const TEntityObject& t) = delete;
 public:
-	TEntityObject(TEntityObject* pParent, const Vector2& size = Vector2(), const Vector2& position = Vector2());
-	TEntityObject(TEntityObject* pParent, const Transform& transform = Transform());
+	TEntityObject(const Vector2& size = Vector2(), const Vector2& position = Vector2());
+	TEntityObject(const Transform& transform);
 	virtual ~TEntityObject();
 public:
 	virtual void on_update();

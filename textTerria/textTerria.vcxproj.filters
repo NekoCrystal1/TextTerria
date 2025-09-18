@@ -326,7 +326,7 @@
     <ClInclude Include="Transform.h">
       <Filter>头文件\Game\Basic</Filter>
     </ClInclude>
-    <ClInclude Include="AnimationManager.h">
+    <ClInclude Include="AnimationFactory.h">
       <Filter>头文件\Game\Render\AnimationRelated</Filter>
     </ClInclude>
     <ClInclude Include="GameSence.h">

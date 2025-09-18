@@ -1,6 +1,10 @@
 #include "Game.h"
 #include <iostream>
-
+#include "CollisionManager.h"
+#include "InputManager.h"
+#include "RenderManager.h"
+#include "ResourcesManager.h"
+#include "SenceManager.h"
 
 Game::Game() : m_bIsGameRunning(true), m_pMainMenuScene(nullptr), m_pGameScene(nullptr)
 {
@@ -14,6 +18,8 @@ void Game::initGame()
 {
 	initgraph(1280, 720);
 	setbkmode(TRANSPARENT);
+	RESOURCES_MANAGER->loadResources();
+
 	m_pMainMenuScene = new MenuSence();
 	m_pGameScene = new GameSence();
 	SenceManager::instance()->add_sence("menu", m_pMainMenuScene);
@@ -27,6 +33,7 @@ void Game::runGame()
 	ExMessage msg;
 	auto cur_time = std::chrono::high_resolution_clock::now();
 	auto last_time = cur_time;
+	//变化的毫秒数
 	unsigned int delta = 0;
 	//IMAGE* temp = new IMAGE(100,100);
 	int frames = 0;//记录经过帧数->计算每秒帧数
@@ -57,7 +64,10 @@ void Game::runGame()
 		}
 		//render
 		cleardevice();
-		SenceManager::instance()->on_render();
+
+		//使用Rendermanger
+		//SenceManager::instance()->on_render();
+		RENDER_MANAGER->onRender(std::chrono::duration_cast<std::chrono::milliseconds>(cur_time.time_since_epoch()).count());
 		FlushBatchDraw();
 		frames++;
 		Sleep(1);

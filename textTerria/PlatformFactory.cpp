@@ -10,6 +10,7 @@ NormalPlatform* PlatformFactory::tryCreateNormalPlatform(BlockId emPlatformID, c
 		if (!pNormalPlatform->initial())
 		{
 			delete pNormalPlatform;
+			pNormalPlatform = nullptr;
 		}
 		break;
 	default:

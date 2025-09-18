@@ -19,7 +19,7 @@ bool Platform::initial()
 	return true;
 }
 
-Platform::Platform(const Vector2& size, const Vector2& position) : StaticCollisionObject(size, position)
+Platform::Platform(const Vector2& size, const Vector2& position) : StaticCollisionObject(size, position), m_pPlatformAnimation(nullptr)
 {
 }
 

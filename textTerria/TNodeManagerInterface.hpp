@@ -12,7 +12,7 @@ public:
 	T* getAndAddRoot(std::string sNodeName);
 	//查找根节点，如果不存在则返回nullptr且不会添加新节点
 	T* getRootNode(std::string sNodeName);
-	T* gerCruWorkNode();
+	T* getCruWorkNode();
 	//传入nullptr会被重定向为virtualNode
 	void setCurWorkNode(T* pWorkNode);
 protected:
@@ -43,7 +43,7 @@ inline T* TNodeManagerInterface<T>::getAndAddRoot(std::string sNodeName)
 	T* pNode = getRootNode(sNodeName);
 	if (!pNode)
 	{
-		pNode = new T(nullptr);
+		pNode = new T();
 		m_mapRenderRoots.insert(std::pair<std::string, T*>(sNodeName, pNode));
 	}
 	return pNode;
@@ -61,7 +61,7 @@ inline T* TNodeManagerInterface<T>::getRootNode(std::string sNodeName)
 }
 
 template<typename T>
-inline T* TNodeManagerInterface<T>::gerCruWorkNode()
+inline T* TNodeManagerInterface<T>::getCruWorkNode()
 {
 	return m_pCurWorkNode;
 }

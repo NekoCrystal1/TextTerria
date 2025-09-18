@@ -8,7 +8,7 @@ public:
 	~StaticCollisionObject();
 public:
 	CollisionComponent* getCollisionComponent();
-	//需要创建碰撞箱时，根据是否创建成功返回
+	//需要创建碰撞箱时，根据是否创建成功返回true/false
 	virtual bool initial();
 protected:
 	virtual void colide_func(TEntityObject* target);

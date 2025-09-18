@@ -9,10 +9,10 @@ class RenderManager : public Singleton<RenderManager>, public TNodeManagerInterf
 {
 	friend Singleton<RenderManager>;
 private:
-	RenderManager() = default;
-	~RenderManager() = default;
+	RenderManager();
+	~RenderManager();
 public:
-	void onRender(float fCurTime);
+	void onRender(unsigned long long ui64CurTime);
 	void clearRenderNodes();
 	void eraseRenderNode(std::string sNodeName);
 	//将某根节点加入到渲染队列，返回加入的节点，如果加入了不存在的节点，会返回当前工作节点

@@ -2,18 +2,8 @@
 #include "RenderManager.h"
 #include "UTIL.hpp"
 
-Animation::Animation(const Vector2& size, const Vector2& position) :
-	RenderNode(RENDER_MANAGER->gerCruWorkNode(), size, position), m_i32CurFrameIndex(0)
-{
-}
-
-Animation::Animation(IMAGE* pImg, const Vector2& size, const Vector2& position) :
-	RenderNode(RENDER_MANAGER->gerCruWorkNode(), size, position), m_i32CurFrameIndex(0), m_vecFrames(1,new Frame(pImg))
-{
-}
-
-Animation::Animation(Atlas* pAtlas, const Vector2& size, const Vector2& position) :
-	RenderNode(RENDER_MANAGER->gerCruWorkNode(), size, position), m_i32CurFrameIndex(0), m_vecFrames()
+Animation::Animation(const Vector2& position) :
+	RenderNode(Vector2(), position), m_i32CurFrameIndex(0)
 {
 }
 
@@ -22,7 +12,32 @@ Animation::~Animation()
 	clearVec(m_vecFrames);
 }
 
-void Animation::onRender(unsigned int ui32CurMilisecond)
+bool Animation::initial(IMAGE* pImg)
+{
+	if (pImg)
+	{
+		m_vecFrames.reserve(1);
+		m_vecFrames.emplace_back(new Frame(pImg));
+		return true;
+	}
+	return false;
+}
+
+bool Animation::initial(Atlas* pAtlas)
+{
+	if (pAtlas)
+	{
+		m_vecFrames.reserve(pAtlas->getSize());
+		for (IMAGE* pImg : pAtlas->getImgs())
+		{
+			m_vecFrames.emplace_back(new Frame(pImg));
+		}
+		return true;
+	}
+	return false;
+}
+
+void Animation::onRender(unsigned long long ui32CurMilisecond)
 {
 	if (!m_bIsVisible)
 	{
@@ -37,7 +52,6 @@ void Animation::onRender(unsigned int ui32CurMilisecond)
 		oCurSize.only_multiply_every_element_modify_self(m_pLocalTransform->get_scale());
 		putImage(oCurPos.x, oCurPos.y, oCurSize.x, oCurSize.y, pImg, 0, 0, pImg->getwidth(), pImg->getheight());
 	}
-
 	renderNextNodes(ui32CurMilisecond);
 }
 
@@ -47,6 +61,6 @@ void Animation::addImg(IMAGE* img)
 	m_vecFrames.push_back(frame);
 }
 
-Animation::Frame::Frame(IMAGE* pImg) : m_pImg(pImg)
+Animation::Frame::Frame(IMAGE* pImg) : m_pImg(pImg), m_pTransform(Vector2(pImg->getwidth(), pImg->getheight()))
 {
 }

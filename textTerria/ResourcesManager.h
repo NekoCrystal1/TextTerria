@@ -4,6 +4,8 @@
 #include <unordered_map>
 #include "Atlas.h"
 #include "Singleton.hpp"
+
+#define RESOURCES_MANAGER ResourcesManager::instance()
 class ResourcesManager : public Singleton<ResourcesManager>
 {
 	friend Singleton<ResourcesManager>;

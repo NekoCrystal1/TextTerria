@@ -8,10 +8,10 @@ class RenderNode : public TWorldTransformObject, public TNodeInterface<RenderNod
 	defaultChangeNextNodeParent(RenderNode);
 	defaultWorldTransformVirtualFuncInNode;
 public:
-	RenderNode(RenderNode* pParent, const Vector2& size = Vector2(), const Vector2& position = Vector2(), bool bIsVisible = true);
+	RenderNode(const Vector2& size = Vector2(), const Vector2& position = Vector2(), bool bIsVisible = true);
 	virtual ~RenderNode() = default;
 public:
-	virtual void onRender(unsigned int ui32CurMilisecond);
+	virtual void onRender(unsigned long long ui32CurMilisecond);
 	void nextFrameMoveTo(const Vector2& newPos);
 protected:
 	void renderNextNodes(unsigned int ui32CurMilisecond);

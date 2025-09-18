@@ -7,4 +7,5 @@ public:
 	NormalPlatform(const Vector2& position = Vector2());
 	~NormalPlatform() = default;
 public:
+	virtual bool initial() override;
 };

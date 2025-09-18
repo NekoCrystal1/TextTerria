@@ -1,8 +1,18 @@
 #include "RenderManager.h"
-
-void RenderManager::onRender(float fCurTime)
+RenderManager::RenderManager() : TNodeManagerInterface(),
+m_pRenderNode(new RenderNode())
 {
-	m_pRenderNode->onRender(fCurTime);
+}
+
+RenderManager::~RenderManager()
+{
+	delete m_pRenderNode;
+	m_pRenderNode = nullptr;
+}
+
+void RenderManager::onRender(unsigned long long ui64CurTime)
+{
+	m_pRenderNode->onRender(ui64CurTime);
 }
 
 void RenderManager::clearRenderNodes()

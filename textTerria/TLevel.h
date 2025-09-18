@@ -3,6 +3,6 @@
 class TLevel : public TEntityObject
 {
 public:
-	TLevel(TEntityObject* pParent);
+	TLevel();
 	~TLevel();
 };

@@ -1,8 +1,8 @@
 #include "RenderNode.h"
 #include "Game.h"
 
-RenderNode::RenderNode(RenderNode* pParent, const Vector2& size, const Vector2& position, bool bIsVisible) : 
-	TWorldTransformObject(size, position), TNodeInterface(pParent),
+RenderNode::RenderNode(const Vector2& size, const Vector2& position, bool bIsVisible) : 
+	TWorldTransformObject(size, position), TNodeInterface(),
 m_bIsVisible(bIsVisible), m_bIsTransformChanged(false),
 m_ui32LastMilisecond(0), m_ui32CurCountMilisecond(0), m_pTargetTransform(new Transform(size, position))
 {
@@ -37,7 +37,7 @@ void RenderNode::renderNextNodes(unsigned int ui32CurMilisecond)
 	}
 }
 
-void RenderNode::onRender(unsigned int ui32CurMilisecond)
+void RenderNode::onRender(unsigned long long ui32CurMilisecond)
 {
 	if (!m_bIsVisible)
 	{
