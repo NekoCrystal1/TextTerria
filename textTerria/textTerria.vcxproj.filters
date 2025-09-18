@@ -300,9 +300,6 @@
     <ClCompile Include="StaticCollisionObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="TWorldTransformInterface.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="TLevel.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -494,7 +491,7 @@
     <ClInclude Include="NormalPlatform.h">
       <Filter>头文件\Game\GameItem\Actor\Chunck\Playform</Filter>
     </ClInclude>
-    <ClInclude Include="TWorldTransformObject.h">
+    <ClInclude Include="TWorldTransformObject.hpp">
       <Filter>头文件\Game\Basic\Virtual_Obj</Filter>
     </ClInclude>
     <ClInclude Include="TNodeInterface.hpp">

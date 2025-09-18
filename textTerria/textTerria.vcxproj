@@ -178,7 +178,6 @@
     <ClCompile Include="TObject.cpp" />
     <ClCompile Include="TObjectManager.cpp" />
     <ClCompile Include="Transform.cpp" />
-    <ClCompile Include="TWorldTransformInterface.cpp" />
     <ClCompile Include="UI_Button.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="VerticalWidgetList.cpp" />
@@ -244,7 +243,7 @@
     <ClInclude Include="TObject.h" />
     <ClInclude Include="TObjectManager.h" />
     <ClInclude Include="Transform.h" />
-    <ClInclude Include="TWorldTransformObject.h" />
+    <ClInclude Include="TWorldTransformObject.hpp" />
     <ClInclude Include="UI_Button.h" />
     <ClInclude Include="UTIL.hpp" />
     <ClInclude Include="VerticalWidgetList.h" />

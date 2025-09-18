@@ -1,10 +1,10 @@
 #pragma once
 #include "TNodeInterface.hpp"
-#include "TWorldTransformObject.h"
-class TEntityObject : public TWorldTransformObject, public TNodeInterface<TEntityObject>
+#include "TWorldTransformObject.hpp"
+
+class TEntityObject : public TWorldTransformObject<TEntityObject>, public TNodeInterface<TEntityObject>
 {
 	friend TComponentObject;
-	defaultWorldTransformVirtualFuncInNode;
 private:
 	TEntityObject(const TEntityObject& t) = delete;
 public:

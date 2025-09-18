@@ -1,9 +1,9 @@
 #pragma once
-#include "TWorldTransformObject.h"
 #include "TNodeInterface.hpp"
-class RenderNode : public TWorldTransformObject, public TNodeInterface<RenderNode>
+#include "TWorldTransformObject.hpp"
+
+class RenderNode : public TWorldTransformObject<RenderNode>, public TNodeInterface<RenderNode>
 {
-	defaultWorldTransformVirtualFuncInNode;
 public:
 	RenderNode(const Vector2& size = Vector2(), const Vector2& position = Vector2(), bool bIsVisible = true);
 	virtual ~RenderNode() = default;
