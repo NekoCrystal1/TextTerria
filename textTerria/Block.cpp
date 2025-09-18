@@ -1,25 +1,26 @@
 #include "Block.h"
 #include "Actor.h"
 
-void Block::initial(const Vector2& size, const Vector2& position)
+Block::Block(const Vector2& size, const Vector2& position): StaticCollisionObject(size, position)
 {
-	m_pCollisionComponent->addCollisionBox("BlockBody", CollisionManager::instance()->create_collision_box(
-		CollisionBox::CollisionType::Static_Collision, m_pCollisionComponent));
-	CollisionBox* collision_box = m_pCollisionComponent->get_collision_box("BlockBody");
+}
+
+bool Block::initial()
+{
+	CollisionBox* collision_box = CollisionManager::instance()->create_collision_box(
+		CollisionBox::CollisionType::Static_Collision, m_pCollisionComponent);
+	if (!collision_box)
+	{
+		//该处无法创建碰撞箱
+		return false;
+	}
+	m_pCollisionComponent->addCollisionBox("BlockBody", collision_box);
 	collision_box->set_collision_shape(CollisionBox::CollisionShape::SHAPE_RECTANGLE);
 	collision_box->set_collision_src_layer(0x1);
 	collision_box->set_collision_func([&]() {
 		this->colide_func(collision_box->getTargetEntity());
 		});
-}
-
-Block::Block(COLORREF fillcolor, COLORREF linecolor, const Vector2& size, const Vector2& position): StaticCollisionObject(size, position)
-{
-	initial(size, position);
-}
-
-Block::~Block()
-{
+	return true;
 }
 
 void Block::on_update()

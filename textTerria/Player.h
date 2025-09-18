@@ -1,10 +1,14 @@
 #pragma once
 #include "Character.h"
 #include "Storage.h"
+#include "Animation.h"
+const static Vector2 PLAYER_SIZE = { 26, 80 };
+
 class Player : public Character{
 public:
-	Player(const Vector2& size = Vector2(), const Vector2& position = Vector2());
+	Player(const Vector2& position = Vector2());
 	~Player();
+	virtual bool initial() override;
 	virtual void on_update()override;
 	virtual void setLocalPosition(const Vector2& pos) override;
 	virtual void setLocalPosition(float x, float y) override;
@@ -13,4 +17,5 @@ private:
 	Storage* bag_pack;
 	//将会绑定back中一个格子的格子号
 	short main_hand_slot_id;
+	Animation* m_pPlayerAnimation;
 };

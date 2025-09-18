@@ -73,11 +73,12 @@ Vector2 CollisionManager::get_netvector_pos(const Vector2& pos)
 CollisionBox* CollisionManager::create_collision_box(CollisionBox::CollisionType collision_type, CollisionComponent* pParent)
 {
 	CollisionBox* box = nullptr;
-	Transform boxTransform = pParent->gerLocalTransform();
 	switch (collision_type)
 	{
 		//静态碰撞箱会自动网格对齐
-	case CollisionBox::CollisionType::Static_Collision: {
+	case CollisionBox::CollisionType::Static_Collision: 
+	{
+		Transform boxTransform = pParent->gerLocalTransform();
 		Vector2 alignment_pos = net_align(boxTransform.get_position());
 		Vector2 netvector_pos = get_netvector_pos(alignment_pos);
 		//重叠会导致创建失败
@@ -89,7 +90,7 @@ CollisionBox* CollisionManager::create_collision_box(CollisionBox::CollisionType
 		break;
 	}
 	case CollisionBox::CollisionType::Dynamic_Collision:
-		box = new CollisionBox(collision_type, pParent, boxTransform);
+		box = new CollisionBox(collision_type, pParent, pParent->gerLocalTransform());
 		dynamic_collision_boxes.push_back(box);
 		break;
 	default:

@@ -24,7 +24,7 @@ Block* TObjectManager::create_block(const Vector2& size, const Vector2& position
 {
 	Block* block = nullptr;
 	if (cur_sence) {
-		block = new Block(fillcolor, linecolor, size, position);
+		//block = new Block(fillcolor, linecolor, size, position);
 		cur_sence->push_element(block);
 	}
 	return block;
@@ -43,10 +43,10 @@ Platform* TObjectManager::create_platform(const Vector2& size, const Vector2& po
 Player* TObjectManager::create_player(const Vector2& size, const Vector2& position)
 {
 	Player* player = nullptr;
-	if (cur_sence) {
-		player = new Player(size, position);
-		cur_sence->push_element(player);
-	}
+	//if (cur_sence) {
+	//	player = new Player(size, position);
+	//	cur_sence->push_element(player);
+	//}
 	return player;
 }
 

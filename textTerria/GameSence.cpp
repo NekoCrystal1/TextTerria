@@ -1,10 +1,10 @@
+#include "BlockFactory.h"
 #include "CollisionManager.h"
 #include "GameSence.h"
 #include "PlatformFactory.h"
 #include "RenderManager.h"
 #include "ShortcutItemButton.h"
 #include "StorageWidget.h"
-#include "TObjectManager.h"
 #include "TLevelManager.h"
 #include "UI_Button.h"
 #include "WidgetManager.h"
@@ -33,15 +33,12 @@ void GameSence::on_enter()
 	RENDER_MANAGER->clearRenderNodes();
 	RENDER_MANAGER->getAndAddRoot("GameRender");
 	RENDER_MANAGER->addRenderNode("GameRender");
-	TObjectManager::instance()->set_output_sence(this);
-	player = TObjectManager::instance()->create_player();
-	loadUI();
+	//loadUI();
 	load_map();
 }
 
 void GameSence::on_exit()
 {
-	TObjectManager::instance()->set_output_sence(nullptr);
 }
 
 void GameSence::loadUI()
@@ -76,6 +73,7 @@ void GameSence::loadUI()
 void GameSence::load_map()
 {
 	RENDER_MANAGER->setCurWorkNode(RENDER_MANAGER->getAndAddRoot("GameRender"));
+	LEVEL_MANAGER->setCurWorkEntityNode(m_pGameLevel);
 	//32像素为1格
 	for (int i = 96; i < 720; i += 192)
 		for (int j = -3200; j < 16000; j += 32) {
@@ -84,12 +82,12 @@ void GameSence::load_map()
 				int k = 0;
 				printf("%d",k);
 			}
-			NormalPlatform* pPlatform = PlatformFactory::instance()->tryCreateNormalPlatform(BlockId::BLOCK_TEST_PLATFORM, Vector2(j, i));
+			PLATFORM_FACTORY->tryCreatePlatform(BlockId::BLOCK_NORMAL_PLATFORM, Vector2(j, i));
 		}
 	long long platform_n = sence_objects.size() - 2;
 	printf("平台数量：%llu\t", platform_n);
 	for (int i = -3200; i < 16000; i += 32) {
-		Block* block = TObjectManager::instance()->create_block(Vector2(32,32), Vector2(i, 864));
+		BLOCK_FACTORY->tryCreateBlock(BlockId::BLOCK_NORMAL_BLOCK, Vector2(i, 864));
 	}
 	printf("方块数量：%llu\n", sence_objects.size() - 2 - platform_n);
 }

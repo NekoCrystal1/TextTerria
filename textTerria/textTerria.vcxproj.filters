@@ -309,6 +309,15 @@
     <ClCompile Include="TLevelManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalBlock.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sence.h">
@@ -499,6 +508,15 @@
     </ClInclude>
     <ClInclude Include="TNodeManagerInterface.hpp">
       <Filter>头文件\Game\Basic\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerFactory.h">
+      <Filter>头文件\Game\GameItem\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalBlock.h">
+      <Filter>头文件\Game\GameItem\Actor\Chunck\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockFactory.h">
+      <Filter>头文件\Game\GameItem\Factory</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -133,6 +133,7 @@
     <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="Atlas.cpp" />
     <ClCompile Include="Block.cpp" />
+    <ClCompile Include="BlockFactory.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -152,10 +153,12 @@
     <ClCompile Include="MenuSence.cpp" />
     <ClCompile Include="CollisionObject.cpp" />
     <ClCompile Include="MovementObject.cpp" />
+    <ClCompile Include="NormalBlock.cpp" />
     <ClCompile Include="NormalPlatform.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="PlatformFactory.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerFactory.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="RenderNode.cpp" />
     <ClCompile Include="ResourcesManager.cpp" />
@@ -189,11 +192,14 @@
     <ClInclude Include="AnimationFactory.h" />
     <ClInclude Include="Arrow.h" />
     <ClInclude Include="Atlas.h" />
+    <ClInclude Include="BlockFactory.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameId.h" />
     <ClInclude Include="ItemButton.h" />
+    <ClInclude Include="NormalBlock.h" />
+    <ClInclude Include="PlayerFactory.h" />
     <ClInclude Include="TLevel.h" />
     <ClInclude Include="Macro.hpp" />
     <ClInclude Include="MilisecondTimer.h" />

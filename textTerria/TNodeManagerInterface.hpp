@@ -13,7 +13,7 @@ public:
 	//查找根节点，如果不存在则返回nullptr且不会添加新节点
 	T* getRootNode(std::string sNodeName);
 	T* getCruWorkNode();
-	//传入nullptr会被重定向为virtualNode
+	//传入nullptr会被重定向为VirtualNode
 	void setCurWorkNode(T* pWorkNode);
 protected:
 	//负责持有所有根节点

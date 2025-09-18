@@ -1,6 +1,7 @@
 #pragma once
 #include "Animation.h"
 #include "RenderManager.h"
+#include "ResourcesManager.h"
 #include "Singleton.hpp"
 
 #define ANIMATION_FACTORY AnimationFactory::instance()

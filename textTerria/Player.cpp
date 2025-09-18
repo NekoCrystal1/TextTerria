@@ -1,28 +1,29 @@
 #include "Player.h"
 #include "InputManager.h"
 #include "ItemManager.h"
-Player::Player(const Vector2& size, const Vector2& position) : Character(size, position),
-bag_pack(ItemManager::instance()->create_storage(this, 45)), main_hand_slot_id(0)
+Player::Player(const Vector2& position) : Character(PLAYER_SIZE, position),
+bag_pack(ItemManager::instance()->create_storage(this, 45)), main_hand_slot_id(0), m_pPlayerAnimation(nullptr)
 {
-	m_pCollisionComponent->addCollisionBox("PlayerBody", CollisionManager::instance()->create_collision_box(
-		CollisionBox::CollisionType::Dynamic_Collision, m_pCollisionComponent));
-	CollisionBox* collision_box = m_pCollisionComponent->get_collision_box("PlayerBody");
-	collision_box->set_collision_shape(CollisionBox::CollisionShape::SHAPE_RECTANGLE);
-	collision_box->set_collision_dst_layer(0x3);
-	collision_box->set_collision_src_layer(0x3);
-	//collision_box->set_visiable();
-	//collision_box->set_collision_func([&]() {
-		//switch (this->get_collision_box()->get_collision_src_layer() & this->get_collision_box()->get_target()->get_collision_dst_layer())
-		//{
-		//default:
-		//	break;
-		//}
-		//});
 	bag_pack->modify_in(0, ItemManager::instance()->create_Item(bag_pack,ItemId::ITEM_TEST_BOW));
 }
 
 Player::~Player()
 {
+}
+
+bool Player::initial()
+{
+	CollisionBox* collision_box = CollisionManager::instance()->create_collision_box(
+		CollisionBox::CollisionType::Dynamic_Collision, m_pCollisionComponent);
+	if (!collision_box)
+	{
+		return false;
+	}
+	m_pCollisionComponent->addCollisionBox("PlayerBody", collision_box);
+	collision_box->set_collision_shape(CollisionBox::CollisionShape::SHAPE_RECTANGLE);
+	collision_box->set_collision_dst_layer(0x3);
+	collision_box->set_collision_src_layer(0x3);
+	return true;
 }
 
 void Player::on_update()

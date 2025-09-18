@@ -3,27 +3,23 @@
 #include "CollisionManager.h"
 bool Platform::initial()
 {
-	CollisionBox* collision_box = CollisionManager::instance()->create_collision_box(
-		CollisionBox::CollisionType::Static_Collision, m_pCollisionComponent);
-	if (!collision_box)
-	{
-		//该处无法创建碰撞箱
-		return false;
-	}
-	m_pCollisionComponent->addCollisionBox("PlatformBody", collision_box);
-	collision_box->set_collision_shape(CollisionBox::CollisionShape::SHAPE_PLATFORM_LINEAR);
-	collision_box->set_collision_src_layer(0x2);
-	collision_box->set_collision_func([&]() {
-		this->colide_func(collision_box->getTargetEntity());
-		});
-	return true;
+		CollisionBox* collision_box = CollisionManager::instance()->create_collision_box(
+			CollisionBox::CollisionType::Static_Collision, m_pCollisionComponent);
+		if (!collision_box)
+		{
+			//该处无法创建碰撞箱
+			return false;
+		}
+		m_pCollisionComponent->addCollisionBox("PlatformBody", collision_box);
+		collision_box->set_collision_shape(CollisionBox::CollisionShape::SHAPE_PLATFORM_LINEAR);
+		collision_box->set_collision_src_layer(0x2);
+		collision_box->set_collision_func([&]() {
+			this->colide_func(collision_box->getTargetEntity());
+			});
+		return true;
 }
 
-Platform::Platform(const Vector2& size, const Vector2& position) : StaticCollisionObject(size, position), m_pPlatformAnimation(nullptr)
-{
-}
-
-Platform::~Platform()
+Platform::Platform(const Vector2& size, const Vector2& position) : StaticCollisionObject(size, position)
 {
 }
 

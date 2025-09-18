@@ -1,12 +1,15 @@
 #pragma once
+#include "Animation.h"
 #include "StaticCollisionObject.h"
+
+const static Vector2 NORMAL_BLOCK_SIZE = { 32,32 };
+
 class Block : public StaticCollisionObject {
 public:
-	Block(COLORREF fillcolor = (COLORREF)0x00FF00, COLORREF linecolor = (COLORREF)0x000000, const Vector2& size = Vector2(32,32), const Vector2& position = Vector2());
+	Block(const Vector2& size = Vector2(), const Vector2& position = Vector2());
 	~Block();
+public:
+	virtual bool initial() override;
 	void on_update()override;
 	virtual void colide_func(TEntityObject* pTarget) override;
-private:
-	void initial(const Vector2& size, const Vector2& position);
-private:
 };

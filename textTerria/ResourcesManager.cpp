@@ -52,8 +52,11 @@ void ResourcesManager::loadResources()
 
 	createImg("TestPlatformImg", 
 		{ {0, 0}, {32, 0}, { 32, 16}, {0, 16} },
-	0x0000FF, 0x000000, true);
+	0x0000FF, 0x000001, true);
 
+	createImg("TestBlock",
+		{ {0, 0}, {32, 0}, { 32, 32}, {0, 32} },
+		0x00FF00, 0x000001, true);
 }
 
 IMAGE* ResourcesManager::getImage(std::string strImgName) const
