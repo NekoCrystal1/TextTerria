@@ -16,7 +16,7 @@ const Transform& TObject::gerLocalTransform() const
 
 inline void TObject::setLocalPosition(const Vector2& pos)
 {
-	m_pLocalTransform->set_position(pos);
+	this->setLocalPosition(pos.x, pos.y);
 }
 
 inline void TObject::setLocalPosition(float x, float y)

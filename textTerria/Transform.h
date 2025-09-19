@@ -8,10 +8,10 @@ public:
 	~Transform();
 	Transform& operator+= (const Transform& transform);
 	Transform& operator= (const Transform& transform);
-	Transform& operator+ (const Transform& transform) const;
-	Transform& operator- (const Transform& transform) const;
+	Transform operator+ (const Transform& transform) const;
+	Transform operator- (const Transform& transform) const;
 	//实现各属性缩放
-	Transform& operator* (float fVal);
+	Transform operator* (float fVal);
 	const Vector2& get_position()const;
 	const Vector2& get_centre_position()const;
 	const Vector2& get_size()const;

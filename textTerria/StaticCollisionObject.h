@@ -11,6 +11,7 @@ public:
 	CollisionComponent* getCollisionComponent();
 	//需要创建碰撞箱时，根据是否创建成功返回true/false
 	virtual bool initial();
+	virtual void setLocalPosition(float x, float y)override;
 protected:
 	virtual void colide_func(TEntityObject* target);
 protected:

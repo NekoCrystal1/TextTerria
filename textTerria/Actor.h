@@ -6,7 +6,7 @@ public:
 	Actor(const Vector2& size = Vector2(), const Vector2& position = Vector2());
 	virtual ~Actor();
 public:
-	
+	virtual void on_update()override;
 public:
 	MovementComponent* getMovementComponent();
 protected:

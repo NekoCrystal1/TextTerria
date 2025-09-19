@@ -36,13 +36,12 @@ const Vector2& Vector2::only_multiply_every_element_modify_self(float num)
 	return *this;
 }
 
-Vector2& Vector2::only_multiply_every_element(const Vector2& vec) const
+Vector2 Vector2::only_multiply_every_element(const Vector2& vec) const
 {
-	Vector2 ans = Vector2(x * vec.x,y * vec.y);
-	return ans;
+	return Vector2(x * vec.x,y * vec.y);
 }
 
-Vector2& Vector2::absolute()
+Vector2 Vector2::absolute()
 {
 	Vector2 ans(x,y);
 	if (x < 0)
@@ -52,28 +51,24 @@ Vector2& Vector2::absolute()
 	return ans;
 }
 
-Vector2& Vector2::operator+(const Vector2& vec) const
+Vector2 Vector2::operator+(const Vector2& vec) const
 {
-	Vector2 ans = Vector2(x + vec.x, y + vec.y);
-	return ans;
+	return Vector2(x + vec.x, y + vec.y);
 }
 
-Vector2& Vector2::operator+(float fVal) const
+Vector2 Vector2::operator+(float fVal) const
 {
-	Vector2 ans = Vector2(x + fVal, y + fVal);
-	return ans;
+	return Vector2(x + fVal, y + fVal);
 }
 
-Vector2& Vector2::operator-(const Vector2& vec) const
+Vector2 Vector2::operator-(const Vector2& vec) const
 {
-	Vector2 ans = Vector2(x - vec.x, y - vec.y);
-	return ans;
+	return Vector2(x - vec.x, y - vec.y);
 }
 
-Vector2& Vector2::operator*(float s) const
+Vector2 Vector2::operator*(float s) const
 {
-	Vector2 ans = Vector2(x * s, y * s);
-	return ans;
+	return Vector2(x * s, y * s);
 }
 
 float Vector2::operator*(const Vector2& vec) const
@@ -81,10 +76,9 @@ float Vector2::operator*(const Vector2& vec) const
 	return x * vec.x + y * vec.y;
 }
 
-Vector2& Vector2::operator/(const Vector2& vec) const
+Vector2 Vector2::operator/(const Vector2& vec) const
 {
-	Vector2 ans = Vector2(x / vec.x, y / vec.y);
-	return ans;
+	return Vector2(x / vec.x, y / vec.y);
 }
 
 Vector2& Vector2::operator=(const Vector2& vec)

@@ -1,8 +1,10 @@
 #include "Player.h"
+
+#include "AnimationFactory.h"
 #include "InputManager.h"
 #include "ItemManager.h"
 Player::Player(const Vector2& position) : Character(PLAYER_SIZE, position),
-bag_pack(ItemManager::instance()->create_storage(this, 45)), main_hand_slot_id(0), m_pPlayerAnimation(nullptr)
+bag_pack(ItemManager::instance()->create_storage(this, 45)), main_hand_slot_id(0)
 {
 	bag_pack->modify_in(0, ItemManager::instance()->create_Item(bag_pack,ItemId::ITEM_TEST_BOW));
 }
@@ -23,11 +25,14 @@ bool Player::initial()
 	collision_box->set_collision_shape(CollisionBox::CollisionShape::SHAPE_RECTANGLE);
 	collision_box->set_collision_dst_layer(0x3);
 	collision_box->set_collision_src_layer(0x3);
+	m_pAnimation = ANIMATION_FACTORY->tryCreateAnimation(RESOURCES_MANAGER->getImage("PlayerImg"));
 	return true;
 }
 
 void Player::on_update()
 {
+	printf("PlayerLogicPosition: %f, %f\n", getWorldTransform().get_position().x, getWorldTransform().get_position().y);
+
 	InputManager* input = InputManager::instance();
 	Vector2 move_velocity;
 	
@@ -47,17 +52,7 @@ void Player::on_update()
 	if (input->is_key_up('S') || input->is_key_up(VK_SPACE))
 		collision_box->set_collision_dst_layer(collision_box->get_collision_dst_layer() | 0x2);
 
-	Actor::on_update();
-}
-
-void Player::setLocalPosition(const Vector2& pos)
-{
-	Actor::setLocalPosition(pos);
-}
-
-void Player::setLocalPosition(float x, float y)
-{
-	Actor::setLocalPosition(x, y);
+	Character::on_update();
 }
 
 Storage* Player::get_storage() const

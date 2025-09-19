@@ -1,6 +1,8 @@
 #pragma once
 #include "Player.h"
 #include "Singleton.hpp"
+
+#define PLAYER_FACTORY PlayerFactory::instance()
 class PlayerFactory : public Singleton<PlayerFactory>
 {
 	friend Singleton<PlayerFactory>;

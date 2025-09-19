@@ -20,11 +20,13 @@ void Game::initGame()
 	setbkmode(TRANSPARENT);
 	RESOURCES_MANAGER->loadResources();
 
-	m_pMainMenuScene = new MenuSence();
+	//m_pMainMenuScene = new MenuSence();
 	m_pGameScene = new GameSence();
-	SenceManager::instance()->add_sence("menu", m_pMainMenuScene);
+	//SenceManager::instance()->add_sence("menu", m_pMainMenuScene);
 	SenceManager::instance()->add_sence("game", m_pGameScene);
-	SenceManager::instance()->switch_to("menu");
+
+	//ÏÈºöÂÔUIÏà¹Ø
+	SenceManager::instance()->switch_to("game");
 }
 
 void Game::runGame()

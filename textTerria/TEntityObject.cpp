@@ -35,3 +35,14 @@ bool TEntityObject::IsCanBeDeleted() const
 	return m_bIsCanBeDeleted;
 }
 
+void TEntityObject::setLocalPosition(const Vector2& position)
+{
+	setLocalPosition(position.x, position.y);
+}
+
+void TEntityObject::setLocalPosition(float x, float y)
+{
+	TObject::setLocalPosition(x, y);
+	TWorldTransformObject::makeDirty();
+}
+

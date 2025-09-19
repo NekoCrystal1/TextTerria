@@ -13,15 +13,15 @@ public:
 	const Vector2& only_multiply_every_element_modify_self(const Vector2& vec);
 	const Vector2& only_multiply_every_element_modify_self(float num);
 	//如果乘一个实数请用*
-	Vector2& only_multiply_every_element(const Vector2& vec)const;
+	Vector2 only_multiply_every_element(const Vector2& vec)const;
 
-	Vector2& absolute();
-	Vector2& operator+(const Vector2& vec) const;
-	Vector2& operator+(float fVal) const;
-	Vector2& operator-(const Vector2& vec) const;
-	Vector2& operator*(float s) const;
+	Vector2 absolute();
+	Vector2 operator+(const Vector2& vec) const;
+	Vector2 operator+(float fVal) const;
+	Vector2 operator-(const Vector2& vec) const;
+	Vector2 operator*(float s) const;
 	float operator*(const Vector2& vec) const;
-	Vector2& operator/(const Vector2& vec) const;
+	Vector2 operator/(const Vector2& vec) const;
 	Vector2& operator=(const Vector2& vec);
 	Vector2& operator+=(const Vector2& vec);
 	//严格大于(x，y均大于）

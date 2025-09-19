@@ -11,6 +11,12 @@ Actor::~Actor()
     delete m_pMovementComponent;
 }
 
+void Actor::on_update()
+{
+    m_pMovementComponent->on_update();
+    StaticCollisionObject::on_update();
+}
+
 MovementComponent* Actor::getMovementComponent()
 {
     return m_pMovementComponent;

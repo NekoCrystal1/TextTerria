@@ -33,7 +33,7 @@ Transform& Transform::operator=(const Transform& transform)
 	return *this;
 }
 
-Transform& Transform::operator+(const Transform& transform) const
+Transform Transform::operator+(const Transform& transform) const
 { 
 	Transform oAns(*this);
 	oAns.set_position(this->position + transform.position);
@@ -42,7 +42,7 @@ Transform& Transform::operator+(const Transform& transform) const
 	return oAns;
 }
 
-Transform& Transform::operator-(const Transform& transform) const
+Transform Transform::operator-(const Transform& transform) const
 {
 	Transform oAns(*this);
 	oAns.set_position(this->position - transform.position);
@@ -51,7 +51,7 @@ Transform& Transform::operator-(const Transform& transform) const
 	return oAns;
 }
 
-Transform& Transform::operator*(float fVal)
+Transform Transform::operator*(float fVal)
 {
 	Transform oAns(*this);
 	oAns.set_position(oAns.position * fVal);

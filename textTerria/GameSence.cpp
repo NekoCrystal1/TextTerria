@@ -1,6 +1,7 @@
 #include "BlockFactory.h"
 #include "CollisionManager.h"
 #include "GameSence.h"
+#include "PlayerFactory.h"
 #include "PlatformFactory.h"
 #include "RenderManager.h"
 #include "ShortcutItemButton.h"
@@ -26,6 +27,7 @@ void GameSence::on_update()
 	CollisionManager::instance()->on_update();
 	//Camera::instance()->set_centre_position(player->getTransform()->get_centre_position());
 	m_pGameLevel->on_update();
+	player->on_update();
 }
 
 void GameSence::on_enter()
@@ -33,8 +35,9 @@ void GameSence::on_enter()
 	RENDER_MANAGER->clearRenderNodes();
 	RENDER_MANAGER->getAndAddRoot("GameRender");
 	RENDER_MANAGER->addRenderNode("GameRender");
-	//loadUI();
+
 	load_map();
+	//loadUI();
 }
 
 void GameSence::on_exit()
@@ -74,20 +77,22 @@ void GameSence::load_map()
 {
 	RENDER_MANAGER->setCurWorkNode(RENDER_MANAGER->getAndAddRoot("GameRender"));
 	LEVEL_MANAGER->setCurWorkEntityNode(m_pGameLevel);
+	player = PLAYER_FACTORY->createPlayer();
+
+	long long platform_n = 0;
 	//32像素为1格
 	for (int i = 96; i < 720; i += 192)
-		for (int j = -3200; j < 16000; j += 32) {
-			//printf("%d,%d ",i, j);
-			if (j == 32) {
-				int k = 0;
-				printf("%d",k);
-			}
+		for (int j = -3200; j < 16000; j += 32) 
+		{
+			platform_n++;
 			PLATFORM_FACTORY->tryCreatePlatform(BlockId::BLOCK_NORMAL_PLATFORM, Vector2(j, i));
 		}
-	long long platform_n = sence_objects.size() - 2;
-	printf("平台数量：%llu\t", platform_n);
-	for (int i = -3200; i < 16000; i += 32) {
+	printf("平台数量：%llu\n", platform_n);
+	platform_n = 0;
+	for (int i = -3200; i < 16000; i += 32) 
+	{
+		platform_n++;
 		BLOCK_FACTORY->tryCreateBlock(BlockId::BLOCK_NORMAL_BLOCK, Vector2(i, 864));
 	}
-	printf("方块数量：%llu\n", sence_objects.size() - 2 - platform_n);
+	printf("方块数量：%llu\n", platform_n);
 }

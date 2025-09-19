@@ -10,6 +10,7 @@ public:
 public:
 	virtual void onRender(unsigned long long ui32CurMilisecond);
 	void nextFrameMoveTo(const Vector2& newPos);
+	void nextFrameMoveTo(float x, float y);
 protected:
 	void renderNextNodes(unsigned int ui32CurMilisecond);
 protected:

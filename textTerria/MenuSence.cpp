@@ -85,9 +85,6 @@ void MenuSence::on_render() const
 void MenuSence::on_update()
 {
 	menu_background_widget->on_update();
-
-	//由于重构导致目前ui不可用，因此在第二帧自动切换到游戏场景以便测试
-	SENCE_MANAGER->switch_to("game");
 }
 
 void MenuSence::on_enter()

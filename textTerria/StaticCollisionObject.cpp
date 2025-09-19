@@ -21,6 +21,15 @@ bool StaticCollisionObject::initial()
 	return false;
 }
 
+void StaticCollisionObject::setLocalPosition(float x, float y)
+{
+	TEntityObject::setLocalPosition(x, y);
+	if (m_pAnimation)
+	{
+		m_pAnimation->nextFrameMoveTo(x, y);
+	}
+}
+
 void StaticCollisionObject::colide_func(TEntityObject* target)
 {
 }
