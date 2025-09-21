@@ -1,12 +1,13 @@
 #include "Transform.h"
 
-Transform::Transform(const Vector2& size, const Vector2& position, const Vector2& scale, const Vector2& anchor, const Vector2& rotation) :
-	size(size), position(position), scale(scale), anchor(anchor), rotation(rotation), scaled_size(Vector2(size.x* scale.x, size.y* scale.y)), centre(position + scaled_size * 0.5)
+Transform::Transform(const Vector2& size, const Vector2& position, const Vector2& scale, const Vector2& rotation) :
+	rotation(0), size(size), position(position), scale(scale),
+	scaled_size(Vector2(size.x* scale.x, size.y* scale.y)), centre(position + scaled_size * 0.5)
 {
 }
 
 Transform::Transform(const Transform& transform):
-	position(transform.position),size(transform.size),scale(transform.scale),anchor(transform.anchor), rotation(transform.rotation), scaled_size(transform.scaled_size)
+	rotation(0), position(transform.position),size(transform.size),scale(transform.scale),scaled_size(transform.scaled_size)
 {
 }
 
@@ -77,6 +78,11 @@ const Vector2& Transform::get_size() const
 const Vector2& Transform::get_scale() const
 {
 	return scale;
+}
+
+float Transform::getRotation() const
+{
+	return rotation;
 }
 
 void Transform::refresh_scaled_size()
@@ -158,6 +164,11 @@ void Transform::set_scale(float scale)
 	this->scale.x = scale;
 	this->scale.y = scale;
 	refresh_scaled_size();
+}
+
+void Transform::set_rotation(float rotation)
+{
+	this->rotation = rotation;
 }
 
 void Transform::makeTransformTo(const Transform& transform, float fPerscentage)

@@ -24,6 +24,8 @@ public:
 	Vector2 operator/(const Vector2& vec) const;
 	Vector2& operator=(const Vector2& vec);
 	Vector2& operator+=(const Vector2& vec);
+	Vector2& operator*=(const Vector2& vec);
+	Vector2& operator/=(const Vector2& vec);
 	//严格大于(x，y均大于）
 	bool operator>(const Vector2& vec)const;
 	bool operator>=(const Vector2& vec)const;

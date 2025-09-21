@@ -14,9 +14,10 @@ public:
 	virtual const Transform& getWorldTransform();
 	//实现原理：修改本地位置，使其在计算完相对坐标后位于目标位置，如果没有继承节点树，则默认直接修改
 	void setWorldPosition(const Vector2& newPos);
+	void setWorldSize(const Vector2& newSize);
 	void makeDirty();
 protected:
-	void updateTransform();
+	virtual void updateTransform();
 protected:
 	//父节点及自身改变会导致世界坐标需要更新，在get时更新
 	bool m_bIsTransformDirty;

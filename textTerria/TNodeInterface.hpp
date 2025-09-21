@@ -15,7 +15,7 @@ public:
 	std::vector<T*>& getNextNodes();
 	T* getParentNode();
 	void setOrder(int i32Order);
-	//修改自身父节点
+	//修改自身父节点，执行之后还需要尝试更新坐标
 	void setParentNode(T* pNewParent);
 	//将子节点移入目标节点
 	void removeNextNodesTo(T* pNewParent);

@@ -1,9 +1,10 @@
 #include "Animation.h"
+#include "Camera.h"
 #include "RenderManager.h"
 #include "UTIL.hpp"
 
-Animation::Animation(const Vector2& position) :
-	RenderNode(Vector2(), position), m_i32CurFrameIndex(0)
+Animation::Animation(const Vector2& position, bool bIsAttachCamera) :
+	RenderNode(Vector2(), position), m_i32CurFrameIndex(0),m_bIsAttachCamera(true)
 {
 }
 
@@ -47,9 +48,20 @@ void Animation::onRender(unsigned long long ui32CurMilisecond)
 	{
 		Frame* pCurFrame = m_vecFrames[m_i32CurFrameIndex];
 		IMAGE* pImg = pCurFrame->m_pImg;
-		const Vector2& oCurPos = m_pLocalTransform->get_position();
+		Vector2 oCurPos = m_pLocalTransform->get_position();
 		Vector2 oCurSize = pCurFrame->m_pTransform.get_size();
-		oCurSize.only_multiply_every_element_modify_self(m_pLocalTransform->get_scale());
+		if (m_bIsAttachCamera)
+		{
+			Transform oRenderTransform = getWorldTransform();
+			oRenderTransform.set_size(oCurSize);
+			oRenderTransform = CAMERA->transformRenderTransform(oRenderTransform);
+			oCurPos = oRenderTransform.get_position();
+			oCurSize = oRenderTransform.get_size();
+		}
+		else
+		{
+			oCurSize.only_multiply_every_element_modify_self(m_pLocalTransform->get_scale());
+		}
 		putImage(oCurPos.x, oCurPos.y, oCurSize.x, oCurSize.y, pImg, 0, 0, pImg->getwidth(), pImg->getheight());
 	}
 	renderNextNodes(ui32CurMilisecond);

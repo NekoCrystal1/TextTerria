@@ -157,6 +157,7 @@ bool CollisionManager::check_collision(CollisionBox* dst_box, CollisionBox* src_
 			switch (src_box->get_collision_shape())
 			{
 			case CollisionBox::CollisionShape::SHAPE_RECTANGLE:
+				//ÅÐ¶Ï¾ØÐÎÊÇ·ñÖØµþ
 				if ((dst_box->get_centre_position() - src_box->get_centre_position()).absolute() * 2 <
 					(dst_box->get_size() + src_box->get_size()) )
 					return true;

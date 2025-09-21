@@ -27,23 +27,23 @@ void CollisionBox::on_update()
 
 void CollisionBox::on_render() const
 {
-	const Camera& camera = *Camera::instance();
-	const Vector2& render_centre = camera.get_render_centre(m_pLocalTransform->get_centre_position());
-	const Vector2& render_size = camera.get_render_size(m_pLocalTransform->get_size());
-	const Vector2& render_pos = camera.get_render_pos(m_pLocalTransform->get_centre_position(), m_pLocalTransform->get_size());
+	//const Camera& camera = *Camera::instance();
+	//const Vector2& render_centre = camera.transformRenderCentre(m_pLocalTransform->get_centre_position());
+	//const Vector2& render_size = camera.transformRenderSize(m_pLocalTransform->get_size());
+	//const Vector2& render_pos = camera.get_render_pos(m_pLocalTransform->get_centre_position(), m_pLocalTransform->get_size());
 
-	switch (collision_shape)
-	{
-	case CollisionBox::CollisionShape::SHAPE_NULL:
-		break;
-	case CollisionBox::CollisionShape::SHAPE_RECTANGLE:
-		//setlinecolor(box_colors[collision_src_layer] + box_colors[collision_src_layer]);
-		rectangle(render_pos.x, render_pos.y, render_pos.x + render_size.x, render_pos.y + render_size.y);
-		break;
-	case CollisionBox::CollisionShape::SHAPE_CIRCLE:
+	//switch (collision_shape)
+	//{
+	//case CollisionBox::CollisionShape::SHAPE_NULL:
+	//	break;
+	//case CollisionBox::CollisionShape::SHAPE_RECTANGLE:
+	//	//setlinecolor(box_colors[collision_src_layer] + box_colors[collision_src_layer]);
+	//	rectangle(render_pos.x, render_pos.y, render_pos.x + render_size.x, render_pos.y + render_size.y);
+	//	break;
+	//case CollisionBox::CollisionShape::SHAPE_CIRCLE:
 
-		break;
-	}
+	//	break;
+	//}
 }
 
 void CollisionBox::on_collision()

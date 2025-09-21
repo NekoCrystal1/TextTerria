@@ -95,6 +95,20 @@ Vector2& Vector2::operator+=(const Vector2& vec)
 	return *this;
 }
 
+Vector2& Vector2::operator*=(const Vector2& vec)
+{
+	x *= vec.x;
+	y *= vec.y;
+	return *this;
+}
+
+Vector2& Vector2::operator/=(const Vector2& vec)
+{
+	x /= vec.x;
+	y /= vec.y;
+	return *this;
+}
+
 bool Vector2::operator>(const Vector2& vec) const
 {
 	if (x > vec.x && y > vec.y)

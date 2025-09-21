@@ -139,6 +139,9 @@
     <Filter Include="头文件\Game\Basic\Interface">
       <UniqueIdentifier>{fce7ecfd-cce3-4f4e-9b5a-a50f9b7b41cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\Game\GameItem\Factory">
+      <UniqueIdentifier>{8109d9bf-c7aa-4b8b-ac48-3c38efdb1607}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -207,9 +210,6 @@
     <ClCompile Include="AnimationManager.cpp">
       <Filter>源文件\Game\Basic\Singleton</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>源文件\Game\Basic\Singleton</Filter>
-    </ClCompile>
     <ClCompile Include="TObject.cpp">
       <Filter>源文件\Basic</Filter>
     </ClCompile>
@@ -248,9 +248,6 @@
     </ClCompile>
     <ClCompile Include="RenderManager.cpp">
       <Filter>源文件\Game\Basic\Singleton</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionManager.cpp">
-      <Filter>源文件\Game\Render</Filter>
     </ClCompile>
     <ClCompile Include="GameSence.cpp">
       <Filter>源文件\Game\Sence</Filter>
@@ -291,29 +288,35 @@
     <ClCompile Include="TestBow.cpp">
       <Filter>源文件\Game\GameItem</Filter>
     </ClCompile>
-    <ClCompile Include="NormalPlatform.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="BlockFactory.cpp">
+      <Filter>源文件\Game\GameItem\Factory</Filter>
     </ClCompile>
     <ClCompile Include="PlatformFactory.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="StaticCollisionObject.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="TLevel.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="TLevelManager.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Game\GameItem\Factory</Filter>
     </ClCompile>
     <ClCompile Include="PlayerFactory.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Game\GameItem\Factory</Filter>
     </ClCompile>
     <ClCompile Include="NormalBlock.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Game\GameItem</Filter>
     </ClCompile>
-    <ClCompile Include="BlockFactory.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="NormalPlatform.cpp">
+      <Filter>源文件\Game\GameItem</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticCollisionObject.cpp">
+      <Filter>源文件\Game\GameItem</Filter>
+    </ClCompile>
+    <ClCompile Include="TLevel.cpp">
+      <Filter>源文件\Game\GameItem</Filter>
+    </ClCompile>
+    <ClCompile Include="TLevelManager.cpp">
+      <Filter>源文件\Game\Basic\Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>源文件\Game\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>源文件\Game\Basic\Singleton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -419,9 +422,6 @@
     <ClInclude Include="Game.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>头文件\Game\Basic\BasicSingleton</Filter>
-    </ClInclude>
     <ClInclude Include="SenceManager.h">
       <Filter>头文件\Game\Basic\BasicSingleton</Filter>
     </ClInclude>
@@ -514,6 +514,9 @@
     </ClInclude>
     <ClInclude Include="BlockFactory.h">
       <Filter>头文件\Game\GameItem\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>头文件\Game\Render</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

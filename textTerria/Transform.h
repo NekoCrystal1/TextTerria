@@ -3,7 +3,7 @@
 class Transform {
 public:
 	Transform(const Vector2& size = Vector2(), const Vector2& position = Vector2(),
-		const Vector2& scale = Vector2(1), const Vector2& anchor = Vector2(), const Vector2& rotation = Vector2());
+		const Vector2& scale = Vector2(1), const Vector2& rotation = Vector2());
 	Transform(const Transform& transform);
 	~Transform();
 	Transform& operator+= (const Transform& transform);
@@ -16,6 +16,7 @@ public:
 	const Vector2& get_centre_position()const;
 	const Vector2& get_size()const;
 	const Vector2& get_scale()const;
+	float getRotation()const;
 	void refresh_scaled_size();
 	void refresh_centre();
 	void set_position(const Vector2& pos);
@@ -29,15 +30,18 @@ public:
 	void set_size_y(float y);
 	void set_scale(const Vector2& scale);
 	void set_scale(float scale);
+	void set_rotation(float rotation);
 	//实现变换向另一变换的转换，并根据百分比决定转换程度
 	void makeTransformTo(const Transform& transform, float perscentage);
 private:
+	//顺时针为正方向，目前采用弧度数
+	float rotation;
 	Vector2 position;
-	Vector2 size;
+	Vector2 size;//不可直接获取
 	Vector2 scale;
-	Vector2 rotation;
 	Vector2 anchor;
 
+	//依赖于其他成员
 	Vector2 scaled_size;
 	Vector2 centre;
 };
