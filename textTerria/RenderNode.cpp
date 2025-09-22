@@ -34,6 +34,7 @@ void RenderNode::renderTransform(unsigned long long ui32CurMilisecond)
 		{
 			m_bIsTransformChanged = false;
 		}
+		makeDirty();
 	}
 }
 

@@ -18,6 +18,8 @@ public:
 	//实现原理：修改本地位置，使其在计算完相对坐标后位于目标位置，如果没有继承节点树，则默认直接修改
 	void setWorldPosition(const Vector2& newPos);
 	void setWorldSize(const Vector2& newSize);
+	virtual void setLocalPosition(const Vector2& position)override;
+	virtual void setLocalPosition(float x, float y)override;
 	void makeDirty();
 protected:
 	virtual void updateTransform();
@@ -109,6 +111,19 @@ template<typename T>
 inline void TNodeInterface<T>::setWorldSize(const Vector2& newSize)
 {
 
+}
+
+template<typename T>
+inline void TNodeInterface<T>::setLocalPosition(const Vector2& position)
+{
+	setLocalPosition(position.x, position.y);
+}
+
+template<typename T>
+inline void TNodeInterface<T>::setLocalPosition(float x, float y)
+{
+	TObject::setLocalPosition(x, y);
+	makeDirty();
 }
 
 template<typename T>

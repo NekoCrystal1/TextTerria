@@ -4,7 +4,7 @@
 #include "UTIL.hpp"
 
 Animation::Animation(const Vector2& position, bool bIsAttachCamera) :
-	RenderNode(Vector2(), position), m_i32CurFrameIndex(0),m_bIsAttachCamera(true)
+	RenderNode(Vector2(), position), m_i32CurFrameIndex(0),m_bIsRelateCamera(true)
 {
 }
 
@@ -44,9 +44,9 @@ void Animation::renderFunc(unsigned long long ui32CurMilisecond)
 	{
 		Frame* pCurFrame = m_vecFrames[m_i32CurFrameIndex];
 		IMAGE* pImg = pCurFrame->m_pImg;
-		Vector2 oCurPos = m_pLocalTransform->get_position();
+		Vector2 oCurPos = getWorldTransform().get_position();
 		Vector2 oCurSize = pCurFrame->m_pTransform.get_size();
-		if (m_bIsAttachCamera)
+		if (m_bIsRelateCamera)
 		{
 			Transform oRenderTransform = getWorldTransform();
 			oRenderTransform.set_size(oCurSize);

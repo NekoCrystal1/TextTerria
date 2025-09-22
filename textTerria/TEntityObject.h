@@ -14,8 +14,6 @@ public:
 	virtual void on_update();
 	void setCanBeDeleted(bool bValue = true);
 	bool IsCanBeDeleted() const;
-	virtual void setLocalPosition(const Vector2& position)override;
-	virtual void setLocalPosition(float x, float y)override;
 protected:
 	bool m_bIsCanBeDeleted;
 };

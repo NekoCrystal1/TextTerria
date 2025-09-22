@@ -17,7 +17,7 @@ CollisionComponent* StaticCollisionObject::getCollisionComponent()
 }
 
 bool StaticCollisionObject::initial()
-{
+{	
 	return false;
 }
 

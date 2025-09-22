@@ -26,7 +26,7 @@ public:
 	virtual void renderFunc(unsigned long long ui32CurMilisecond) override;
 	void addImg(IMAGE* img);
 private:
-	bool m_bIsAttachCamera;
+	bool m_bIsRelateCamera;
 	int m_i32CurFrameIndex;
 	std::vector<Frame*> m_vecFrames;
 };
