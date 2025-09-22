@@ -31,6 +31,7 @@ Transform& Transform::operator=(const Transform& transform)
 	this->anchor = transform.anchor;
 	this->rotation = transform.rotation;
 	this->scaled_size = transform.scaled_size;
+	this->centre = transform.centre;
 	return *this;
 }
 

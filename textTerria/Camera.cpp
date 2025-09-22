@@ -4,6 +4,7 @@ const static Vector2 CAMERA_SCALE_VELOCITY = { 1.02, 1.02 };
 
 Camera::Camera(): TEntityObject(Vector2(getwidth(), getheight()), Vector2()), vision_scale(1.0f)
 {
+	updateTransform();
 }
 
 void Camera::on_input(ExMessage& msg)
@@ -59,7 +60,7 @@ void Camera::on_input(ExMessage& msg)
 	}
 }
 
-void Camera::on_uodate()
+void Camera::on_update()
 {
 	Vector2 add_pos;
 	if (up)
@@ -71,16 +72,16 @@ void Camera::on_uodate()
 	if (right)
 		add_pos.x += 10;
 	m_pLocalTransform->set_position(m_pLocalTransform->get_position() + add_pos);
-	float modify_sclae = add_scale - sub_scale;
-	if (modify_sclae > 0)
+	float modify_scale = add_scale - sub_scale;
+	if (modify_scale > 0)
 	{
 		vision_scale *= CAMERA_SCALE_VELOCITY;
 		m_pLocalTransform->set_scale(m_pLocalTransform->get_scale() / CAMERA_SCALE_VELOCITY);
 	}
-	else if(modify_sclae < 0)
+	else if(modify_scale < 0)
 	{
 		vision_scale /= CAMERA_SCALE_VELOCITY;
-		m_pLocalTransform->set_scale(m_pLocalTransform->get_scale() * CAMERA_SCALE_VELOCITY);
+		m_pLocalTransform->set_scale(m_pLocalTransform->get_scale().only_multiply_every_element(CAMERA_SCALE_VELOCITY));
 	}
 }
 
@@ -114,8 +115,8 @@ const Vector2& Camera::get_vision_scale()
 Vector2 Camera::transformRenderCentre(const Vector2& centre_position) 
 {
 	//渲染中心 = ( 对象中心 - 相机中心 )  * 缩放-> 先求向量，再缩放向量：得到的是屏幕坐标
-	return (centre_position - getWorldTransform().get_centre_position()).only_multiply_every_element(vision_scale) +
-		getWorldTransform().get_centre_position();
+	const Transform& cameraTransform = getWorldTransform();
+	return (centre_position - cameraTransform.get_centre_position()).only_multiply_every_element(vision_scale);
 }
 
 Vector2 Camera::transformRenderSize(const Vector2& size) 
@@ -126,11 +127,10 @@ Vector2 Camera::transformRenderSize(const Vector2& size)
 Transform Camera::transformRenderTransform(const Transform& target_transform)
 {
 	Transform ans = target_transform;
+	const Transform& cameraTransform = getWorldTransform();
 	ans.set_size(target_transform.get_size().only_multiply_every_element(vision_scale));
 	ans.set_centre_position(
-		(target_transform.get_centre_position() - getWorldTransform().get_centre_position()).only_multiply_every_element(vision_scale) +
-		getWorldTransform().get_centre_position()
-	);
+		(target_transform.get_centre_position() - cameraTransform.get_centre_position() + m_pLocalTransform->get_size() / 2).only_multiply_every_element(vision_scale));
 	return ans;
 }
 
@@ -140,6 +140,6 @@ void Camera::updateTransform()
 	{
 		return;
 	}
-	m_pWorldTransform->set_centre_position(m_pLocalTransform->get_centre_position() + m_pParentNode->getWorldTransform().get_centre_position());
+	m_pWorldTransform->set_centre_position(m_pLocalTransform->get_position() + m_pParentNode->getWorldTransform().get_centre_position());
 	m_pWorldTransform->set_rotation(m_pLocalTransform->getRotation() + m_pParentNode->getWorldTransform().getRotation());
 }

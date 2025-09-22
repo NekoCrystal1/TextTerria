@@ -59,7 +59,7 @@ void Game::runGame()
 				frames = 0;
 			}
 			//update
-			CAMERA->on_uodate();
+			CAMERA->on_update();
 			SenceManager::instance()->on_update();
 			InputManager::instance()->on_update();
 			delta -= PER_FRAME_MILISECOND;

@@ -25,7 +25,8 @@ bool Player::initial()
 	collision_box->set_collision_shape(CollisionBox::CollisionShape::SHAPE_RECTANGLE);
 	collision_box->set_collision_dst_layer(0x3);
 	collision_box->set_collision_src_layer(0x3);
-	m_pAnimation = ANIMATION_FACTORY->tryCreateAnimation(RESOURCES_MANAGER->getImage("PlayerImg"));
+	m_pAnimation = ANIMATION_FACTORY->tryCreateAnimation(RESOURCES_MANAGER->getImage("PlayerImg"), 
+		(m_pLocalTransform->get_size() - Vector2(30,80))/2);
 	return true;
 }
 

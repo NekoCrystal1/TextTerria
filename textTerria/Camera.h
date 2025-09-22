@@ -10,7 +10,7 @@ class Camera : public TEntityObject, public Singleton<Camera>
 	friend Singleton<Camera>;
 public:
 	void on_input(ExMessage& msg);
-	void on_uodate();
+	void on_update();
 	bool isShouldRender(const Transform& transform);
 	const Vector2& get_centre();
 	const Vector2& get_position();
@@ -18,7 +18,6 @@ public:
 	Vector2 transformRenderCentre(const Vector2& centre_position);
 	Vector2 transformRenderSize(const Vector2& size);
 	Transform transformRenderTransform(const Transform& target_transform);
-
 protected:
 	virtual void updateTransform()override;
 private:
