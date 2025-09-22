@@ -38,12 +38,8 @@ bool Animation::initial(Atlas* pAtlas)
 	return false;
 }
 
-void Animation::onRender(unsigned long long ui32CurMilisecond)
+void Animation::renderFunc(unsigned long long ui32CurMilisecond)
 {
-	if (!m_bIsVisible)
-	{
-		return;
-	}
 	if (m_i32CurFrameIndex < m_vecFrames.size())
 	{
 		Frame* pCurFrame = m_vecFrames[m_i32CurFrameIndex];
@@ -64,7 +60,6 @@ void Animation::onRender(unsigned long long ui32CurMilisecond)
 		}
 		putImage(oCurPos.x, oCurPos.y, oCurSize.x, oCurSize.y, pImg, 0, 0, pImg->getwidth(), pImg->getheight());
 	}
-	renderNextNodes(ui32CurMilisecond);
 }
 
 void Animation::addImg(IMAGE* img)

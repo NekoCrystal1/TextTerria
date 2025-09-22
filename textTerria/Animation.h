@@ -23,7 +23,7 @@ public:
 	//初始化时若因所需资源无法获取等，将会返回false，此函数必须调用，因此请在工厂中实例化
 	bool initial(IMAGE* pImg);
 	bool initial(Atlas* pAtlas);
-	virtual void onRender(unsigned long long ui32CurMilisecond) override;
+	virtual void renderFunc(unsigned long long ui32CurMilisecond) override;
 	void addImg(IMAGE* img);
 private:
 	bool m_bIsAttachCamera;

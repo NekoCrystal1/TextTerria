@@ -21,6 +21,11 @@ bool StaticCollisionObject::initial()
 	return false;
 }
 
+void StaticCollisionObject::setLocalPosition(const Vector2& newPos)
+{
+	setLocalPosition(newPos.x, newPos.y);
+}
+
 void StaticCollisionObject::setLocalPosition(float x, float y)
 {
 	TEntityObject::setLocalPosition(x, y);

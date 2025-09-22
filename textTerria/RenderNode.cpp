@@ -7,13 +7,17 @@ m_ui32LastMilisecond(0), m_ui32CurCountMilisecond(0), m_pTargetTransform(new Tra
 {
 }
 
-void RenderNode::renderNextNodes(unsigned int ui32CurMilisecond)
+void RenderNode::renderFunc(unsigned long long ui32CurMilisecond)
+{
+}
+
+void RenderNode::renderTransform(unsigned long long ui32CurMilisecond)
 {
 	if (m_bIsTransformChanged)
 	{
 		printf("PlayerAnimationPosition: %f, %f\n", getWorldTransform().get_position().x, getWorldTransform().get_position().y);
 		//计算当前经过时间在该帧中剩余时间占比：利用该占比计算到目标状态需要的变化量
-		float fTransformPerscentage = static_cast<float>(ui32CurMilisecond - m_ui32LastMilisecond) 
+		float fTransformPerscentage = static_cast<float>(ui32CurMilisecond - m_ui32LastMilisecond)
 			/ static_cast<float>(PER_FRAME_MILISECOND - m_ui32CurCountMilisecond);
 		m_ui32LastMilisecond = ui32CurMilisecond;
 		m_ui32CurCountMilisecond += ui32CurMilisecond - m_ui32LastMilisecond;
@@ -31,6 +35,10 @@ void RenderNode::renderNextNodes(unsigned int ui32CurMilisecond)
 			m_bIsTransformChanged = false;
 		}
 	}
+}
+
+void RenderNode::renderNextNodes(unsigned int ui32CurMilisecond)
+{
 	for (RenderNode* node : m_vecNextNodes)
 	{
 		node->onRender(ui32CurMilisecond);
@@ -39,10 +47,12 @@ void RenderNode::renderNextNodes(unsigned int ui32CurMilisecond)
 
 void RenderNode::onRender(unsigned long long ui32CurMilisecond)
 {
+	renderTransform(ui32CurMilisecond);
 	if (!m_bIsVisible)
 	{
 		return;
 	}
+	renderFunc(ui32CurMilisecond);
 	renderNextNodes(ui32CurMilisecond);
 }
 
