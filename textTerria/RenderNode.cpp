@@ -1,8 +1,7 @@
 #include "RenderNode.h"
 #include "Game.h"
 
-RenderNode::RenderNode(const Vector2& size, const Vector2& position, bool bIsVisible) : 
-	TWorldTransformObject(size, position), TNodeInterface(),
+RenderNode::RenderNode(const Vector2& size, const Vector2& position, bool bIsVisible) : TNodeInterface(size, position),
 m_bIsVisible(bIsVisible), m_bIsTransformChanged(false),
 m_ui32LastMilisecond(0), m_ui32CurCountMilisecond(0), m_pTargetTransform(new Transform(size, position))
 {

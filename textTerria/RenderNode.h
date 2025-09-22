@@ -1,8 +1,7 @@
 #pragma once
 #include "TNodeInterface.hpp"
-#include "TWorldTransformObject.hpp"
 
-class RenderNode : public TWorldTransformObject<RenderNode>, public TNodeInterface<RenderNode>
+class RenderNode : public TNodeInterface<RenderNode>
 {
 public:
 	RenderNode(const Vector2& size = Vector2(), const Vector2& position = Vector2(), bool bIsVisible = true);

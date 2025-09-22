@@ -491,9 +491,6 @@
     <ClInclude Include="NormalPlatform.h">
       <Filter>头文件\Game\GameItem\Actor\Chunck\Playform</Filter>
     </ClInclude>
-    <ClInclude Include="TWorldTransformObject.hpp">
-      <Filter>头文件\Game\Basic\Virtual_Obj</Filter>
-    </ClInclude>
     <ClInclude Include="TNodeInterface.hpp">
       <Filter>头文件\Game\Basic\Interface</Filter>
     </ClInclude>

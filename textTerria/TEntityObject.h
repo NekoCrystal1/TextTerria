@@ -1,8 +1,7 @@
 #pragma once
 #include "TNodeInterface.hpp"
-#include "TWorldTransformObject.hpp"
 
-class TEntityObject : public TWorldTransformObject<TEntityObject>, public TNodeInterface<TEntityObject>
+class TEntityObject : public TNodeInterface<TEntityObject>
 {
 	friend TComponentObject;
 private:

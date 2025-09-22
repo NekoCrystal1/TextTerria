@@ -1,13 +1,11 @@
 #include "TEntityObject.h"
 
-TEntityObject::TEntityObject(const Vector2& size, const Vector2& position) : TNodeInterface(),
-	TWorldTransformObject(size, position),
+TEntityObject::TEntityObject(const Vector2& size, const Vector2& position) : TNodeInterface(size, position),
 m_bIsCanBeDeleted(false)
 {
 }
 
-TEntityObject::TEntityObject(const Transform& transform) : TNodeInterface(),
-	TWorldTransformObject(transform),
+TEntityObject::TEntityObject(const Transform& transform) : TNodeInterface(transform),
 m_bIsCanBeDeleted(false)
 {
 }
@@ -43,6 +41,5 @@ void TEntityObject::setLocalPosition(const Vector2& position)
 void TEntityObject::setLocalPosition(float x, float y)
 {
 	TObject::setLocalPosition(x, y);
-	TWorldTransformObject::makeDirty();
+	TNodeInterface::makeDirty();
 }
-
