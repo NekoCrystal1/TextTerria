@@ -61,14 +61,19 @@ Transform Transform::operator*(float fVal)
 	return oAns;
 }
 
-const Vector2& Transform::get_position() const
+Vector2 Transform::get_position() const
 {
-	return position;
+	return position + anchor;
 }
 
-const Vector2& Transform::get_centre_position() const
+Vector2 Transform::get_centre_position() const
 {
-	return centre;
+	return centre + anchor / 2;
+}
+
+const Vector2& Transform::get_anchor() const
+{
+	return anchor;
 }
 
 const Vector2& Transform::get_size() const
@@ -95,38 +100,43 @@ void Transform::refresh_scaled_size()
 
 void Transform::refresh_centre()
 {
-	centre = position + scaled_size * 0.5f;
+	centre = position + scaled_size * 0.5f - anchor / 2;
+}
+
+void Transform::set_anchor(const Vector2& oNewAcnhor)
+{
+	anchor = oNewAcnhor;
 }
 
 void Transform::set_position(const Vector2& pos)
 {
-	this->position = pos;
+	this->position = pos - anchor;
 	refresh_centre();
 }
 
 void Transform::set_position(float x, float y)
 {
-	this->position.x = x;
-	this->position.y = y;
+	this->position.x = x - anchor.x;
+	this->position.y = y - anchor.y;
 	refresh_centre();
 }
 
 void Transform::set_pos_x(float x)
 {
-	this->position.x = x;
+	this->position.x = x - anchor.x;
 	refresh_centre();
 }
 
 void Transform::set_pos_y(float y)
 {
-	this->position.y = y;
+	this->position.y = y - anchor.y;
 	refresh_centre();
 }
 
 void Transform::set_centre_position(const Vector2& centre)
 {
-	this->centre = centre;
-	position = centre - scaled_size * 0.5f;
+	this->centre = centre - anchor / 2;
+	position = centre - scaled_size * 0.5f - anchor;
 }
 
 void Transform::set_size(const Vector2& size)

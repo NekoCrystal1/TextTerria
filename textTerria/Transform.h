@@ -12,13 +12,15 @@ public:
 	Transform operator- (const Transform& transform) const;
 	//实现各属性缩放
 	Transform operator* (float fVal);
-	const Vector2& get_position()const;
-	const Vector2& get_centre_position()const;
+	Vector2 get_position()const;
+	Vector2 get_centre_position()const;
+	const Vector2& get_anchor()const;
 	const Vector2& get_size()const;
 	const Vector2& get_scale()const;
 	float getRotation()const;
 	void refresh_scaled_size();
 	void refresh_centre();
+	void set_anchor(const Vector2& oNewAcnhor);
 	void set_position(const Vector2& pos);
 	void set_position(float x,float y);
 	void set_pos_x(float x);
@@ -39,7 +41,8 @@ private:
 	Vector2 position;
 	Vector2 size;//不可直接获取
 	Vector2 scale;
-	Vector2 anchor;
+	//存储position(成员) + anchor = 逻辑position(对外暴露的)
+	Vector2 anchor;//position所在位置锚点
 
 	//依赖于其他成员
 	Vector2 scaled_size;
