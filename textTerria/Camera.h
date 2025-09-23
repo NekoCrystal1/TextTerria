@@ -1,11 +1,11 @@
 #pragma once
 #include <easyx.h>
 #include "Singleton.hpp"
-#include "TEntityObject.h"
+#include "RenderNode.h"
 
 #define CAMERA Camera::instance()
 
-class Camera : public TEntityObject, public Singleton<Camera>
+class Camera : public RenderNode, public Singleton<Camera>
 {
 	friend Singleton<Camera>;
 public:

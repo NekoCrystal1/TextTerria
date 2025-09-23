@@ -2,7 +2,7 @@
 
 const static Vector2 CAMERA_SCALE_VELOCITY = { 1.02, 1.02 };
 
-Camera::Camera(): TEntityObject(Vector2(getwidth(), getheight()), Vector2()), vision_scale(1.0f)
+Camera::Camera(): RenderNode(Vector2(getwidth(), getheight()), Vector2()), vision_scale(1.0f)
 {
 	updateTransform();
 }

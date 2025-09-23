@@ -9,6 +9,7 @@ public:
 	virtual ~StaticCollisionObject();
 public:
 	CollisionComponent* getCollisionComponent();
+	Animation* getAnimation();
 	//需要创建碰撞箱时，根据是否创建成功返回true/false
 	virtual bool initial();
 	virtual void setLocalPosition(const Vector2& newPos)override;

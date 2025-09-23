@@ -16,6 +16,11 @@ CollisionComponent* StaticCollisionObject::getCollisionComponent()
 	return m_pCollisionComponent;
 }
 
+Animation* StaticCollisionObject::getAnimation()
+{
+	return m_pAnimation;
+}
+
 bool StaticCollisionObject::initial()
 {	
 	return false;

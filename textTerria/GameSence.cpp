@@ -38,7 +38,7 @@ void GameSence::on_enter()
 
 	load_map();
 	//loadUI();
-	CAMERA->setParentNode(player);
+	CAMERA->setParentNode(player->getAnimation());
 }
 
 void GameSence::on_exit()
