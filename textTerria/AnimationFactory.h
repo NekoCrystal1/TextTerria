@@ -13,8 +13,8 @@ private:
 	~AnimationFactory();
 public:
 	//创建失败会返回nullptr
-	Animation* tryCreateAnimation(IMAGE* pImg, const Vector2& position = Vector2());
-	Animation* tryCreateAnimation(Atlas* pAtlas, const Vector2& position = Vector2());
+	Animation* tryCreateAnimation(IMAGE* pImg, const Vector2& size, const Vector2& position = Vector2());
+	Animation* tryCreateAnimation(Atlas* pAtlas, const Vector2& size, const Vector2& position = Vector2());
 	
 private:
 };

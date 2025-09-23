@@ -3,8 +3,8 @@
 #include "RenderManager.h"
 #include "UTIL.hpp"
 
-Animation::Animation(const Vector2& position, bool bIsAttachCamera) :
-	RenderNode(Vector2(), position), m_i32CurFrameIndex(0),m_bIsRelateCamera(true)
+Animation::Animation(const Vector2& size, const Vector2& position, bool bIsAttachCamera) :
+	RenderNode(size, position), m_i32CurFrameIndex(0),m_bIsRelateCamera(true)
 {
 }
 

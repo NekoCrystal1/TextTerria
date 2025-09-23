@@ -7,9 +7,9 @@ AnimationFactory::~AnimationFactory()
 {
 }
 
-Animation* AnimationFactory::tryCreateAnimation(IMAGE* pImg, const Vector2& position)
+Animation* AnimationFactory::tryCreateAnimation(IMAGE* pImg, const Vector2& size, const Vector2& position)
 {
-    Animation* pAns = new Animation(position);
+    Animation* pAns = new Animation(size, position);
     if (!pAns->initial(pImg))
     {
         delete pAns;
@@ -20,9 +20,9 @@ Animation* AnimationFactory::tryCreateAnimation(IMAGE* pImg, const Vector2& posi
     return pAns;
 }
 
-Animation* AnimationFactory::tryCreateAnimation(Atlas* pAtlas, const Vector2& position)
+Animation* AnimationFactory::tryCreateAnimation(Atlas* pAtlas, const Vector2& size, const Vector2& position)
 {
-    Animation* pAns = new Animation(position);
+    Animation* pAns = new Animation(size, position);
     if (!pAns->initial(pAtlas))
     {
         delete pAns;

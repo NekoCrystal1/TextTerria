@@ -20,6 +20,7 @@ public:
 	void setWorldSize(const Vector2& newSize);
 	virtual void setLocalPosition(const Vector2& position)override;
 	virtual void setLocalPosition(float x, float y)override;
+	virtual void setLocalAnchor(const Vector2& oNewAnchor)override;
 	void makeDirty();
 protected:
 	virtual void updateTransform();
@@ -92,6 +93,7 @@ inline const Transform& TNodeInterface<T>::getWorldTransform()
 	if (m_bIsTransformDirty)
 	{
 		updateTransform();
+		m_bIsTransformDirty = false;
 	}
 	return *m_pWorldTransform;
 }
@@ -127,6 +129,13 @@ inline void TNodeInterface<T>::setLocalPosition(float x, float y)
 }
 
 template<typename T>
+inline void TNodeInterface<T>::setLocalAnchor(const Vector2& oNewAnchor)
+{
+	TObject::setLocalAnchor(oNewAnchor);
+	makeDirty();
+}
+
+template<typename T>
 inline void TNodeInterface<T>::makeDirty()
 {
 	m_bIsTransformDirty = true;
@@ -141,11 +150,10 @@ inline void TNodeInterface<T>::updateTransform()
 {
 	if (!this->getParentNode())
 	{
-		m_pWorldTransform = m_pLocalTransform;
+		*m_pWorldTransform = *m_pLocalTransform;
 		return;
 	}
 	*m_pWorldTransform = *m_pLocalTransform + static_cast<TNodeInterface<T>*>(this->getParentNode())->getWorldTransform();
-	m_bIsTransformDirty = false;
 }
 
 template<typename T>

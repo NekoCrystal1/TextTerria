@@ -26,7 +26,7 @@ void GameSence::on_update()
 	Sence::on_update();
 	CollisionManager::instance()->on_update();
 	//Camera::instance()->set_centre_position(player->getTransform()->get_centre_position());
-	m_pGameLevel->on_update();
+	//m_pGameLevel->on_update();
 	player->on_update();
 }
 
@@ -38,7 +38,8 @@ void GameSence::on_enter()
 
 	load_map();
 	//loadUI();
-	CAMERA->setParentNode(player->getAnimation());
+	//player->getMovementComponent()->set_gravity(0);
+	//CAMERA->setParentNode(player->getAnimation());
 }
 
 void GameSence::on_exit()

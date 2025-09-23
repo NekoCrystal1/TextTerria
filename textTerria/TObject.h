@@ -14,6 +14,7 @@ public:
 	virtual const Transform& gerLocalTransform() const;
 	virtual void setLocalPosition(const Vector2& position);
 	virtual void setLocalPosition(float x, float y);
+	virtual void setLocalAnchor(const Vector2& oNewAnchor);
 protected:
 	Transform* m_pLocalTransform;
 };

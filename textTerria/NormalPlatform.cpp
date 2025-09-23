@@ -16,7 +16,7 @@ bool NormalPlatform::initial()
 	bool ans = Platform::initial();
 	if (ans)
 	{
-		m_pAnimation = ANIMATION_FACTORY->tryCreateAnimation(RESOURCES_MANAGER->getImage("TestPlatformImg"), m_pLocalTransform->get_position());
+		m_pAnimation = ANIMATION_FACTORY->tryCreateAnimation(RESOURCES_MANAGER->getImage("TestPlatformImg"), m_pLocalTransform->get_size(), m_pLocalTransform->get_position());
 		if (m_pAnimation)
 		{
 			return true;

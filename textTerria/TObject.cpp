@@ -23,3 +23,8 @@ inline void TObject::setLocalPosition(float x, float y)
 {
 	m_pLocalTransform->set_position(x, y);
 }
+
+void TObject::setLocalAnchor(const Vector2& oNewAnchor)
+{
+	m_pLocalTransform->set_anchor(oNewAnchor);
+}

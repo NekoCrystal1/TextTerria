@@ -17,7 +17,7 @@ bool NormalBlock::initial()
 	bool ans = Block::initial();
 	if (ans)
 	{
-		m_pAnimation = ANIMATION_FACTORY->tryCreateAnimation(RESOURCES_MANAGER->getImage("TestBlock"), m_pLocalTransform->get_position());
+		m_pAnimation = ANIMATION_FACTORY->tryCreateAnimation(RESOURCES_MANAGER->getImage("TestBlock"), m_pLocalTransform->get_size(), m_pLocalTransform->get_position());
 		if (m_pAnimation)
 		{
 			return true;
