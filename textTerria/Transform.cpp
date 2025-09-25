@@ -17,7 +17,7 @@ Transform::~Transform()
 
 Transform& Transform::operator+=(const Transform& transform)
 {
-	this->set_position(this->position + transform.position);
+	this->setLeftTopPosition(this->position + transform.position);
 	this->set_scale(this->scale * transform.scale);
 	this->rotation = this->rotation + transform.rotation;
 	return *this;
@@ -38,7 +38,7 @@ Transform& Transform::operator=(const Transform& transform)
 Transform Transform::operator+(const Transform& transform) const
 { 
 	Transform oAns(*this);
-	oAns.set_position(this->position + transform.position);
+	oAns.setLeftTopPosition(this->position + transform.position);
 	oAns.set_scale(this->scale.only_multiply_every_element(transform.scale));
 	oAns.rotation = this->rotation + transform.rotation;
 	return oAns;
@@ -47,7 +47,7 @@ Transform Transform::operator+(const Transform& transform) const
 Transform Transform::operator-(const Transform& transform) const
 {
 	Transform oAns(*this);
-	oAns.set_position(this->position - transform.position);
+	oAns.setLeftTopPosition(this->position - transform.position);
 	oAns.set_scale(this->scale / transform.scale);
 	oAns.rotation = this->rotation - transform.rotation;
 	return oAns;
@@ -56,19 +56,19 @@ Transform Transform::operator-(const Transform& transform) const
 Transform Transform::operator*(float fVal)
 {
 	Transform oAns(*this);
-	oAns.set_position(oAns.position * fVal);
+	oAns.setLeftTopPosition(oAns.position * fVal);
 	oAns.set_scale(oAns.scale * fVal);
 	return oAns;
 }
 
-Vector2 Transform::get_position() const
+const Vector2& Transform::get_position() const
 {
-	return position + anchor;
+	return position;
 }
 
-Vector2 Transform::get_centre_position() const
+const Vector2& Transform::get_centre_position() const
 {
-	return centre + anchor / 2;
+	return centre;
 }
 
 const Vector2& Transform::get_anchor() const
@@ -91,52 +91,41 @@ float Transform::getRotation() const
 	return rotation;
 }
 
-void Transform::refresh_scaled_size()
-{
-	scaled_size.x = size.x * scale.x;
-	scaled_size.y = size.y * scale.y;
-	refresh_centre();
-}
-
-void Transform::refresh_centre()
-{
-	centre = position + scaled_size * 0.5f - anchor / 2;
-}
-
 void Transform::set_anchor(const Vector2& oNewAcnhor)
 {
+	position += oNewAcnhor - anchor;
 	anchor = oNewAcnhor;
 }
 
-void Transform::set_position(const Vector2& pos)
+void Transform::setLeftTopPosition(const Vector2& pos)
 {
-	this->position = pos - anchor;
+	this->position = pos + anchor;
 	refresh_centre();
 }
 
-void Transform::set_position(float x, float y)
+void Transform::setLeftTopPosition(float x, float y)
 {
-	this->position.x = x - anchor.x;
-	this->position.y = y - anchor.y;
+	this->position.x = x + anchor.x;
+	this->position.y = y + anchor.y;
 	refresh_centre();
 }
 
 void Transform::set_pos_x(float x)
 {
-	this->position.x = x - anchor.x;
+	this->position.x = x + anchor.x;
 	refresh_centre();
 }
 
 void Transform::set_pos_y(float y)
 {
-	this->position.y = y - anchor.y;
+	this->position.y = y + anchor.y;
 	refresh_centre();
 }
 
 void Transform::set_centre_position(const Vector2& centre)
 {
-	this->centre = centre - anchor / 2;
-	position = centre - scaled_size * 0.5f - anchor;
+	this->centre = centre + anchor / 2;
+	position = centre - scaled_size * 0.5f + anchor;
 }
 
 void Transform::set_size(const Vector2& size)
@@ -185,7 +174,7 @@ void Transform::set_rotation(float rotation)
 void Transform::makeTransformTo(const Transform& transform, float fPerscentage)
 {
 	Transform subTransform = transform - *this;
-	this->set_position(this->position + subTransform.position * fPerscentage);
+	this->setLeftTopPosition(this->position + subTransform.position * fPerscentage);
 	this->rotation = this->rotation + subTransform.rotation * fPerscentage;
 	if (subTransform.scale.x == 1)
 	{
@@ -212,3 +201,14 @@ void Transform::makeTransformTo(const Transform& transform, float fPerscentage)
 	this->set_scale(this->scale.only_multiply_every_element(subTransform.scale));
 }
 
+void Transform::refresh_scaled_size()
+{
+	scaled_size.x = size.x * scale.x;
+	scaled_size.y = size.y * scale.y;
+	refresh_centre();
+}
+
+void Transform::refresh_centre()
+{
+	centre = position + scaled_size * 0.5f - anchor / 2;
+}
