@@ -18,7 +18,7 @@ void Label::on_update()
 		if (check_point_in_rectangle(Vector2(msg.x, msg.y), original_transform)) {
 			text_render_color = text_handle_color;
 			this->m_pLocalTransform->set_scale(change_scale);
-			this->m_pLocalTransform->setLeftTopPosition(this->original_transform.get_position() - Vector2(
+			this->m_pLocalTransform->setOriginPosition(this->original_transform.get_position() - Vector2(
 				this->m_pLocalTransform->get_size().x / 2 - this->original_transform.get_size().x / 2, this->m_pLocalTransform->get_size().y / 2 - this->original_transform.get_size().y / 2));
 			text_height = text_original_height * change_scale.x;
 		}
@@ -77,5 +77,5 @@ void Label::set_text_handle_color(const COLORREF color)
 void Label::setLocalPosition(const Vector2& vec)
 {
 	Widget::setLocalPosition(vec);
-	this->original_transform.setLeftTopPosition(vec);
+	this->original_transform.setOriginPosition(vec);
 }

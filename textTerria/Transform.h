@@ -20,12 +20,12 @@ public:
 	const Vector2& get_scale()const;
 	float getRotation()const;
 	void set_anchor(const Vector2& oNewAcnhor);
-	//设置左上角位置
-	void setLeftTopPosition(const Vector2& pos);
-	void setLeftTopPosition(float x,float y);
 	//设置逻辑坐标位置
-	//T000;
+	void setLogicPosition(const Vector2& pos);
 
+	//设置原始左上角位置
+	void setOriginPosition(const Vector2& pos);
+	void setOriginPosition(float x,float y);
 	void set_pos_x(float x);
 	void set_pos_y(float y);
 	void set_centre_position(const Vector2& centre);

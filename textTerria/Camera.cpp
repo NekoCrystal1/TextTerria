@@ -4,7 +4,9 @@ const static Vector2 CAMERA_SCALE_VELOCITY = { 1.02, 1.02 };
 
 Camera::Camera(): RenderNode(Vector2(getwidth(), getheight()), Vector2()), vision_scale(1.0f)
 {
+	m_pLocalTransform->set_anchor(-m_pLocalTransform->get_size() / 2);
 	*m_pWorldTransform = *m_pLocalTransform;
+	m_pWorldTransform->set_anchor(Vector2());
 }
 
 void Camera::on_input(ExMessage& msg)
@@ -73,7 +75,7 @@ void Camera::on_update()
 		add_pos.x += 10;
 	if (add_pos.x != 0 || add_pos.y != 0)
 	{
-		m_pLocalTransform->set_position(m_pLocalTransform->get_position() + add_pos);
+		m_pLocalTransform->setLogicPosition(m_pLocalTransform->get_position() + add_pos);
 		makeDirty();
 	}
 	float modify_scale = add_scale - sub_scale;
@@ -90,8 +92,8 @@ void Camera::on_update()
 			vision_scale /= CAMERA_SCALE_VELOCITY;
 			m_pLocalTransform->set_scale(m_pLocalTransform->get_scale().only_multiply_every_element(CAMERA_SCALE_VELOCITY));
 		}
-		m_pLocalTransform->set_position(m_pLocalTransform->get_position() -
-			(m_pLocalTransform->get_size() - oLastSize) / 2);
+		//m_pLocalTransform->setLeftTopPosition(m_pLocalTransform->get_position() -
+		//	(m_pLocalTransform->get_size() - oLastSize) / 2);
 		makeDirty();
 	}
 }
@@ -150,11 +152,11 @@ void Camera::updateTransform()
 {
 	if (!m_pParentNode)
 	{
-		m_pWorldTransform->set_centre_position(m_pLocalTransform->get_centre_position());
+		m_pWorldTransform->setOriginPosition(m_pLocalTransform->get_position());
 		m_pWorldTransform->set_rotation(m_pLocalTransform->getRotation());
 		return;
 	}
 	const Transform& pParentTransform = m_pParentNode->getWorldTransform();
-	m_pWorldTransform->set_centre_position(m_pLocalTransform->get_position() + pParentTransform.get_centre_position());
+	m_pWorldTransform->set_centre_position(m_pLocalTransform->get_position() - m_pLocalTransform->get_anchor()  + pParentTransform.get_centre_position());
 	m_pWorldTransform->set_rotation(m_pLocalTransform->getRotation() + pParentTransform.getRotation());
 }

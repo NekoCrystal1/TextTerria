@@ -21,7 +21,7 @@ inline void TObject::setLocalPosition(const Vector2& pos)
 
 inline void TObject::setLocalPosition(float x, float y)
 {
-	m_pLocalTransform->setLeftTopPosition(x, y);
+	m_pLocalTransform->setOriginPosition(x, y);
 }
 
 void TObject::setLocalAnchor(const Vector2& oNewAnchor)

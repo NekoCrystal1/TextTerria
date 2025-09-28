@@ -60,14 +60,14 @@ void RenderNode::onRender(unsigned long long ui32CurMilisecond)
 void RenderNode::nextFrameMoveTo(const Vector2& newPos)
 {
 	m_ui32CurCountMilisecond = 0;
-	m_pTargetTransform->setLeftTopPosition(newPos);
+	m_pTargetTransform->setOriginPosition(newPos);
 	m_bIsTransformChanged = true;
 }
 
 void RenderNode::nextFrameMoveTo(float x, float y)
 {
 	m_ui32CurCountMilisecond = 0;
-	m_pTargetTransform->setLeftTopPosition(Vector2(x, y));
+	m_pTargetTransform->setOriginPosition(Vector2(x, y));
 	m_bIsTransformChanged = true;
 }
 

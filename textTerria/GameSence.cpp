@@ -24,7 +24,6 @@ GameSence::~GameSence()
 void GameSence::on_update()
 {
 	Sence::on_update();
-	//Camera::instance()->set_centre_position(player->getTransform()->get_centre_position());
 	m_pGameLevel->on_update();
 	COLLISION_MANAGER->on_update();
 }
