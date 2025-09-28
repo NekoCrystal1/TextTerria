@@ -15,7 +15,7 @@ void RenderNode::renderTransform(unsigned long long ui32CurMilisecond)
 {
 	if (m_bIsTransformChanged)
 	{
-		printf("PlayerAnimationPosition: %f, %f\n", getWorldTransform().get_position().x, getWorldTransform().get_position().y);
+		//printf("PlayerAnimationPosition: %f, %f\n", getWorldTransform().get_position().x, getWorldTransform().get_position().y);
 		//计算当前经过时间在该帧中剩余时间占比：利用该占比计算到目标状态需要的变化量
 		float fTransformPerscentage = static_cast<float>(ui32CurMilisecond - m_ui32LastMilisecond)
 			/ static_cast<float>(PER_FRAME_MILISECOND - m_ui32CurCountMilisecond);
@@ -60,14 +60,14 @@ void RenderNode::onRender(unsigned long long ui32CurMilisecond)
 void RenderNode::nextFrameMoveTo(const Vector2& newPos)
 {
 	m_ui32CurCountMilisecond = 0;
-	m_pTargetTransform->set_position(newPos);
+	m_pTargetTransform->setLeftTopPosition(newPos);
 	m_bIsTransformChanged = true;
 }
 
 void RenderNode::nextFrameMoveTo(float x, float y)
 {
 	m_ui32CurCountMilisecond = 0;
-	m_pTargetTransform->set_position(Vector2(x, y));
+	m_pTargetTransform->setLeftTopPosition(Vector2(x, y));
 	m_bIsTransformChanged = true;
 }
 

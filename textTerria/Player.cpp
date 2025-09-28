@@ -32,8 +32,8 @@ bool Player::initial()
 
 void Player::on_update()
 {
-	printf("PlayerLogicPosition: %f, %f\n", getWorldTransform().get_position().x, getWorldTransform().get_position().y);
-
+	printf("PlayerLogicPosition: %f, %f : ", getWorldTransform().get_position().x, getWorldTransform().get_position().y);
+	printf("PlayerYVelocity: %f\n", m_pMovementComponent->get_velocity().y);
 	InputManager* input = InputManager::instance();
 	Vector2 move_velocity;
 	

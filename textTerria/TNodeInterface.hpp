@@ -101,12 +101,13 @@ inline const Transform& TNodeInterface<T>::getWorldTransform()
 template<typename T>
 inline void TNodeInterface<T>::setWorldPosition(const Vector2& newPos)
 {
+	makeDirty();
 	if (!this->getParentNode())
 	{
-		m_pWorldTransform->set_position(newPos);
+		m_pLocalTransform->setLeftTopPosition(newPos);
 		return;
 	}
-	m_pWorldTransform->set_position(newPos - static_cast<TNodeInterface<T>*>(this->getParentNode())->getWorldTransform().get_position());
+	m_pLocalTransform->setLeftTopPosition(newPos - static_cast<TNodeInterface<T>*>(this->getParentNode())->getWorldTransform().get_position());
 }
 
 template<typename T>

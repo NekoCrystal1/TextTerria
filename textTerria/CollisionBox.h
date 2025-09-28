@@ -23,7 +23,7 @@ public:
 	static std::vector<COLORREF> box_colors;
 public:
 	//需要设置碰撞源、碰撞目标、形状
-	CollisionBox(CollisionType type, CollisionComponent* p, const Transform& transform);
+	CollisionBox(CollisionType type, CollisionComponent* p, const Vector2& size = Vector2(), const Vector2& position = Vector2());
 	~CollisionBox();
 	void on_update();
 	void on_render()const ;
@@ -40,8 +40,8 @@ public:
 	const CollisionShape& get_collision_shape()const;
 	const unsigned int get_collision_src_layer()const;
 	const unsigned int get_collision_dst_layer()const;
-	const Vector2& get_position()const;
-	const Vector2& get_centre_position()const;
+	const Vector2& get_position();
+	const Vector2& get_centre_position();
 	const Vector2& get_size()const;
 	CollisionBox* get_target() const;
 	CollisionComponent* getParentCollisionComponent()const;

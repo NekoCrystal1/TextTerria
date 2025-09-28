@@ -3,6 +3,9 @@
 #include <queue>
 #include "CollisionBox.h"
 #include "Singleton.hpp"
+
+#define COLLISION_MANAGER CollisionManager::instance()
+
 class CollisionManager : public Singleton<CollisionManager>
 {
 	friend Singleton<CollisionManager>;

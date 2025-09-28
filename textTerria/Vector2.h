@@ -19,6 +19,7 @@ public:
 	Vector2 operator+(const Vector2& vec) const;
 	Vector2 operator+(float fVal) const;
 	Vector2 operator-(const Vector2& vec) const;
+	Vector2 operator-()const;
 	Vector2 operator*(float s) const;
 	float operator*(const Vector2& vec) const;
 	Vector2 operator/(const Vector2& vec) const;

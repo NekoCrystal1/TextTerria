@@ -73,24 +73,24 @@ Vector2 CollisionManager::get_netvector_pos(const Vector2& pos)
 CollisionBox* CollisionManager::create_collision_box(CollisionBox::CollisionType collision_type, CollisionComponent* pParent)
 {
 	CollisionBox* box = nullptr;
+	const Transform& parentTransform = pParent->gerLocalTransform();
 	switch (collision_type)
 	{
 		//静态碰撞箱会自动网格对齐
 	case CollisionBox::CollisionType::Static_Collision: 
 	{
-		Transform boxTransform = pParent->gerLocalTransform();
-		Vector2 alignment_pos = net_align(boxTransform.get_position());
+		Vector2 alignment_pos = net_align(parentTransform.get_position());
 		Vector2 netvector_pos = get_netvector_pos(alignment_pos);
 		//重叠会导致创建失败
 		if (!static_collision_boxes[netvector_pos.y][netvector_pos.x]) {
-			boxTransform.set_position(alignment_pos);
-			box = new CollisionBox(collision_type, pParent, boxTransform);
+			box = new CollisionBox(collision_type, pParent, parentTransform.get_size());
+			box->setWorldPosition(alignment_pos);
 			static_collision_boxes[netvector_pos.y][netvector_pos.x] = box;
 		}
 		break;
 	}
 	case CollisionBox::CollisionType::Dynamic_Collision:
-		box = new CollisionBox(collision_type, pParent, pParent->gerLocalTransform());
+		box = new CollisionBox(collision_type, pParent, parentTransform.get_size(), parentTransform.get_position());
 		dynamic_collision_boxes.push_back(box);
 		break;
 	default:
@@ -116,13 +116,19 @@ void CollisionManager::on_update()
 		row_end = row_end < static_collision_boxes.size() ? row_end : static_collision_boxes.size();
 		for(int i = row_start > 0 ? row_start : 0; i < row_end; i++)
 			for(int j = col_start > 0 ? col_start : 0; j < col_end; j++,num++) 
-				if (box && static_collision_boxes[i][j] && check_collision(box, static_collision_boxes[i][j])) {
-					static_collision_boxes[i][j]->set_is_collision(true);
-					static_collision_boxes[i][j]->set_target(box);
-					update_static_collision_boxes.push(static_collision_boxes[i][j]);
+				//T000:碰撞箱需要具有一个函数，在检查存在时若不存在自动销毁
+				if (box && static_collision_boxes[i][j])
+				{
+					if(check_collision(box, static_collision_boxes[i][j]))
+						{
+							static_collision_boxes[i][j]->set_is_collision(true);
+							static_collision_boxes[i][j]->set_target(box);
+							update_static_collision_boxes.push(static_collision_boxes[i][j]);
+						}
 				}
 	}
 	//printf("num = %d", num);
+	//动态物体之间碰撞
 	for(int i = 0; i < dynamic_collision_boxes.size(); i++)
 		for(int j = i + 1; j < dynamic_collision_boxes.size(); j++)
 			if (check_collision(dynamic_collision_boxes[i], dynamic_collision_boxes[j])) {
@@ -134,6 +140,7 @@ void CollisionManager::on_update()
 	//printf("dynamic_num: %d\n", dynamic_collision_boxes.size());
 	for (CollisionBox* i : dynamic_collision_boxes)
 		i->on_update();
+	//更新静态碰撞箱队列
 	while (!update_static_collision_boxes.empty()) {
 		//printf("update\t");
 		update_static_collision_boxes.front()->on_update();

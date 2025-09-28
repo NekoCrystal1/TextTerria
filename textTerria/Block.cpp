@@ -17,7 +17,7 @@ bool Block::initial()
 	m_pCollisionComponent->addCollisionBox("BlockBody", collision_box);
 	collision_box->set_collision_shape(CollisionBox::CollisionShape::SHAPE_RECTANGLE);
 	collision_box->set_collision_src_layer(0x1);
-	collision_box->set_collision_func([&]() {
+	collision_box->set_collision_func([this, collision_box]() {
 		this->colide_func(collision_box->getTargetEntity());
 		});
 	return true;

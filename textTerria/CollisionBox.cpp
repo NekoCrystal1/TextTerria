@@ -6,13 +6,14 @@ std::vector<COLORREF> CollisionBox::box_colors = std::vector<COLORREF>({
 	0x000000,0xEE0000,0x0000EE
 	});
 
-CollisionBox::CollisionBox(CollisionType type, CollisionComponent* p, const Transform& oTransform) : TEntityObject(oTransform),
+CollisionBox::CollisionBox(CollisionType type, CollisionComponent* p, const Vector2& size, const Vector2& position) : TEntityObject(size, position),
 m_pParent(p),collision_type(type), is_valid(true), collision_shape(CollisionShape::SHAPE_NULL),
 collision_src_layer(0), collision_dst_layer(0),
 on_collision_func(nullptr), is_collision(false), target(nullptr)
 {
 	this->setParentNode(p->getParent());
 }
+
 
 CollisionBox::~CollisionBox()
 {
@@ -110,14 +111,14 @@ const unsigned int CollisionBox::get_collision_dst_layer()const
 	return this->collision_dst_layer;
 }
 
-const Vector2& CollisionBox::get_position() const
+const Vector2& CollisionBox::get_position()
 {
-	return m_pLocalTransform->get_position();
+	return getWorldTransform().get_position();
 }
 
-const Vector2& CollisionBox::get_centre_position() const
+const Vector2& CollisionBox::get_centre_position()
 {
-	return m_pLocalTransform->get_centre_position();
+	return getWorldTransform().get_centre_position();
 }
 
 const Vector2& CollisionBox::get_size() const
