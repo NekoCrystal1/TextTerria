@@ -16,5 +16,6 @@ public:
 	virtual void setLocalPosition(float x, float y);
 	virtual void setLocalAnchor(const Vector2& oNewAnchor);
 protected:
+	//尽量使用虚函数setLocal...来修改，这样才能影响子节点、组件等；如果要直接修改请确保不需要影响组件
 	Transform* m_pLocalTransform;
 };

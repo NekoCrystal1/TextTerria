@@ -9,7 +9,7 @@ m_oMaxVelocity(16,160), m_oVelocity(), m_oAcceleration(0,0), fx_acceleration(5),
 void MovementComponent::on_update()
 {
 	m_oVelocity += m_oAcceleration;
-	if (m_oVelocity.y + gravity == 0)
+	if (m_oVelocity.y < 0 && m_oVelocity.y + gravity >= 0)
 		m_bIsFreeFallHeighest = true;
 	else
 		m_bIsFreeFallHeighest = false;

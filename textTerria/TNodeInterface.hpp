@@ -104,10 +104,10 @@ inline void TNodeInterface<T>::setWorldPosition(const Vector2& newPos)
 	makeDirty();
 	if (!this->getParentNode())
 	{
-		m_pLocalTransform->setOriginPosition(newPos);
+		this->setLocalPosition(newPos);
 		return;
 	}
-	m_pLocalTransform->setOriginPosition(newPos - static_cast<TNodeInterface<T>*>(this->getParentNode())->getWorldTransform().get_position());
+	this->setLocalPosition(newPos - static_cast<TNodeInterface<T>*>(this->getParentNode())->getWorldTransform().get_position());
 }
 
 template<typename T>

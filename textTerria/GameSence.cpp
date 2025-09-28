@@ -23,7 +23,7 @@ GameSence::~GameSence()
 
 void GameSence::on_update()
 {
-	Sence::on_update();
+	//Sence::on_update();
 	m_pGameLevel->on_update();
 	COLLISION_MANAGER->on_update();
 }
