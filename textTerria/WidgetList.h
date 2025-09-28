@@ -13,7 +13,7 @@ public:
 	virtual ~WidgetList();
 	virtual void refresh_transform();
 	void setLocalPosition(const Vector2& new_pos);
-	void setLocalPosition(float x, float y);
+	virtual void setLocalPosition(float x, float y) override;
 	void add_child(Widget* child) override;
 	void set_interval(int interval);
 	void set_original_interval(int interval);

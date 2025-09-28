@@ -34,13 +34,12 @@ void WidgetList::refresh_transform()
 
 void WidgetList::setLocalPosition(const Vector2& new_pos)
 {
-	Widget::setLocalPosition(new_pos);
-	refresh_transform();
+	this->setLocalPosition(new_pos.x, new_pos.y);
 }
 
 void WidgetList::setLocalPosition(float x, float y)
 {
-	setLocalPosition(Vector2(x, y));
+	Widget::setLocalPosition(x, y);
 	refresh_transform();
 }
 
