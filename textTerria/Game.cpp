@@ -68,7 +68,7 @@ void Game::runGame()
 		cleardevice();
 
 		//Ê¹ÓÃRendermanger
-		//SenceManager::instance()->on_render();
+		SenceManager::instance()->on_render();
 		RENDER_MANAGER->onRender(std::chrono::duration_cast<std::chrono::milliseconds>(cur_time.time_since_epoch()).count());
 		FlushBatchDraw();
 		frames++;

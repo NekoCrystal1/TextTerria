@@ -6,7 +6,7 @@ StorageWidget::StorageWidget(int per_row_or_colum_num, Storage* bind_storage, Wi
 	//childs = std::vector<Widget*>
 	//	(bind_storage->get_size() / per_row_or_colum_num + (bind_storage->get_size() % per_row_or_colum_num ? 1 : 0), new WidgetList(this));
 	int n = bind_storage->get_size() / per_row_or_colum_num + (bind_storage->get_size() % per_row_or_colum_num ? 1 : 0);
-	childs.reserve(n);
+	m_vecNextNodes.reserve(n);
 	for (int i = 0; i < n; i++)
 		new WidgetList(this, ListMode::horizontal, 0);
 }
@@ -17,7 +17,7 @@ StorageWidget::~StorageWidget()
 
 void StorageWidget::set_interval_in_row_or_col(int interval)
 {
-	for (Widget* i : childs) {
+	for (Widget* i : m_vecNextNodes) {
 		WidgetList* i_list = dynamic_cast<WidgetList*>(i);
 		if(i_list)
 			i_list->set_interval(interval);
@@ -26,7 +26,7 @@ void StorageWidget::set_interval_in_row_or_col(int interval)
 
 void StorageWidget::bind_elements_storage()
 {
-	for (Widget* i : childs)
+	for (Widget* i : m_vecNextNodes)
 	{
 		WidgetList* i_list = dynamic_cast<WidgetList*>(i);
 		if (i_list) {

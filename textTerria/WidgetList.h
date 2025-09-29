@@ -14,7 +14,7 @@ public:
 	virtual void refresh_transform();
 	void setLocalPosition(const Vector2& new_pos);
 	virtual void setLocalPosition(float x, float y) override;
-	void add_child(Widget* child) override;
+	virtual void setParentNode(Widget* pNewParent)override;
 	void set_interval(int interval);
 	void set_original_interval(int interval);
 protected:

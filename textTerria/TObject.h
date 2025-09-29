@@ -11,7 +11,7 @@ public:
 	virtual ~TObject() = default;
 	//获取本地变化指针;
 	virtual const Transform* getTransform()const;
-	virtual const Transform& gerLocalTransform() const;
+	virtual const Transform& getLocalTransform() const;
 	virtual void setLocalPosition(const Vector2& position);
 	virtual void setLocalPosition(float x, float y);
 	virtual void setLocalAnchor(const Vector2& oNewAnchor);

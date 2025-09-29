@@ -73,7 +73,7 @@ Vector2 CollisionManager::get_netvector_pos(const Vector2& pos)
 CollisionBox* CollisionManager::create_collision_box(CollisionBox::CollisionType collision_type, CollisionComponent* pParent)
 {
 	CollisionBox* box = nullptr;
-	const Transform& parentTransform = pParent->gerLocalTransform();
+	const Transform& parentTransform = pParent->getLocalTransform();
 	switch (collision_type)
 	{
 		//静态碰撞箱会自动网格对齐

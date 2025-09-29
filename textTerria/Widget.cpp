@@ -1,12 +1,12 @@
 #include "Widget.h"
 #include "UTIL.hpp"
-Widget::Widget(Widget* parent, const Vector2& size, const Vector2& position) : TObject(new Transform(size, position)),
+Widget::Widget(Widget* parent, const Vector2& size, const Vector2& position) : TNodeInterface(size, position),
 m_bIsVisible(true),	is_background_visiable(false), is_background_frame_line_visiable(false),
-background_color(0xFFFFFF), background_frame_line_color(0xFFFFFF),
-parent(parent), childs(), tree_event(nullptr)
+background_color(0xFFFFFF), background_frame_line_color(0xFFFFFF), tree_event(nullptr)
 {
-	if (parent) {
-		parent->add_child(this);
+	if (parent) 
+	{
+		setParentNode(parent);
 		tree_event = parent->tree_event;
 	}
 	else
@@ -14,18 +14,18 @@ parent(parent), childs(), tree_event(nullptr)
 }
 
 Widget::~Widget() {
-	if (parent)
-		parent->remove_child(this);
-	clearVec(childs);
+	if (m_pParentNode)
+		m_pParentNode->eraseNode(this);
+	clearVec(m_vecNextNodes);
 	delete m_pLocalTransform;
 	m_pLocalTransform = nullptr;
 }
 
 void Widget::on_update()
 {
-	for (Widget* c : childs)
+	for (Widget* c : m_vecNextNodes)
 		c->on_update();
-	if (!parent)
+	if (!m_pParentNode)
 		tree_event->reset();
 }
 
@@ -40,21 +40,8 @@ void Widget::on_render() const
 		const Vector2& size = m_pLocalTransform->get_size();
 		fillrectangle(pos.x, pos.y, pos.x + size.x, pos.y + size.y);
 	}
-	for (Widget* p : childs)
+	for (Widget* p : m_vecNextNodes)
 		p->on_render();
-}
-
-void Widget::add_child(Widget* child)
-{
-	if(child && child != this)
-		this->childs.push_back(child);
-}
-
-void Widget::remove_child(Widget* child)
-{
-	auto it = std::find(childs.begin(), childs.end(),child);
-	if (it != childs.end())
-		childs.erase(it);
 }
 
 Vector2 Widget::get_layout(int layout_idx, const Vector2& target_size) const
@@ -128,7 +115,7 @@ void Widget::set_background_frame_line_visiable(bool is_background_frame_line_vi
 
 const std::vector<Widget*>& Widget::get_childs() const
 {
-	return childs;
+	return m_vecNextNodes;
 }
 
 void Widget::WidgetEvent::reset()
