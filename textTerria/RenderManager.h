@@ -13,6 +13,7 @@ private:
 	~RenderManager();
 public:
 	void onRender(unsigned long long ui64CurTime);
+	//清空当前渲染节点，可以在切换场景时使用
 	void clearRenderNodes();
 	void eraseRenderNode(std::string sNodeName);
 	//将某根节点加入到渲染队列，返回加入的节点，如果加入了不存在的节点，会返回当前工作节点

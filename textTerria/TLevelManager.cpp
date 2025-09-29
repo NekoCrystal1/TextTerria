@@ -1,7 +1,16 @@
 #include "TLevelManager.h"
 
+TLevelManager::TLevelManager() : m_pCurWorkEntityNode(getRootNode("VirtualNode"))
+{
+}
+
+
 TEntityObject* TLevelManager::getCruWorkEntityNode()
 {
+	if (!m_pCurWorkEntityNode)
+	{
+		m_pCurWorkEntityNode = getRootNode("VirtualNode");
+	}
 	return m_pCurWorkEntityNode;
 }
 

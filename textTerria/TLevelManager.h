@@ -15,7 +15,7 @@ class TLevelManager : public Singleton<TLevelManager>, public TNodeManagerInterf
 {
 	friend Singleton < TLevelManager>;
 private:
-	TLevelManager() = default;
+	TLevelManager();
 	~TLevelManager() = default;
 public:
 	TEntityObject* getCruWorkEntityNode();

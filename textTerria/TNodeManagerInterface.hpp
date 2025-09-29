@@ -13,6 +13,8 @@ public:
 	//查找根节点，如果不存在则返回nullptr且不会添加新节点
 	T* getRootNode(std::string sNodeName);
 	T* getCruWorkNode();
+	//删除根节点，如果当前工作节点在根节点之下，则置为虚节点
+	void destoryRootNode(std::string sNodeName);
 	//传入nullptr会被重定向为VirtualNode
 	void setCurWorkNode(T* pWorkNode);
 protected:
@@ -64,6 +66,22 @@ template<typename T>
 inline T* TNodeManagerInterface<T>::getCruWorkNode()
 {
 	return m_pCurWorkNode;
+}
+
+template<typename T>
+inline void TNodeManagerInterface<T>::destoryRootNode(std::string sNodeName)
+{
+	T* root = getRootNode(sNodeName);
+	m_mapRenderRoots.erase(sNodeName);
+	if (root)
+	{
+		delete root;
+		root = nullptr;
+	}
+	if (!m_pCurWorkNode)
+	{
+		m_pCurWorkNode = getRootNode("VirtualNode");
+	}
 }
 
 template<typename T>

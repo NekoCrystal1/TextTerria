@@ -14,10 +14,24 @@ GameSence::GameSence() : player(nullptr), m_pGameLevel(LEVEL_MANAGER->getAndAddR
 {
 	game_background_widget = new Widget(nullptr, Vector2(getwidth(), getheight()));
 	game_background_widget->set_all_visiable();
+	RENDER_MANAGER->getAndAddRoot("GameRender");
 }
 
 GameSence::~GameSence()
 {
+	delete game_background_widget;
+	game_background_widget = nullptr;
+	LEVEL_MANAGER->destoryRootNode("GameRender");
+	RENDER_MANAGER->destoryRootNode("GameRender");
+}
+
+void GameSence::on_enter()
+{
+	RENDER_MANAGER->clearRenderNodes();
+	RENDER_MANAGER->addRenderNode("GameRender");
+	load_map();
+	loadUI();
+	CAMERA->setParentNode(player->getAnimation());
 }
 
 void GameSence::on_update()
@@ -29,17 +43,6 @@ void GameSence::on_update()
 void GameSence::on_render() const
 {
 	game_background_widget->on_render();
-}
-
-void GameSence::on_enter()
-{
-	RENDER_MANAGER->clearRenderNodes();
-	RENDER_MANAGER->getAndAddRoot("GameRender");
-	RENDER_MANAGER->addRenderNode("GameRender");
-
-	load_map();
-	loadUI();
-	CAMERA->setParentNode(player->getAnimation());
 }
 
 void GameSence::on_exit()
