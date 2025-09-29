@@ -8,8 +8,9 @@ public:
 	GameSence();
 	~GameSence();
 	virtual void on_enter()override;
-	void on_update()override;
-	void on_exit()override;
+	virtual void on_update()override;
+	virtual void on_render()const;
+	virtual void on_exit()override;
 	void loadUI();
 	void load_map();
 private:

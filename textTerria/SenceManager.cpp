@@ -1,5 +1,4 @@
 #include "SenceManager.h"
-#include "TObjectManager.h"
 
 void SenceManager::on_update()
 {

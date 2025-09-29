@@ -13,7 +13,6 @@
 GameSence::GameSence() : player(nullptr), m_pGameLevel(LEVEL_MANAGER->getAndAddRoot("GameLevel"))
 {
 	game_background_widget = new Widget(nullptr, Vector2(getwidth(), getheight()));
-	//sence_objects.push_back(game_background_widget);
 	game_background_widget->set_all_visiable();
 }
 
@@ -23,9 +22,13 @@ GameSence::~GameSence()
 
 void GameSence::on_update()
 {
-	//Sence::on_update();
 	m_pGameLevel->on_update();
 	COLLISION_MANAGER->on_update();
+}
+
+void GameSence::on_render() const
+{
+	game_background_widget->on_render();
 }
 
 void GameSence::on_enter()
@@ -35,8 +38,7 @@ void GameSence::on_enter()
 	RENDER_MANAGER->addRenderNode("GameRender");
 
 	load_map();
-	//loadUI();
-	//player->getMovementComponent()->set_gravity(0);
+	loadUI();
 	CAMERA->setParentNode(player->getAnimation());
 }
 
